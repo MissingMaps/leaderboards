@@ -1,7 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {Router, Route, IndexRoute} from 'react-router';
+import {Router, Route, Redirect} from 'react-router';
 import createHashHistory from 'history/lib/createHashHistory';
+import Leaderboards from './containers/Leaderboards.js';
 
 var history = createHashHistory({
   queryKey: false
@@ -9,7 +10,8 @@ var history = createHashHistory({
 
 ReactDOM.render((
   <Router history={history}>
-    <Route path="/">
+    <Redirect from="/" to="/missingmaps" />
+    <Route path="/:id" component={Leaderboards}>
     </Route>
   </Router>),
   document.getElementById('app')
