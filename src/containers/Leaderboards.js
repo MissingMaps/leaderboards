@@ -1,6 +1,8 @@
 import React from 'react';
 import R from 'ramda';
 
+
+//Create Userlist
 var Userlist = React.createClass ({
   render: function() {
     if (typeof this.props.users === 'undefined') {
