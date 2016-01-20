@@ -1,1 +1,35 @@
 @import base 
+
+$osmgreen: #9dcf80;
+$darkgreen: #38803D;
+$lightgrey: #dbdbda;
+$darkgrey: #6e6f71;
+$darkestgrey: #595a5a;
+
+$mmred: #e23d3d;
+$mmgreen: #8BBF3F;
+$mmblue: #1E9FCC;
+$badgeyellow: #FEF387;
+$badgeborder: #D2C02B;
+
+$debug: rgba(0,0,0,0.08);
+
+/* In Context */
+/*----------------------------------------------*/
+$text-color: $darkgrey;
+$border-color: $darkgrey;
+$border-color-darken: darken($border-color, 5%);
+$border-color-lighten: lighten($border-color, 5%);
+$distfromtop: ;
+
+/*----------------------------------------------*/
+/*                    Base                      */
+/*                                              */
+/*----------------------------------------------*/
+body, ul, li{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Lato', sans-serif;
+  color: $darkgrey;
+}
+
