@@ -10,7 +10,7 @@ $mmblue: #1E9FCC;
 $badgeyellow: #FEF387;
 $badgeborder: #D2C02B;
 
-$debug: rgba(0,0,0,0.08);
+$debug: rgba(0,0,0,0.3);
 
 /* In Context */
 /*----------------------------------------------*/
@@ -18,7 +18,7 @@ $text-color: $darkgrey;
 $border-color: $darkgrey;
 $border-color-darken: darken($border-color, 5%);
 $border-color-lighten: lighten($border-color, 5%);
-$distfromtop: 2px;
+$distfromtop: 50px;
 
 
 /*----------------------------------------------*/
@@ -38,6 +38,14 @@ ul, li{
 
 li{
   display: inline-block;
+}
+
+table, th, td {
+}
+th, td {
+    padding: 5px 0px;
+    border-bottom: 1px solid lighten($darkgrey, 30%);
+    text-align: left;
 }
 
 .center-text{
@@ -119,7 +127,7 @@ a{
 }
 
 /*----------------------------------------------*/
-/*Nav Bar Style*/
+/*Nav Bar Style & Footer*/
 /*----------------------------------------------*/
 #header{
   background-color:white;
@@ -127,7 +135,7 @@ a{
   z-index: 100;
   top:0px;
   width: 100%;
-  min-height: 50px;
+  min-height: $distfromtop;
   color: $lightgrey;
   display: none;
   border-bottom: 2px $lightgrey solid;
@@ -150,7 +158,6 @@ a{
   max-width:1200px;
   margin-left: auto;
   margin-right: auto;
-  height: 52px;
 }
 
 header{
@@ -182,8 +189,6 @@ header{
   color: white;
   background-color: $darkestgrey;
 }
-
-
 
 .nav-icon{
   padding-left: 8px;
@@ -235,7 +240,6 @@ header{
 .nav-links{
   float:center;
 }
-
 
 /*----------------------------------------------*/
 /*Interactive Buttons*/ 
@@ -311,8 +315,6 @@ input[type="text"]{
 :-ms-input-placeholder {  
    color: lighten($darkgrey, 8);  
 }
-
-
 
 /*----------------------------------------------*/
 /*              Overview Styles   */
@@ -394,7 +396,7 @@ input[type="text"]{
 /*              Overview Styles   */
 /*                 Containers      */              
 /*----------------------------------------------*/
-#User-Container{
+#Page-Container{
   width:100%;
   min-height:100%;
   margin-left: auto;
@@ -554,84 +556,6 @@ input[type="text"]{
 }
 */
 
-
-/*----------------------------------------------*/
-/*             Badge Views Style    */
-/*                                   */   
-/*----------------------------------------------*/
-
-.badgeicon {
-  position: relative; 
-  float: left;
-  pointer-events: none;
-}
-
-.badge-home{
-  width: 400px;
-  height: 200px;
-  img{
-    float: left;
-    margin: 20px;
-  }
-  hr{
-    max-width: 80%;
-  }
-  @media screen and (max-width: 630px){
-    width: auto;
-    height: auto;
-  }
-}
-
-.badge-Details{
-  text-align: left;
-  position: relative;
-  float: right;
-  width: 210px;
-  @media screen and (max-width: 630px){
-    text-align: center;
-    float: initial;
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
-
-.badge-Name{
-  padding-top: 40px;
-  margin-bottom: 2px;
-  font-weight: 500;
-  font-size: 1.4em;
-}
-
-.Badge-Description{
-  font-weight: 300;
-  margin-bottom: 10px;
-}
-
-.line-break{
-  background-color: darken($lightgrey, 8%);
-  height: 3px;
-  width: 190px;
-  float: right;
-  margin-right: 20px;
-  margin-bottom: 18px;
-  @media screen and (max-width: 600px){
-  }
-}
-
-.Badge-Container{
-  max-width: 100%;
-  min-width: 300px;
-  margin: 20px 24px;
-  margin-bottom: 0px;
-  @media screen and (max-width: 1100px){
-    position: relative;
-    margin: 50px 10px 0px 10px;
-    max-width: 75%;
-    margin-left: auto;
-    margin-right: auto;
-    }
-}
-
 /*----------------------------------------------*/
 /*Container Styles*/ 
 /*----------------------------------------------*/
@@ -686,64 +610,6 @@ input[type="text"]{
 /*----------------------------------------------*/
 /*FullStats Sytling*/ 
 /*----------------------------------------------*/
-#MapContainer{
-  width: 96%;
-  min-width: 300px;
-  margin: 0px auto 20px auto;
-  @media screen and (max-width: 1100px){
-    position: relative;
-    margin: 50px 10px 0px 10px;
-    max-width: 75%;
-    }
-}
-
-.MapContent{
-  padding: 10px;
-  height: 360px;
-  background-color: white;
-}
-
-#NumberContainer{
-  position: absolute;
-  width: 520px;
-  height: 384px;
-  right: 0px;
-  margin: 20px 24px;
-    @media screen and (max-width: 1100px){
-      position: relative;
-      width: 75%;
-      margin-left: auto;
-      margin-right: auto;
-    }
-}
-
-.NumberContent{
-  border: solid 1px #CCC;
-  box-shadow: 1px 2px 1px rgba( 55, 55, 55, 0.1);
-  padding: 10px;
-  background-color: white;
-  height: 360px;
-}
-
-#map{
-  border: solid 1px #CCC;
-  width: 100%;
-  box-shadow: 1px 2px 1px rgba( 55, 55, 55, 0.1);
-  height: 100%;
-}
-
-#map1{
-  height: 100%;
-}
-
-.box{
-  padding-top: 40px;
-  max-width: 1100px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative;
-}
 
 #Recent-Container{
   width: 500px;
@@ -808,6 +674,10 @@ input[type="text"]{
   }
 }
 
+/*----------------------------------------------*/
+/* Card Styling */ 
+/*----------------------------------------------*/
+
 .card{
   width: 100%;
   height: inherit;
@@ -827,9 +697,6 @@ input[type="text"]{
   color: #BBB;
 }
 
-/*----------------------------------------------*/
-/* Card Styling */ 
-/*----------------------------------------------*/
 .Card-Content{
   padding: 20px;
   padding-top: 10px;
@@ -892,17 +759,6 @@ table{
      background-color: #EEE;
   }*/
 }
-
-
-
-table, th, td {
-}
-th, td {
-    padding: 5px 0px;
-    border-bottom: 1px solid lighten($darkgrey, 30%);
-    text-align: left;
-}
-
 
 .Search-Container{
   width:100%;
@@ -1031,4 +887,49 @@ th, td {
       left: 38px;
       position: absolute;
     }
+}
+
+/*----------------------------------------------*/
+/* Leaderboard Navigation Bar */ 
+/*----------------------------------------------*/
+.Leaderboard-Navbar-Container{
+	width: 100%;
+	background-color: white;
+	padding-top: $distfromtop + 2px;
+	height: 50px;
+}
+
+.LN-Hashtag-Container{
+	width: 55%;
+	background-color: $debug;
+	height: 46px;
+	margin: 2px;
+	display: inline-block;
+}
+
+.LN-View-Navigation{
+	width: 40%;
+	background-color: $debug;
+	height: 46px;
+	margin: 2px;
+	display: inline-block;
+	float: right;
+}
+
+/*----------------------------------------------*/
+/* Leaderboard Left Panel */ 
+/*----------------------------------------------*/
+.Leaderboard-Stats-Container{
+	min-width: 280px;
+	width: 25%;
+	height: 500px;
+	background-color: $debug;
+	display: inline-block;
+};
+
+.Leaderboard-Container{
+	width: 75%;
+	height: 500px;
+	background-color: $debug;
+	display: inline-block;
 }

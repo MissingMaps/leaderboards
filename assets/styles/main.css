@@ -16,6 +16,11 @@ ul, li {
 li {
   display: inline-block; }
 
+th, td {
+  padding: 5px 0px;
+  border-bottom: 1px solid #bbbcbd;
+  text-align: left; }
+
 .center-text {
   text-align: center; }
 
@@ -78,7 +83,7 @@ a {
   line-height: 1.4; }
 
 /*----------------------------------------------*/
-/*Nav Bar Style*/
+/*Nav Bar Style & Footer*/
 /*----------------------------------------------*/
 #header {
   background-color: white;
@@ -101,8 +106,7 @@ a {
 .headerwidth {
   max-width: 1200px;
   margin-left: auto;
-  margin-right: auto;
-  height: 52px; }
+  margin-right: auto; }
 
 header {
   background-color: white;
@@ -310,7 +314,7 @@ input[type="text"] {
 /*              Overview Styles   */
 /*                 Containers      */
 /*----------------------------------------------*/
-#User-Container {
+#Page-Container {
   width: 100%;
   min-height: 100%;
   margin-left: auto;
@@ -386,7 +390,7 @@ input[type="text"] {
 
 .Quick-User-Stats-Block {
   width: 90%;
-  border: solid 1px rgba(0, 0, 0, 0.08);
+  border: solid 1px rgba(0, 0, 0, 0.3);
   display: inline-block;
   margin-left: auto;
   margin-right: auto;
@@ -452,71 +456,6 @@ input[type="text"] {
 }
 */
 /*----------------------------------------------*/
-/*             Badge Views Style    */
-/*                                   */
-/*----------------------------------------------*/
-.badgeicon {
-  position: relative;
-  float: left;
-  pointer-events: none; }
-
-.badge-home {
-  width: 400px;
-  height: 200px; }
-  .badge-home img {
-    float: left;
-    margin: 20px; }
-  .badge-home hr {
-    max-width: 80%; }
-  @media screen and (max-width: 630px) {
-    .badge-home {
-      width: auto;
-      height: auto; } }
-
-.badge-Details {
-  text-align: left;
-  position: relative;
-  float: right;
-  width: 210px; }
-  @media screen and (max-width: 630px) {
-    .badge-Details {
-      text-align: center;
-      float: initial;
-      margin-left: auto;
-      margin-right: auto; } }
-
-.badge-Name {
-  padding-top: 40px;
-  margin-bottom: 2px;
-  font-weight: 500;
-  font-size: 1.4em; }
-
-.Badge-Description {
-  font-weight: 300;
-  margin-bottom: 10px; }
-
-.line-break {
-  background-color: #c7c7c5;
-  height: 3px;
-  width: 190px;
-  float: right;
-  margin-right: 20px;
-  margin-bottom: 18px; }
-
-.Badge-Container {
-  max-width: 100%;
-  min-width: 300px;
-  margin: 20px 24px;
-  margin-bottom: 0px; }
-  @media screen and (max-width: 1100px) {
-    .Badge-Container {
-      position: relative;
-      margin: 50px 10px 0px 10px;
-      max-width: 75%;
-      margin-left: auto;
-      margin-right: auto; } }
-
-/*----------------------------------------------*/
 /*Container Styles*/
 /*----------------------------------------------*/
 .container {
@@ -562,58 +501,6 @@ input[type="text"] {
 /*----------------------------------------------*/
 /*FullStats Sytling*/
 /*----------------------------------------------*/
-#MapContainer {
-  width: 96%;
-  min-width: 300px;
-  margin: 0px auto 20px auto; }
-  @media screen and (max-width: 1100px) {
-    #MapContainer {
-      position: relative;
-      margin: 50px 10px 0px 10px;
-      max-width: 75%; } }
-
-.MapContent {
-  padding: 10px;
-  height: 360px;
-  background-color: white; }
-
-#NumberContainer {
-  position: absolute;
-  width: 520px;
-  height: 384px;
-  right: 0px;
-  margin: 20px 24px; }
-  @media screen and (max-width: 1100px) {
-    #NumberContainer {
-      position: relative;
-      width: 75%;
-      margin-left: auto;
-      margin-right: auto; } }
-
-.NumberContent {
-  border: solid 1px #CCC;
-  box-shadow: 1px 2px 1px rgba(55, 55, 55, 0.1);
-  padding: 10px;
-  background-color: white;
-  height: 360px; }
-
-#map {
-  border: solid 1px #CCC;
-  width: 100%;
-  box-shadow: 1px 2px 1px rgba(55, 55, 55, 0.1);
-  height: 100%; }
-
-#map1 {
-  height: 100%; }
-
-.box {
-  padding-top: 40px;
-  max-width: 1100px;
-  width: 100%;
-  margin-left: auto;
-  margin-right: auto;
-  position: relative; }
-
 #Recent-Container {
   width: 500px;
   max-width: 90%;
@@ -670,6 +557,9 @@ input[type="text"] {
     #Stats-Container {
       max-width: 90%; } }
 
+/*----------------------------------------------*/
+/* Card Styling */
+/*----------------------------------------------*/
 .card {
   width: 100%;
   height: inherit;
@@ -687,9 +577,6 @@ input[type="text"] {
   font-weight: 800;
   color: #BBB; }
 
-/*----------------------------------------------*/
-/* Card Styling */
-/*----------------------------------------------*/
 .Card-Content {
   padding: 20px;
   padding-top: 10px;
@@ -742,11 +629,6 @@ table {
   tr:nth-child(odd) {
      background-color: #EEE;
   }*/ }
-
-th, td {
-  padding: 5px 0px;
-  border-bottom: 1px solid #bbbcbd;
-  text-align: left; }
 
 .Search-Container {
   width: 100%;
@@ -854,3 +736,43 @@ th, td {
     top: 36px;
     left: 38px;
     position: absolute; }
+
+/*----------------------------------------------*/
+/* Leaderboard Navigation Bar */
+/*----------------------------------------------*/
+.Leaderboard-Navbar-Container {
+  width: 100%;
+  background-color: white;
+  padding-top: 52px;
+  height: 50px; }
+
+.LN-Hashtag-Container {
+  width: 55%;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 46px;
+  margin: 2px;
+  display: inline-block; }
+
+.LN-View-Navigation {
+  width: 40%;
+  background-color: rgba(0, 0, 0, 0.3);
+  height: 46px;
+  margin: 2px;
+  display: inline-block;
+  float: right; }
+
+/*----------------------------------------------*/
+/* Leaderboard Left Panel */
+/*----------------------------------------------*/
+.Leaderboard-Stats-Container {
+  min-width: 280px;
+  width: 25%;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: inline-block; }
+
+.Leaderboard-Container {
+  width: 75%;
+  height: 500px;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: inline-block; }

@@ -9,7 +9,7 @@ class HomePage extends React.Component{
 	render(){
 		return (
 			<div>
-	      <Header />
+				<Header />
 				<div>
 					<div className = "white"></div>
 						<div id = "Leaderboard-Container">
