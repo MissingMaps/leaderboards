@@ -4,10 +4,12 @@
   "description": "Leaderboard page",
   "main": "index.js",
   "scripts": {
-    "start": "NODE_ENV=development budo src/index.js:bundle.js --live",
+    "start": "NODE_ENV=development budo src/index.js:bundle.js --live & npm run watch-sass",
     "build": "NODE_ENV=production browserify src/index.js -o bundle.js",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "lint": "eslint ."
+    "lint": "eslint .",
+    "build-sass": "node-sass assets/styles/main.scss assets/styles/main.css",
+    "watch-sass": "nodemon -e scss -w assets/styles -x 'npm run build-sass'"
   },
   "browserify": {
     "transform": [
@@ -47,7 +49,10 @@
     "chance": "^0.8.0",
     "envify": "^3.4.0",
     "moment": "^2.11.1",
-    "ramda": "^0.19.1"
+    "ramda": "^0.19.1",
+    "node-sass": "3.4.2",
+    "clean-css": "3.4.9",
+    "nodemon": "1.8.1"
   },
   "dependencies": {
     "babel": "^5.8.34",

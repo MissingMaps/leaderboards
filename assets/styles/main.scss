@@ -1,0 +1,1034 @@
+$osmgreen: #9dcf80;
+$darkgreen: #38803D;
+$lightgrey: #dbdbda;
+$darkgrey: #6e6f71;
+$darkestgrey: #595a5a;
+
+$mmred: #e23d3d;
+$mmgreen: #8BBF3F;
+$mmblue: #1E9FCC;
+$badgeyellow: #FEF387;
+$badgeborder: #D2C02B;
+
+$debug: rgba(0,0,0,0.08);
+
+/* In Context */
+/*----------------------------------------------*/
+$text-color: $darkgrey;
+$border-color: $darkgrey;
+$border-color-darken: darken($border-color, 5%);
+$border-color-lighten: lighten($border-color, 5%);
+$distfromtop: 2px;
+
+
+/*----------------------------------------------*/
+/*                    Base                      */
+/*                                              */
+/*----------------------------------------------*/
+body, ul, li{
+  margin: 0px;
+  padding: 0px;
+  font-family: 'Lato', sans-serif;
+  color: $darkgrey;
+}
+
+ul, li{
+  list-style: none;
+}
+
+li{
+  display: inline-block;
+}
+
+.center-text{
+  text-align: center
+}
+
+// IE < 10
+// Don't delete.
+.lt-ie10 {
+  #site-canvas {
+    display: none;
+  }
+  #nocando {
+    margin: 200px auto;
+    padding: 32px;
+    max-width: 440px;
+    background: #fff;
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+::-moz-selection { /* Code for Firefox */
+    background: $osmgreen;
+}
+
+::selection {
+    background: lighten($lightgrey,2);
+}
+
+.site-canvas{
+  z-index: -1;
+};
+
+/*----------------------------------------------*/
+/*                  Base: ;                     */
+/*                                              */
+/*                  Text                        */
+/* weights: 300 thin, 400 regular, 700 bold, 900 black */ 
+/*----------------------------------------------*/
+
+h1{
+    font-weight: 500;
+    display: inline;
+}
+
+a{
+  text-decoration: none;
+  color: $darkgrey;
+  &:hover{
+    color: lighten(darkgrey, 5);   
+  }
+  &:focus{
+    color: lighten(darkgrey, 5);
+  }
+}
+
+.titleheader{
+  font-weight: 900;
+  font-size: 2em;
+  color: $darkgrey;
+}
+
+.sub-head{
+  font-weight: 400;
+  font-size: 1.4em;
+  padding: 2px 0px 8px 0px;
+  color: $darkgrey;
+}
+
+.textbox{
+  padding-bottom: 4px;
+  font-weight: 400;
+  font-size: 1.1em;
+  line-height: 1.4;
+}
+
+/*----------------------------------------------*/
+/*Nav Bar Style*/
+/*----------------------------------------------*/
+#header{
+  background-color:white;
+  position: fixed;
+  z-index: 100;
+  top:0px;
+  width: 100%;
+  min-height: 50px;
+  color: $lightgrey;
+  display: none;
+  border-bottom: 2px $lightgrey solid;
+  input{
+  }
+  ul{
+    display: inline-block;
+  }
+  li{
+    display: inline-block;
+    margin: 0px;
+  }
+  focus{
+    outline: none;
+  }
+}
+
+
+.headerwidth{
+  max-width:1200px;
+  margin-left: auto;
+  margin-right: auto;
+  height: 52px;
+}
+
+header{
+  background-color:white;
+  position: fixed;
+  z-index: 100;
+  top:0px;
+  width: 100%;
+  min-height: 50px;
+  color: $lightgrey;
+  border-bottom: 2px $lightgrey solid;
+  z-index: 100;
+}
+
+.footer-container{
+  padding-top: 24px;
+  background-color: lighten($lightgrey, 8);
+  width: 100%;
+  .sectionheader{
+    padding-bottom: 36px;
+  }
+}
+
+.footer-mm{
+  margin-top:32px;
+  height: 30px;
+  width: 100%;
+  line-height: 32px;
+  color: white;
+  background-color: $darkestgrey;
+}
+
+
+
+.nav-icon{
+  padding-left: 8px;
+  padding-top: 7px;
+  float: left;
+  @media screen and (max-width: 700px){
+      display: block;
+      width: 100%;
+      img{
+        margin-top: 4px;
+      }
+  }
+}
+
+.nav-list{
+  float: right;
+  position: relative;
+  margin-top:18px;
+  display: inline-block;
+  @media screen and (max-width: 700px){
+      display: block;
+      height: 70px;
+      width: 100%;
+      margin: 0px auto 0px auto;
+      text-align: center;
+  }
+}
+
+.nav-input{
+    float: right;
+    display: inline-block;
+    position: relative;
+    bottom:3px;
+    padding: 0px 16px 0px 40px;
+  @media screen and (max-width: 700px){
+      display: block;
+      width: 100%;
+      top:14px;
+      padding-bottom:10px;
+  }
+}
+
+.nav-item{
+  padding:0px 10px 0px 10px;
+  @media screen and (max-width: 700px){
+  }
+}
+
+.nav-links{
+  float:center;
+}
+
+
+/*----------------------------------------------*/
+/*Interactive Buttons*/ 
+/*----------------------------------------------*/
+input[type="text"]{
+  border:0px solid $lightgrey;
+  box-sizing: none;
+  width: auto;
+  height: auto;
+  margin: none;
+  color: $darkgrey;
+  -webkit-border-radius: 5px;
+    background-color: lighten($lightgrey, 10);
+    box-shadow: -1px -2px $lightgrey;
+    padding: 2px 6px 4px 6px;
+    &:focus{
+      background-color: white;
+    }
+  outline: none;
+}
+
+.button{
+    background-color: $osmgreen;
+  -moz-border-radius:18px;
+  -webkit-border-radius:18px;
+  border-radius:6px;
+  border: 0px;
+/*  border:1px solid $darkgreen;
+*/  box-shadow: 0px 2px $darkgreen;
+  display:inline-block;
+  cursor:pointer;
+  transition: active 0.25s;
+  color:#ffffff;
+  padding: 6px 10px;
+  text-decoration:none;
+  &:hover{
+    background-color: darken($osmgreen, 15%);
+  }
+  &:active{
+    position:relative;
+    background-color:$osmgreen;
+    box-shadow: none;
+  }
+  &:focus{
+    background-color: darken($osmgreen, 5%);
+    padding: 4px 8px;
+    border: 2px solid lighten($osmgreen, 15%);
+  }
+  a{
+    text-decoration: none;
+    color: white;
+    &:hover{
+      color: white;   
+    }
+    &:visited{
+      color: white;
+    }
+  }
+}
+
+::-webkit-input-placeholder {
+   color: lighten($darkgrey, 30);
+}
+
+:-moz-placeholder { /* Firefox 18- */
+   color: lighten($darkgrey, 8);  
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+   color: lighten($darkgrey, 8);  
+}
+
+:-ms-input-placeholder {  
+   color: lighten($darkgrey, 8);  
+}
+
+
+
+/*----------------------------------------------*/
+/*              Overview Styles   */
+/*               Navigation Bar   */                 
+/*----------------------------------------------*/
+#Subhead-Container{
+  background-color: white;
+  height: 150px;
+  max-width: 1100px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#Subhead-Content{
+  position: absolute;
+  top:20px;
+  max-width: 1100px;
+  width: 100%;
+}
+
+.Username{
+  display: inline-block;
+  position: absolute;
+  top:90px;
+  padding-left: 14px;
+  p{
+    font-size: 0.5em;
+    color: $darkgrey;
+    font-weight: 300;
+    margin:0;
+    margin-top: 6px;
+  }
+};
+
+.ProfilePicture{
+  z-index: 100;
+  display: inline-block;
+  padding-top: 50px;
+  padding-left: 32px;
+    @media screen and (max-width: 1100px){
+  margin-left: auto;
+  margin-right: auto;
+  }
+}
+
+.Subhead-Nav{
+  float: right;
+  padding-right: 24px;
+  display: inline-block;
+  position: absolute;
+  right: 0;
+  top: 95px;
+  background-color: white;
+  a{
+    padding: 16px 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+    border: 1px solid #DDD;
+    border-bottom: 0px;
+    &:hover{
+      background-color: #DDD;
+      color: #999;  
+    }
+  }
+    .activeLink {
+      border: none;
+      background-color: #eee;
+    }
+    @media screen and (max-width: 700px){
+    top: 125px;
+    right: auto;
+    left: 53.1%;
+    transform: translate(-50%, 0);
+  margin-left: auto;
+  margin-right: auto;
+  } 
+}
+/*----------------------------------------------*/
+/*              Overview Styles   */
+/*                 Containers      */              
+/*----------------------------------------------*/
+#User-Container{
+  width:100%;
+  min-height:100%;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: #EEE;
+}
+
+#Main-User-Container{
+  position: relative;
+  margin-left:20px;
+  margin-right:20px;
+    @media screen and (max-width: 1100px){
+  height: auto;
+  }
+}
+
+.white{
+  background-color: white;
+  width: 100%;
+  position: absolute;
+  height: 150px;
+}
+
+.Recent-Badges-Container{
+  position: absolute;
+  max-width: 584px;
+  min-width: 300px;
+  margin: 20px 24px;
+  @media screen and (max-width: 1100px){
+    position: relative;
+    margin: 50px 10px 0px 10px;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+.Quick-User-Stats-Container{
+  position: absolute;
+  width: 430px;
+  height: 384px;
+  right: 0px;
+  margin: 20px 24px;
+    @media screen and (max-width: 1100px){
+      position: relative;
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+};
+
+.Quick-User-Stats-Content{
+  border: solid 1px #CCC;
+  box-shadow: 1px 2px 1px rgba( 55, 55, 55, 0.1);
+  width:100%;
+  height: 374px;
+  font-weight: 300;
+  padding-top: 10px;
+  background-color: white;
+  h1{
+    font-size: 2.5em;
+    display: inline;
+  }
+  h2{
+    font-size: 1.4em;
+    font-weight: 300;
+    margin: 0px;
+    display: inline;
+    float: right;
+    line-height: 2.8;
+  }
+  p{
+    font-size: 1.4em;
+    margin: 0px;
+    margin-bottom: 8px;
+    b{
+      font-size: 1em;
+      font-weight: 300;
+      float: right;
+    }
+  }
+};
+
+.Quick-User-Stats-Block{
+  width: 90%;
+  border: solid 1px $debug;
+  display: inline-block;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: left;
+  padding-top: 20px;
+  padding-left: 30px;
+}
+
+.Contribute-Timeline-Container{
+  margin-left: auto;
+  margin-right: auto;
+  width: 96%;
+  height: 180px;
+};
+
+.Contribute-Timeline-Content{
+  background-color: white;
+  height: 130px;
+  &.tall {
+    height: 155px;
+  }
+}
+
+.Move-over{
+  margin-top:20px;
+  margin-left: 40px;
+}
+
+/*----------------------------------------------*/
+/*              Overview Styles     */
+/*                  Text            */         
+/*----------------------------------------------*/
+.Block-header{
+  padding-top: 14px;
+  margin-bottom: 8px;
+  font-weight: 300;
+  font-size: 1.4em;
+}
+
+.Badge-Roll{
+  position: relative;
+  display: inline;
+  li{
+    padding: 8px;
+  }
+}
+
+/*----------------------------------------------*/
+/*              Overview Styles   */
+/*                  Text            */        
+/*----------------------------------------------*/
+/*.hashtag-title{
+  font-weight: 900;
+  font-size: 1.8em;
+}
+
+.user-roll{
+  width: 240px;
+  li{
+    padding-bottom:4px;
+  }
+}
+
+.usertot{
+  font-weight: 700;
+  font-size: 1em;
+  color: $darkestgrey;
+  position: relative;
+  display: inline-block;
+  float: right;
+}
+*/
+
+
+/*----------------------------------------------*/
+/*             Badge Views Style    */
+/*                                   */   
+/*----------------------------------------------*/
+
+.badgeicon {
+  position: relative; 
+  float: left;
+  pointer-events: none;
+}
+
+.badge-home{
+  width: 400px;
+  height: 200px;
+  img{
+    float: left;
+    margin: 20px;
+  }
+  hr{
+    max-width: 80%;
+  }
+  @media screen and (max-width: 630px){
+    width: auto;
+    height: auto;
+  }
+}
+
+.badge-Details{
+  text-align: left;
+  position: relative;
+  float: right;
+  width: 210px;
+  @media screen and (max-width: 630px){
+    text-align: center;
+    float: initial;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.badge-Name{
+  padding-top: 40px;
+  margin-bottom: 2px;
+  font-weight: 500;
+  font-size: 1.4em;
+}
+
+.Badge-Description{
+  font-weight: 300;
+  margin-bottom: 10px;
+}
+
+.line-break{
+  background-color: darken($lightgrey, 8%);
+  height: 3px;
+  width: 190px;
+  float: right;
+  margin-right: 20px;
+  margin-bottom: 18px;
+  @media screen and (max-width: 600px){
+  }
+}
+
+.Badge-Container{
+  max-width: 100%;
+  min-width: 300px;
+  margin: 20px 24px;
+  margin-bottom: 0px;
+  @media screen and (max-width: 1100px){
+    position: relative;
+    margin: 50px 10px 0px 10px;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+/*----------------------------------------------*/
+/*Container Styles*/ 
+/*----------------------------------------------*/
+.container{
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.sub-container{
+  border: $lightgrey solid 1px;
+}
+
+.sectionheader{
+  padding-bottom: 32px;
+}
+
+.text-box{
+  padding: 14px;
+  width: 400px;
+}
+
+.badge-box {
+  padding: 14px;
+  width: 400px;
+  height: 100%;
+}
+
+.badgeroll-frame{
+  width: 100%;
+  @media screen and (max-width: 630px){
+    text-align: center;
+  }
+}
+
+.badgeroll-center{
+  max-width: 832px;
+  padding-left: 20px;
+  padding-right: 20px;
+  margin-top:10px;
+  margin-left: auto;
+  margin-right: auto;
+  @media screen and (max-width: 1101px){
+    max-width: 400px;
+  }
+  @media screen and (max-width: 600px){
+    padding: 0px
+  }
+}
+
+
+/*----------------------------------------------*/
+/*FullStats Sytling*/ 
+/*----------------------------------------------*/
+#MapContainer{
+  width: 96%;
+  min-width: 300px;
+  margin: 0px auto 20px auto;
+  @media screen and (max-width: 1100px){
+    position: relative;
+    margin: 50px 10px 0px 10px;
+    max-width: 75%;
+    }
+}
+
+.MapContent{
+  padding: 10px;
+  height: 360px;
+  background-color: white;
+}
+
+#NumberContainer{
+  position: absolute;
+  width: 520px;
+  height: 384px;
+  right: 0px;
+  margin: 20px 24px;
+    @media screen and (max-width: 1100px){
+      position: relative;
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+}
+
+.NumberContent{
+  border: solid 1px #CCC;
+  box-shadow: 1px 2px 1px rgba( 55, 55, 55, 0.1);
+  padding: 10px;
+  background-color: white;
+  height: 360px;
+}
+
+#map{
+  border: solid 1px #CCC;
+  width: 100%;
+  box-shadow: 1px 2px 1px rgba( 55, 55, 55, 0.1);
+  height: 100%;
+}
+
+#map1{
+  height: 100%;
+}
+
+.box{
+  padding-top: 40px;
+  max-width: 1100px;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+}
+
+#Recent-Container{
+  width: 500px;
+  max-width: 90%;
+  height: 275px;
+  margin: 20px;
+  padding: 0px;
+  display: inline-block;
+  margin: 20px;
+  @media screen and (max-width: 100px){
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+#Next-Container{
+  width: 500px;
+  height: 240px;
+  padding: 0px;
+  display: inline-block;
+  margin: 20px;
+  @media screen and (max-width: 100px){
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+.Badge-Box-Content{
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+  &.front{
+      text-align: center;
+  }
+}
+
+#Badge-Container{
+  max-width: 100%;
+  min-width: 300px;
+  padding-top: 30px;
+  @media screen and (max-width: 1100px){
+    position: relative;
+    margin: 50px 10px 0px 10px;
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    }
+}
+
+
+#Stats-Container{
+  width: 1040px;
+  max-width: 100%;
+  padding: 0px;
+  margin: 20px;
+  display: inline-block;
+  @media screen and (max-width: 1134px){
+    max-width: 95%;
+  }
+  @media screen and (max-width: 600px){
+    max-width: 90%;
+  }
+}
+
+.card{
+  width: 100%;
+  height: inherit;
+  background-color: #FFF;
+  border: 1px solid #BBB;
+  border-radius: 6px;
+  box-shadow: 0px 2px 3px lightgrey;
+}
+
+.Card-title{
+  width: 100%;
+  text-align: center;
+  padding-top: 8px;
+  padding-bottom: 2px;
+  font-size: 1.4em;
+  font-weight: 800;
+  color: #BBB;
+}
+
+/*----------------------------------------------*/
+/* Card Styling */ 
+/*----------------------------------------------*/
+.Card-Content{
+  padding: 20px;
+  padding-top: 10px;
+  word-wrap: break-word;
+  p{
+    margin: 4px 0px;
+  }
+}
+
+.Card-Left{
+  width: 49%;
+  float:left;
+}
+
+.Card-Right{
+  width: 47%;
+  float:right;
+  text-align: center;
+  img{
+    padding-top: 10px;
+  }
+}
+
+.Card-Badge-Name{
+  position:relative;
+  padding-top: 10px;
+}
+
+h3{
+  margin: 4px 0px 8px;  
+  font-size: 2em;
+}
+
+.Card-Section-Title{
+  font-weight: 300;
+  border-bottom: 1px solid lighten($darkgrey, 40%);
+  margin-bottom: 2px;
+  display: inline-block;
+}
+
+.Card-Textbox{
+  padding-bottom: 4px;
+}
+
+.Split-3{
+  width: 33.3%;
+  height: 200px;
+/*  background-color: rgba(0,0,0,0.1);
+*/  display: inline-block;
+  vertical-align:top;
+}
+
+table{
+  width:100%;
+  border-radius: 4px;
+  margin-top: 10px;
+/*  tr:nth-child(even) {
+  }
+  tr:nth-child(odd) {
+     background-color: #EEE;
+  }*/
+}
+
+
+
+table, th, td {
+}
+th, td {
+    padding: 5px 0px;
+    border-bottom: 1px solid lighten($darkgrey, 30%);
+    text-align: left;
+}
+
+
+.Search-Container{
+  width:100%;
+  height:100%;
+  position: relative;
+  text-align: center;
+  background-color: #EEE;
+}
+
+.search-bar-wrapper{
+  width:340px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.Search-Box{
+  position: absolute;
+  top: 160px;
+  width: 100%;
+  input{
+    margin-right: 20px;
+    margin-top: 20px;
+    height: 40px;
+    width: 200px;
+    padding-left: 10px;
+    font-family: "lato";
+    font-size: 1em;
+    background-color: white;
+  &.search-bar-submit{
+    width: 100px;
+    border-radius: 4px;
+    padding-left: 0px;
+    background-color: lighten($lightgrey, 10);
+    border: 1px solid lighten($lightgrey, 0);
+    color: $darkgrey;
+    outline: none;
+    transition: background-color 0.1s;
+    &:active{
+        background-color: lighten($lightgrey, 20);
+      }
+    }
+  }
+  img{
+    padding-bottom: 40px;
+  }
+}
+
+.Search-Content{
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.search-bar-suggestions{
+  text-align: left;
+  margin-top: 10px;
+  li {
+    margin-top: 4px;
+    padding: 4px;
+    display: block;
+    width: 194px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    background-color: lighten($lightgrey, 10);
+    &:hover{
+      background-color: lighten($lightgrey, 20);
+    };
+  }
+}
+
+.Pie-Tin{
+  text-align: center;
+  margin: 10px 0px;
+  font-family: 'Lato', sans-serif;
+}
+
+.ChartControls{
+  font-family: 'Lato', sans-serif;
+  text-align: center;
+  input{
+    margin-left: 5px;
+    margin-right: 5px;
+    cursor:pointer;
+    text-decoration:none;
+    transition: background-color 0.3s;
+    border: 1px solid 1px;
+    border-radius: 2px;
+    background-color: $lightgrey;
+    border: 1px solid lighten($darkgrey, 10%);
+    &:active{
+      background-color: white;
+      border-color: lighten($darkgrey, 20%);
+    }
+    &:focus{
+      outline: none;
+    }
+    &:hover{
+      background-color: lighten($lightgrey, 14);
+      border-color: lighten($darkgrey, 25%);
+    }
+  }
+}
+
+.next-badge-overlay{
+  position:absolute;
+  font-size: 2em;
+  font-weight: 800;
+  color: white;
+}
+
+.next-badge-overlay{
+    height:auto;
+    margin: auto;
+    text-align:center;
+    position:relative;
+}
+
+.nextBadgeHome{
+    width: 140px;
+    margin-left: auto;
+    margin-right: auto;
+    position:relative;
+    p{
+      top: 36px;
+      left: 38px;
+      position: absolute;
+    }
+}
