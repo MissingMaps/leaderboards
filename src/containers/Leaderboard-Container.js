@@ -6,7 +6,6 @@ import LeaderboardMap from '../components/Leaderboard-map.js';
 
 export default function () {
   return (
-		<div className = "Leaderboard-Container">
-		</div>
+  	<Leaderboard3 />
   );
 }
