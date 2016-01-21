@@ -533,13 +533,16 @@ input[type="text"]{
 /*              Overview Styles   */
 /*                  Text            */        
 /*----------------------------------------------*/
-/*.hashtag-title{
+.hashtag-title{
   font-weight: 900;
   font-size: 1.8em;
+  text-align: center;
 }
 
 .user-roll{
   width: 240px;
+  margin-left: auto;
+  margin-right: auto;
   li{
     padding-bottom:4px;
   }
@@ -553,7 +556,6 @@ input[type="text"]{
   display: inline-block;
   float: right;
 }
-*/
 
 /*----------------------------------------------*/
 /*Container Styles*/ 
@@ -915,15 +917,50 @@ table{
 	float: right;
 }
 
+.Input-Hashtag{
+	height: 28px;
+	background-color: white;
+	margin: 9px;
+	margin-right: 0px;
+	border-radius: 4px;
+	padding: 0px 24px 0px 10px;
+	display: inline-block;
+	line-height: 28px;
+	position: relative;
+  vertical-align:bottom;
+}
+
+.additional{
+	padding: 0px 10px;
+	font-weight: 800;
+}
+
+.killswitch{
+	position:absolute;
+	right:4px;
+	line-height: 1;
+	font-size: 0.8em;
+	font-weight: 800;
+}
+
+.View-Toggle{
+	width: 150px;
+	height: 20px;
+	margin: 10px;
+	display: inline-block;
+	background-color: white;
+}
+
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */ 
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container{
 	width: 25.5%;
 	height: 500px;
-	background-color: green;
+	background-color: $debug;
 	display: inline-block;
   vertical-align:bottom;
+  float:left;
 };
 
 .Hashtag-Timeline-Container{
@@ -934,6 +971,7 @@ table{
 .Hashtag-Timeline{
 	margin-top: 20px;
 	width: 200px;
+	max-width: 100%;
 	height: 200px;
 	margin-left: auto;
 	margin-right: auto;
@@ -941,23 +979,28 @@ table{
 }
 
 .Stats-Content{
-	width: 200px;
-	height: 300px;
+	width: 240px;
+	max-width: 100%;
 	margin-left: auto;
 	margin-right: auto;
 }
 
 .Stats-Togglebox{
+	margin-top: 10px;
 	width: 100%;
 	height: 30px;
-	background-color: white;
+}
+
+.Stats-Statbox{
+	width: 100%;
+	margin-top: 10px;
 }
 
 /*----------------------------------------------*/
 /* Toggle Switch */ 
 /*----------------------------------------------*/
 
-.onoffswitch {
+.onoffswitch, .onoffswitch2, .onoffswitch3{
     position: relative; 
     width: 40px;
     -webkit-user-select:none; 
@@ -966,6 +1009,7 @@ table{
     display: inline-block;
     margin-left: 6px;
 }
+
 .onoffswitch-checkbox {
     display: none;
 }
@@ -1015,7 +1059,7 @@ table{
     border: 2px 
     solid #999999; 
     border-radius: 5px;
-    transition: all 0.3s ease-in 0s; 
+    transition: all 0.1s ease-in 0s; 
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
@@ -1025,6 +1069,7 @@ table{
     background-color: #27A1CA; 
 }
 
+
 /*----------------------------------------------*/
 /* Leaderboard Right Panels */ 
 /*----------------------------------------------*/
@@ -1032,15 +1077,15 @@ table{
 .Leaderboard-Container{
 	width: 74.5%;
 	height: 500px;
-	background-color: $debug;
 	display: inline-block;
+	float:right;
 }
 
 .Leaderboard-1{
   vertical-align:bottom;
 	width: 33.33%;
 	height: 100%;
-	background-color: blue;
+	background-color: $debug;
 	display: inline-block;
 }
 
@@ -1048,13 +1093,18 @@ table{
   vertical-align:bottom;
 	width: 50%;
 	height: 100%;
-	background-color: blue;
+	background-color: $debug;
 	display: inline-block;
 }
 
 .Hashtag-Container{
-	padding-top: 20px;
-	text-align: center;
+	margin: 20px 40px;
 	color: black;
 	font-weight: 700;
+}
+
+.hash-card{
+	padding: 20px;
+	padding-bottom: 40px;
+	width: auto;
 }

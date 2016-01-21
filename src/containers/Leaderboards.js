@@ -6,29 +6,14 @@ import HashtagNav from '../components/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
 import LeaderboardContainer from '../containers/Leaderboard-Container.js';
 
+
 // Create Userlist
-var Userlist = React.createClass({
-  render: function () {
-    if (typeof this.props.users === 'undefined') {
-      return <div></div>;
-    }
-    var component = this;
-    var list = Object.keys(this.props.users)
-    .map(function (key) {
-      return (<li key={key}>{key}: {component.props.users[key]}</li>);
-    });
-    return (
-      <ul>
-      {list}
-      </ul>
-      );
-  }
-});
 
 export default React.createClass({
   getInitialState: function () {
     return {
       changesets: [],
+      numRolls: [],
       users: {}
     };
   },
@@ -38,8 +23,11 @@ export default React.createClass({
     if (process.env.NODE_ENV === 'development') {
       var Simulator = require('../../test/simulator/simulator.js');
       var simulation = new Simulator(R.split(',', this.props.params.id));
+      var hashtagname = this.props.params.id;
       var numRolls = R.split(',', this.props.params.id).length;
       var component = this;
+
+      var edits = [1250, 750, 125, 426, 222, 100];
 
       setInterval(() => {
         var changeset = simulation.randomChangeset();
@@ -53,9 +41,11 @@ export default React.createClass({
         }
 
         this.setState({
+          name: hashtagname,
           changesets: changesets,
           users: users,
-          numRolls: numRolls
+          numRolls: numRolls,
+          stats: edits
         });
       }, 1000); // Every second
     }
@@ -68,9 +58,8 @@ export default React.createClass({
             <div id = "Page-Container">
               <div id = "Main-Container">
                 <HashtagNav />
-                <HashtagStats />
-                <LeaderboardContainer />
-                <Userlist users={this.state.users} />
+                <HashtagStats data={this.state}/>
+                <LeaderboardContainer data={this.state}/>
               </div>
             </div>
           <Footer />
