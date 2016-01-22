@@ -59,9 +59,26 @@ export default function (users) {
 			</div>
 			<div className = "Leaderboard-2">
 				<div className = "Hashtag-Container">
-					<div className = "Hashtag-Title"></div>
-						<p>The Kigoma Region is the region between Burundi and Tanzania where Burundian refugees cross the border. A cholera outbreak is now spreading in this area, especially in the town of Kigoma and the refugee camp of Nyagurusu. NGOs on the ground need better road and residential area data to respond, especially on the Tanzanian side which is much less mapped than Burundi.</p>
-						<p>The Missing Maps project aims to map the most vulnerable places in the world (affected by humanitarian crises: disease epidemics, conflict, natural disasters, poverty, environmental crises). Building on HOT's disaster preparedness projects, the Missing Maps tasks facilitate pre-emptive mapping of priority countries to better facilitate disaster response, medical activities and resource allocation when crises occur.</p>
+					<div className = "center-text">Trending Hashtags</div>
+            <table className = "User-roll-table">
+              <tbody>
+                <tr>
+                  <td>#MissingMaps</td>
+                </tr>
+                <tr>
+                  <td>#SecondHashtag</td>
+                </tr>
+                <tr>
+                  <td>#ThirdHashtag</td>
+                </tr>
+                <tr>
+                  <td>#FourthHashtag</td>
+                </tr>
+                <tr>
+                  <td>#FifthHashtag</td>
+                </tr>
+              </tbody>
+            </table>
 				</div>
 			</div>
 		</div>

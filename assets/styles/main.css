@@ -740,26 +740,24 @@ table {
 /*----------------------------------------------*/
 .Leaderboard-Navbar-Container {
   width: 100%;
-  background-color: white;
+  background-color: rgba(0, 0, 0, 0.3);
   padding-top: 52px;
   height: 50px; }
 
 .LN-Hashtag-Container {
   width: 55%;
-  background-color: rgba(0, 0, 0, 0.3);
   height: 46px;
   margin: 2px;
   display: inline-block; }
 
 .LN-View-Navigation {
   width: 40%;
-  background-color: rgba(0, 0, 0, 0.3);
   height: 46px;
   margin: 2px;
   display: inline-block;
   float: right; }
 
-.Input-Hashtag {
+.Current-Hashtag {
   height: 28px;
   background-color: white;
   margin: 9px;
@@ -768,26 +766,55 @@ table {
   padding: 0px 24px 0px 10px;
   display: inline-block;
   line-height: 28px;
-  position: relative;
-  vertical-align: bottom; }
+  position: relative; }
+
+.Input-Hashtag {
+  display: inline-block;
+  margin-left: 4px; }
+  .Input-Hashtag input {
+    border: 0px solid #dbdbda;
+    box-sizing: none;
+    width: auto;
+    height: 26px;
+    margin: none;
+    color: #6e6f71;
+    vertical-align: top;
+    margin-top: -18px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+    background-color: #f4f4f4;
+    box-shadow: -1px -2px #dbdbda;
+    padding: 2px 6px 4px 6px;
+    outline: none; }
+    .Input-Hashtag input:focus {
+      background-color: white; }
 
 .additional {
   padding: 0px 10px;
-  font-weight: 800; }
+  font-weight: 800;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in 0s; }
+  .additional:hover {
+    background-color: #EEE; }
 
 .killswitch {
   position: absolute;
   right: 4px;
   line-height: 1;
   font-size: 0.8em;
-  font-weight: 800; }
+  font-weight: 800;
+  cursor: pointer; }
 
 .View-Toggle {
-  width: 150px;
-  height: 20px;
+  width: 120px;
+  height: 38px;
   margin: 10px;
   display: inline-block;
-  background-color: white; }
+  background-color: white;
+  line-height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  float: right; }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */
@@ -795,7 +822,6 @@ table {
 .Leaderboard-Stats-Container {
   width: 25.5%;
   height: 500px;
-  background-color: rgba(0, 0, 0, 0.3);
   display: inline-block;
   vertical-align: bottom;
   float: left; }
@@ -847,7 +873,7 @@ table {
   display: block;
   overflow: hidden;
   cursor: pointer;
-  border: 2px solid #999999;
+  border: 2px solid #CCC;
   border-radius: 5px; }
 
 .onoffswitch-inner {
@@ -879,23 +905,30 @@ table {
 
 .onoffswitch-switch {
   display: block;
-  width: 12px;
+  width: 14px;
   margin: 4px;
-  background: #A1A1A1;
+  background: #9dcf80;
   position: absolute;
   top: 0;
   bottom: 0;
   right: 16px;
-  border: 2px  solid #999999;
+  border: 1px solid #444;
+  box-shadow: 0px 0px 1px #000;
   border-radius: 5px;
   transition: all 0.1s ease-in 0s; }
+
+.hashtag2 {
+  background: #1E9FCC; }
+
+.hashtag3 {
+  background: #EA6957; }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
   margin-left: 0; }
 
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
   right: 0px;
-  background-color: #27A1CA; }
+  background-color: #999; }
 
 /*----------------------------------------------*/
 /* Leaderboard Right Panels */
@@ -910,14 +943,12 @@ table {
   vertical-align: bottom;
   width: 33.33%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
   display: inline-block; }
 
 .Leaderboard-2 {
   vertical-align: bottom;
   width: 50%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
   display: inline-block; }
 
 .Hashtag-Container {

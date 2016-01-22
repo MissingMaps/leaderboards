@@ -895,14 +895,13 @@ table{
 /*----------------------------------------------*/
 .Leaderboard-Navbar-Container{
 	width: 100%;
-	background-color: white;
+	background-color: $debug;
 	padding-top: $distfromtop + 2px;
 	height: 50px;
 }
 
 .LN-Hashtag-Container{
 	width: 55%;
-	background-color: $debug;
 	height: 46px;
 	margin: 2px;
 	display: inline-block;
@@ -910,14 +909,13 @@ table{
 
 .LN-View-Navigation{
 	width: 40%;
-	background-color: $debug;
 	height: 46px;
 	margin: 2px;
 	display: inline-block;
 	float: right;
 }
 
-.Input-Hashtag{
+.Current-Hashtag{
 	height: 28px;
 	background-color: white;
 	margin: 9px;
@@ -927,12 +925,39 @@ table{
 	display: inline-block;
 	line-height: 28px;
 	position: relative;
-  vertical-align:bottom;
+}
+
+.Input-Hashtag{
+  display: inline-block;
+  margin-left: 4px;
+  input{
+    border:0px solid $lightgrey;
+    box-sizing: none;
+    width: auto;
+    height: 26px;
+    margin: none;
+    color: $darkgrey;
+    vertical-align: top;
+    margin-top:-18px;
+    -webkit-border-radius: 0px 5px 5px 0px;
+      background-color: lighten($lightgrey, 10);
+      box-shadow: -1px -2px $lightgrey;
+      padding: 2px 6px 4px 6px;
+      &:focus{
+        background-color: white;
+      }
+    outline: none;
+  }
 }
 
 .additional{
 	padding: 0px 10px;
 	font-weight: 800;
+	cursor: pointer;
+  transition: background-color 0.3s ease-in 0s;
+  &:hover{
+		background-color: #EEE;
+	}
 }
 
 .killswitch{
@@ -941,14 +966,20 @@ table{
 	line-height: 1;
 	font-size: 0.8em;
 	font-weight: 800;
+	cursor: pointer;
 }
 
 .View-Toggle{
-	width: 150px;
-	height: 20px;
+	width: 120px;
+	height: 38px;
 	margin: 10px;
 	display: inline-block;
 	background-color: white;
+	line-height: 38px;
+	padding-left: 10px;
+	padding-right: 10px;
+	text-align: center;
+	float: right;
 }
 
 /*----------------------------------------------*/
@@ -957,7 +988,6 @@ table{
 .Leaderboard-Stats-Container{
 	width: 25.5%;
 	height: 500px;
-	background-color: $debug;
 	display: inline-block;
   vertical-align:bottom;
   float:left;
@@ -1017,7 +1047,7 @@ table{
     display: block; 
     overflow: hidden; 
     cursor: pointer;
-    border: 2px solid #999999; 
+    border: 2px solid #CCC; 
     border-radius: 5px;
 }
 .onoffswitch-inner {
@@ -1049,24 +1079,30 @@ table{
 }
 .onoffswitch-switch {
     display: block; 
-    width: 12px; 
+    width: 14px; 
     margin: 4px;
-    background: #A1A1A1;
+    background: $osmgreen;
     position: absolute; 
     top: 0; 
     bottom: 0;
     right: 16px;
-    border: 2px 
-    solid #999999; 
+    border: 1px solid #444;
+		box-shadow: 0px 0px 1px #000;
     border-radius: 5px;
     transition: all 0.1s ease-in 0s; 
+}
+.hashtag2{
+		background: $mmblue;
+}
+.hashtag3{
+		background: #EA6957;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
     margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
     right: 0px; 
-    background-color: #27A1CA; 
+    background-color: #999; 
 }
 
 
@@ -1085,7 +1121,6 @@ table{
   vertical-align:bottom;
 	width: 33.33%;
 	height: 100%;
-	background-color: $debug;
 	display: inline-block;
 }
 
@@ -1093,7 +1128,6 @@ table{
   vertical-align:bottom;
 	width: 50%;
 	height: 100%;
-	background-color: $debug;
 	display: inline-block;
 }
 
