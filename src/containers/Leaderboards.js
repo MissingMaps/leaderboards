@@ -7,70 +7,61 @@ import HashtagStats from '../components/HashtagStats.js';
 import Leaderboard1 from '../components/Leaderboard-1.js';
 import Leaderboard2 from '../components/Leaderboard-2.js';
 import Leaderboard3 from '../components/Leaderboard-3.js';
+import fetch from 'isomorphic-fetch';
 
 export default React.createClass({
   getInitialState: function () {
     return {
-      changesets: [],
-      numRolls: [],
-      users: {}
+      hashtags: {},
+      intervals: []
     };
   },
-  initSimulation: function (numRolls) {
-    var Simulator = require('../../test/simulator/simulator.js');
-    var simulation = new Simulator(numRolls);
-    var hashtagname = this.props.params.id;
+  createIntervalsFromProps: function (props) {
+    // Clear existing intervals
+    R.map(clearInterval, this.state.intervals);
+    this.state.hashtags = {};
+
+    // Create new intervals
+    var hashtags = R.split(',', props.params.id);
+    R.map(this.createInterval, hashtags);
+  },
+  createInterval: function (hashtag) {
     var component = this;
-
-    if (this.state.interval) {
-      clearInterval(this.state.interval);
-    }
-    var edits = [1250, 750, 125, 426, 222, 100];
-
     var interval = setInterval(() => {
-      var changeset = simulation.randomChangeset();
-      var changesets = R.takeLast(1000, R.append(changeset, component.state.changesets));
-      var users = component.state.users;
-      var user = changeset.metadata.user;
-      if (!users[user]) {
-        users[user] = changeset.elements.length;
-      } else {
-        users[user] += changeset.elements.length;
-      }
-
-      this.setState({
-        name: hashtagname,
-        changesets: changesets,
-        users: users,
-        numRolls: numRolls,
-        stats: edits
+      fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag)
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (json) {
+        var nextState = component.state;
+        nextState.hashtags[hashtag] = json;
+        component.setState(nextState);
       });
-    }, 1000); // Every second
-
-    this.setState({
-      interval: interval
-    });
+    }, 5000);
+    this.state.intervals.push(interval);
   },
   componentDidMount: function () {
     if (process.env.NODE_ENV === 'development') {
-      var numRolls = R.split(',', this.props.params.id).length;
-      this.initSimulation(numRolls);
+      this.createIntervalsFromProps(this.props);
     }
   },
   componentWillReceiveProps: function (nextProps) {
-    var numRolls = R.split(',', nextProps.params.id).length;
-    this.initSimulation(numRolls);
+    if (process.env.NODE_ENV === 'development') {
+      this.createIntervalsFromProps(nextProps);
+    }
   },
 
   render: function () {
     var rolls = {};
-    var state = this.state;
-    if (state.numRolls === 1) {
-      rolls = <Leaderboard1 users={state.users} />;
-    } else if (state.numRolls === 2) {
-      rolls = <Leaderboard2 users={state.users} />;
+    var numRolls = Object.keys(this.state.hashtags).length;
+    if (numRolls === 1) {
+      rolls = <Leaderboard1 hashtags={this.state.hashtags} />;
+    } else if (numRolls === 2) {
+      rolls = <Leaderboard2 hashtags={this.state.hashtags} />;
+    } else if (numRolls === 3) {
+      rolls = <Leaderboard3 hashtags={this.state.hashtags} />;
     } else {
-      rolls = <Leaderboard3 users={state.users} />;
+      rolls = <div>Loading...</div>;
     }
     return (
       <div>
