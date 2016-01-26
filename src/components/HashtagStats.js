@@ -1,19 +1,25 @@
 import React from 'react';
 import R from 'ramda';
 import Toggle from '../components/ToggleSwitch.js';
+import Chart from '../components/HashtagChart.js';
 
-export default function (props) {
-  var hashtags = props.hashtags;
-  var list = R.map(R.nth(1), R.toPairs(R.map(R.prop('total'), hashtags)));
-  var totals = list.reduce(R.mergeWith((a, b) => a + b), {});
-  return (
-    <div className='Leaderboard-Stats-Container'>
-      <div className='Hashtag-Timeline-Container'>
-        <div className='Hashtag-Timeline'>
+export default React.createClass({
+  handleChange: function (toggles) {
+    console.log(toggles);
+  },
+  render: function () {
+    var props = this.props;
+    var hashtags = props.hashtags;
+    var list = R.map(R.nth(1), R.toPairs(R.map(R.prop('total'), hashtags)));
+    var totals = list.reduce(R.mergeWith((a, b) => a + b), {});
+    return (
+      <div className='Leaderboard-Stats-Container'>
+        <div className='Hashtag-Timeline-Container'>
+          <Chart />
         </div>
         <div className='Stats-Content'>
           <div className = 'Stats-Togglebox'>
-            <Toggle />
+            <Toggle onChange={this.handleChange} />
           </div>
           <div className = 'Stats-Statbox'>
             <table className = "table-curve">
@@ -43,6 +49,6 @@ export default function (props) {
           </div>
         </div>
       </div>
-    </div>
-  );
-}
+    );
+  }
+});

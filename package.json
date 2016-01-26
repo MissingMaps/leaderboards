@@ -75,6 +75,7 @@
     "react-dom": "^0.14.5",
     "react-magic-move": "github:everdimension/react-magic-move#update_code",
     "react-router": "^1.0.3",
-    "react-search-bar": "^1.1.4"
+    "react-search-bar": "^1.1.4",
+    "victory": "^0.2.0"
   }
 }
