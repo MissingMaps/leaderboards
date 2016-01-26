@@ -53,7 +53,7 @@ export default React.createClass({
     return (
       <div className='Leaderboard-Stats-Container'>
         <div className='Hashtag-Timeline-Container'>
-          <Chart />
+          <Chart hashtags={hashtags} colors={this.state.colors}/>
         </div>
         <div className='Stats-Content'>
           <div className = 'Stats-Togglebox'>
