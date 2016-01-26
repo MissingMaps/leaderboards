@@ -548,6 +548,15 @@ input[type="text"]{
   }
 }
 
+.user-roll-row {
+  transition: all 250ms ease;
+  div {
+    display:inline-block;
+    padding-right: 5px;
+    margin-bottom: 5px;
+  }
+}
+
 .usertot{
   font-weight: 700;
   font-size: 1em;
@@ -623,7 +632,7 @@ input[type="text"]{
   @media screen and (max-width: 100px){
     margin-left: auto;
     margin-right: auto;
-    }
+  }
 }
 
 #Next-Container{
@@ -635,7 +644,7 @@ input[type="text"]{
   @media screen and (max-width: 100px){
     margin-left: auto;
     margin-right: auto;
-    }
+  }
 }
 
 .Badge-Box-Content{
@@ -643,7 +652,7 @@ input[type="text"]{
   margin-left: auto;
   margin-right: auto;
   &.front{
-      text-align: center;
+    text-align: center;
   }
 }
 
@@ -657,7 +666,7 @@ input[type="text"]{
     max-width: 75%;
     margin-left: auto;
     margin-right: auto;
-    }
+  }
 }
 
 
@@ -745,19 +754,19 @@ h3{
 .Split-3{
   width: 33.3%;
   height: 200px;
-/*  background-color: rgba(0,0,0,0.1);
-*/  display: inline-block;
-  vertical-align:top;
+  /*  background-color: rgba(0,0,0,0.1);
+   */  display: inline-block;
+vertical-align:top;
 }
 
 table{
   width:100%;
   border-radius: 4px;
   margin-top: 10px;
-/*  tr:nth-child(even) {
+  /*  tr:nth-child(even) {
   }
   tr:nth-child(odd) {
-     background-color: #EEE;
+  background-color: #EEE;
   }*/
 }
 
@@ -788,16 +797,16 @@ table{
     font-family: "lato";
     font-size: 1em;
     background-color: white;
-  &.search-bar-submit{
-    width: 100px;
-    border-radius: 4px;
-    padding-left: 0px;
-    background-color: lighten($lightgrey, 10);
-    border: 1px solid lighten($lightgrey, 0);
-    color: $darkgrey;
-    outline: none;
-    transition: background-color 0.1s;
-    &:active{
+    &.search-bar-submit{
+      width: 100px;
+      border-radius: 4px;
+      padding-left: 0px;
+      background-color: lighten($lightgrey, 10);
+      border: 1px solid lighten($lightgrey, 0);
+      color: $darkgrey;
+      outline: none;
+      transition: background-color 0.1s;
+      &:active{
         background-color: lighten($lightgrey, 20);
       }
     }
@@ -872,59 +881,59 @@ table{
 }
 
 .next-badge-overlay{
-    height:auto;
-    margin: auto;
-    text-align:center;
-    position:relative;
+  height:auto;
+  margin: auto;
+  text-align:center;
+  position:relative;
 }
 
 .nextBadgeHome{
-    width: 140px;
-    margin-left: auto;
-    margin-right: auto;
-    position:relative;
-    p{
-      top: 36px;
-      left: 38px;
-      position: absolute;
-    }
+  width: 140px;
+  margin-left: auto;
+  margin-right: auto;
+  position:relative;
+  p{
+    top: 36px;
+    left: 38px;
+    position: absolute;
+  }
 }
 
 /*----------------------------------------------*/
 /* Leaderboard Navigation Bar */ 
 /*----------------------------------------------*/
 .Leaderboard-Navbar-Container{
-	width: 100%;
-	background-color: $debug;
-	padding-top: $distfromtop + 2px;
-	height: 50px;
+  width: 100%;
+  background-color: $debug;
+  padding-top: $distfromtop + 2px;
+  height: 50px;
 }
 
 .LN-Hashtag-Container{
-	width: 55%;
-	height: 46px;
-	margin: 2px;
-	display: inline-block;
+  width: 55%;
+  height: 46px;
+  margin: 2px;
+  display: inline-block;
 }
 
 .LN-View-Navigation{
-	width: 40%;
-	height: 46px;
-	margin: 2px;
-	display: inline-block;
-	float: right;
+  width: 40%;
+  height: 46px;
+  margin: 2px;
+  display: inline-block;
+  float: right;
 }
 
 .Current-Hashtag{
-	height: 28px;
-	background-color: white;
-	margin: 9px;
-	margin-right: 0px;
-	border-radius: 4px;
-	padding: 0px 24px 0px 10px;
-	display: inline-block;
-	line-height: 28px;
-	position: relative;
+  height: 28px;
+  background-color: white;
+  margin: 9px;
+  margin-right: 0px;
+  border-radius: 4px;
+  padding: 0px 24px 0px 10px;
+  display: inline-block;
+  line-height: 28px;
+  position: relative;
 }
 
 .Input-Hashtag{
@@ -940,90 +949,90 @@ table{
     vertical-align: top;
     margin-top:-18px;
     -webkit-border-radius: 0px 5px 5px 0px;
-      background-color: lighten($lightgrey, 10);
-      box-shadow: -1px -2px $lightgrey;
-      padding: 2px 6px 4px 6px;
-      &:focus{
-        background-color: white;
-      }
+    background-color: lighten($lightgrey, 10);
+    box-shadow: -1px -2px $lightgrey;
+    padding: 2px 6px 4px 6px;
+    &:focus{
+      background-color: white;
+    }
     outline: none;
   }
 }
 
 .additional{
-	padding: 0px 10px;
-	font-weight: 800;
-	cursor: pointer;
+  padding: 0px 10px;
+  font-weight: 800;
+  cursor: pointer;
   transition: background-color 0.3s ease-in 0s;
   &:hover{
-		background-color: #EEE;
-	}
+    background-color: #EEE;
+  }
 }
 
 .killswitch{
-	position:absolute;
-	right:4px;
-	line-height: 1;
-	font-size: 0.8em;
-	font-weight: 800;
-	cursor: pointer;
+  position:absolute;
+  right:4px;
+  line-height: 1;
+  font-size: 0.8em;
+  font-weight: 800;
+  cursor: pointer;
 }
 
 .View-Toggle{
-	width: 120px;
-	height: 38px;
-	margin: 10px;
-	display: inline-block;
-	background-color: white;
-	line-height: 38px;
-	padding-left: 10px;
-	padding-right: 10px;
-	text-align: center;
-	float: right;
+  width: 120px;
+  height: 38px;
+  margin: 10px;
+  display: inline-block;
+  background-color: white;
+  line-height: 38px;
+  padding-left: 10px;
+  padding-right: 10px;
+  text-align: center;
+  float: right;
 }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */ 
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container{
-	width: 25.5%;
-	height: 500px;
-	display: inline-block;
+  width: 25.5%;
+  height: 500px;
+  display: inline-block;
   vertical-align:bottom;
   float:left;
 };
 
 .Hashtag-Timeline-Container{
-	width: 100%;
-	height: 300px;
+  width: 100%;
+  height: 300px;
 }
 
 .Hashtag-Timeline{
-	margin-top: 20px;
-	width: 200px;
-	max-width: 100%;
-	height: 200px;
-	margin-left: auto;
-	margin-right: auto;
-	background-color: black;
+  margin-top: 20px;
+  width: 200px;
+  max-width: 100%;
+  height: 200px;
+  margin-left: auto;
+  margin-right: auto;
+  background-color: black;
 }
 
 .Stats-Content{
-	width: 240px;
-	max-width: 100%;
-	margin-left: auto;
-	margin-right: auto;
+  width: 240px;
+  max-width: 100%;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .Stats-Togglebox{
-	margin-top: 10px;
-	width: 100%;
-	height: 30px;
+  margin-top: 10px;
+  width: 100%;
+  height: 30px;
 }
 
 .Stats-Statbox{
-	width: 100%;
-	margin-top: 10px;
+  width: 100%;
+  margin-top: 10px;
 }
 
 /*----------------------------------------------*/
@@ -1031,78 +1040,78 @@ table{
 /*----------------------------------------------*/
 
 .onoffswitch, .onoffswitch2, .onoffswitch3{
-    position: relative; 
-    width: 40px;
-    -webkit-user-select:none; 
-    -moz-user-select:none; 
-    -ms-user-select: none;
-    display: inline-block;
-    margin-left: 6px;
+  position: relative; 
+  width: 40px;
+  -webkit-user-select:none; 
+  -moz-user-select:none; 
+  -ms-user-select: none;
+  display: inline-block;
+  margin-left: 6px;
 }
 
 .onoffswitch-checkbox {
-    display: none;
+  display: none;
 }
 .onoffswitch-label {
-    display: block; 
-    overflow: hidden; 
-    cursor: pointer;
-    border: 2px solid #CCC; 
-    border-radius: 5px;
+  display: block; 
+  overflow: hidden; 
+  cursor: pointer;
+  border: 2px solid #CCC; 
+  border-radius: 5px;
 }
 .onoffswitch-inner {
-    display: block; 
-    width: 200%; 
-    margin-left: -100%;
-    transition: margin 0.3s ease-in 0s;
+  display: block; 
+  width: 200%; 
+  margin-left: -100%;
+  transition: margin 0.3s ease-in 0s;
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
-    display: block; 
-    float: left;
-    width: 50%; 
-    height: 20px; 
-    padding: 0; 
-    line-height: 20px;
-    font-size: 10px; 
-    box-sizing: border-box;
+  display: block; 
+  float: left;
+  width: 50%; 
+  height: 20px; 
+  padding: 0; 
+  line-height: 20px;
+  font-size: 10px; 
+  box-sizing: border-box;
 }
 .onoffswitch-inner:before {
-    content: "";
-    padding-left: 5px;
-    background-color: #EEEEEE;
+  content: "";
+  padding-left: 5px;
+  background-color: #EEEEEE;
 }
 .onoffswitch-inner:after {
-    content: "";
-    padding-right: 5px;
-    background-color: #EEEEEE;
-    text-align: right;
+  content: "";
+  padding-right: 5px;
+  background-color: #EEEEEE;
+  text-align: right;
 }
 .onoffswitch-switch {
-    display: block; 
-    width: 14px; 
-    margin: 4px;
-    background: $osmgreen;
-    position: absolute; 
-    top: 0; 
-    bottom: 0;
-    right: 16px;
-    border: 1px solid #444;
-		box-shadow: 0px 0px 1px #000;
-    border-radius: 5px;
-    transition: all 0.1s ease-in 0s; 
+  display: block; 
+  width: 14px; 
+  margin: 4px;
+  background: $osmgreen;
+  position: absolute; 
+  top: 0; 
+  bottom: 0;
+  right: 16px;
+  border: 1px solid #444;
+  box-shadow: 0px 0px 1px #000;
+  border-radius: 5px;
+  transition: all 0.1s ease-in 0s; 
 }
 .hashtag2{
-		background: $mmblue;
+  background: $mmblue;
 }
 .hashtag3{
-		background: #EA6957;
+  background: #EA6957;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-inner {
-    margin-left: 0;
+  margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-    right: 0px; 
-    background-color: #999; 
+  right: 0px; 
+  background-color: #999; 
 }
 
 
@@ -1111,34 +1120,34 @@ table{
 /*----------------------------------------------*/
 
 .Leaderboard-Container{
-	width: 74.5%;
-	height: 500px;
-	display: inline-block;
-	float:right;
+  width: 74.5%;
+  height: 500px;
+  display: inline-block;
+  float:right;
 }
 
 .Leaderboard-1{
   vertical-align:bottom;
-	width: 33.33%;
-	height: 100%;
-	display: inline-block;
+  width: 33.33%;
+  height: 100%;
+  display: inline-block;
 }
 
 .Leaderboard-2{
   vertical-align:bottom;
-	width: 50%;
-	height: 100%;
-	display: inline-block;
+  width: 50%;
+  height: 100%;
+  display: inline-block;
 }
 
 .Hashtag-Container{
-	margin: 20px 40px;
-	color: black;
-	font-weight: 700;
+  margin: 20px 40px;
+  color: black;
+  font-weight: 700;
 }
 
 .hash-card{
-	padding: 20px;
-	padding-bottom: 40px;
-	width: auto;
+  padding: 20px;
+  padding-bottom: 40px;
+  width: auto;
 }

@@ -1,5 +1,6 @@
 import React from 'react';
 import R from 'ramda';
+import Chance from 'chance';
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import HashtagNav from '../components/HashtagNav.js';
@@ -8,6 +9,8 @@ import Leaderboard1 from '../components/Leaderboard-1.js';
 import Leaderboard2 from '../components/Leaderboard-2.js';
 import Leaderboard3 from '../components/Leaderboard-3.js';
 import fetch from 'isomorphic-fetch';
+
+var chance = new Chance();
 
 export default React.createClass({
   getInitialState: function () {
@@ -27,18 +30,31 @@ export default React.createClass({
   },
   createInterval: function (hashtag) {
     var component = this;
-    var interval = setInterval(() => {
-      fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag)
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (json) {
-        var nextState = component.state;
-        nextState.hashtags[hashtag] = json;
+    fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag)
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (json) {
+      var nextState = component.state;
+      nextState.hashtags[hashtag] = json;
+      return nextState;
+    })
+    .then(function (nextState) {
+      var interval = setInterval(() => {
+        var hashtags = nextState.hashtags;
+        Object.keys(hashtags).map(function (hashtag) {
+          var userIds = Object.keys(hashtags[hashtag].users);
+          if (userIds.length) {
+            var users = R.times(() => chance.pick(userIds), 5);
+            users.forEach(function (user) {
+              hashtags[hashtag].users[user].total += 10;
+            });
+          }
+        });
         component.setState(nextState);
-      });
-    }, 5000);
-    this.state.intervals.push(interval);
+      }, 3000);
+      component.state.intervals.push(interval);
+    });
   },
   componentDidMount: function () {
     if (process.env.NODE_ENV === 'development') {
