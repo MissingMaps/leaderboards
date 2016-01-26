@@ -445,6 +445,13 @@ input[type="text"] {
   .user-roll li {
     padding-bottom: 4px; }
 
+.user-roll-row {
+  transition: all 250ms ease; }
+  .user-roll-row div {
+    display: inline-block;
+    padding-right: 5px;
+    margin-bottom: 5px; }
+
 .usertot {
   font-weight: 700;
   font-size: 1em;

@@ -548,6 +548,15 @@ input[type="text"]{
   }
 }
 
+.user-roll-row {
+  transition: all 250ms ease;
+  div {
+  display:inline-block;
+  padding-right: 5px;
+  margin-bottom: 5px;
+  }
+}
+
 .usertot{
   font-weight: 700;
   font-size: 1em;
