@@ -621,7 +621,7 @@ h3 {
   width: 33.3%;
   height: 200px;
   /*  background-color: rgba(0,0,0,0.1);
-*/
+   */
   display: inline-block;
   vertical-align: top; }
 
@@ -632,7 +632,7 @@ table {
   /*  tr:nth-child(even) {
   }
   tr:nth-child(odd) {
-     background-color: #EEE;
+  background-color: #EEE;
   }*/ }
 
 .Search-Container {
