@@ -33,24 +33,28 @@ module.exports = React.createClass({
       return <div></div>;
     }
     var component = this;
-    var list = this.state.sorted
-    .map(function (key, index) {
+    if (this.state.sorted.length) {
+      var list = this.state.sorted
+      .map(function (key, index) {
+        return (
+          <div className='User-roll-row' key={key[0]}>
+            <div>{index + 1}.</div>
+            <div>{component.state.users[key[0]].name}</div>
+            <div>{key[1]}</div>
+          </div>
+        );
+      });
       return (
-        <div className='User-roll-row' key={key[0]}>
-          <div>{index + 1}.</div>
-          <div>{component.state.users[key[0]].name}</div>
-          <div>{key[1]}</div>
+        <div className = "User-roll">
+          <div className = "User-roll-table">
+            <MagicMove>
+              {list}
+            </MagicMove>
+          </div>
         </div>
       );
-    });
-    return (
-      <div className = "User-roll">
-        <div className = "User-roll-table">
-          <MagicMove>
-            {list}
-          </MagicMove>
-        </div>
-      </div>
-    );
+    } else {
+      return <p>This project doesn't exist!</p>;
+    }
   }
 });

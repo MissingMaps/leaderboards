@@ -44,10 +44,12 @@ export default React.createClass({
         var hashtags = nextState.hashtags;
         Object.keys(hashtags).map(function (hashtag) {
           var userIds = Object.keys(hashtags[hashtag].users);
-          var users = R.times(() => chance.pick(userIds), 5);
-          users.forEach(function (user) {
-            hashtags[hashtag].users[user].total += 10;
-          });
+          if (userIds.length) {
+            var users = R.times(() => chance.pick(userIds), 5);
+            users.forEach(function (user) {
+              hashtags[hashtag].users[user].total += 10;
+            });
+          }
         });
         component.setState(nextState);
       }, 3000);
