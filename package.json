@@ -72,6 +72,7 @@
     "moment": "^2.11.1",
     "ramda": "^0.19.1",
     "react": "^0.14.5",
+    "react-checkbox-group": "^0.3.1",
     "react-dom": "^0.14.5",
     "react-magic-move": "github:everdimension/react-magic-move#update_code",
     "react-router": "^1.0.3",
