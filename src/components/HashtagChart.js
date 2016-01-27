@@ -6,10 +6,9 @@ import {VictoryLine, VictoryChart, VictoryAxis} from 'victory';
 export default React.createClass({
 
   getInitialState: function () {
-    var hashtags = this.props.hashtags || {};
     return {
-      hashtags: hashtags,
-      data: [],
+      hashtags: {},
+      graphData: [],
       startDate: new Date(),
       endDate: new Date()
     };
@@ -44,7 +43,7 @@ export default React.createClass({
     });
 
     this.setState({
-      data: graphData,
+      graphData: graphData,
       startDate: dates[0],
       endDate: dates[dates.length - 1]
     });
@@ -62,14 +61,14 @@ export default React.createClass({
         y: d3.scale.linear()
       }}>
       <VictoryAxis
-        label="Submitted Changes"
+        label="Cumulative Edits"
         tickValues={[
           new Date(this.state.startDate),
           new Date(this.state.endDate)
         ]}
         tickFormat={d3.time.format('%B')}/>
       <VictoryLine
-        data={this.state.data}/>
+        data={this.state.graphData}/>
     </VictoryChart>;
   }
 });
