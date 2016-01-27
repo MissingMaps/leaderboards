@@ -1,9 +1,6 @@
 import React from 'react';
 import R from 'ramda';
 import Chance from 'chance';
-import Header from '../components/Header.js';
-import Footer from '../components/Footer.js';
-import HashtagNav from '../components/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
 import Leaderboard1 from '../components/Leaderboard-1.js';
 import Leaderboard2 from '../components/Leaderboard-2.js';
@@ -80,18 +77,9 @@ export default React.createClass({
       rolls = <div>Loading...</div>;
     }
     return (
-      <div>
-        <Header />
-        <div>
-          <div id = "Page-Container">
-            <div id = "Main-Container">
-              <HashtagNav />
-              <HashtagStats hashtags={this.state.hashtags}/>
-              {rolls}
-            </div>
-          </div>
-          <Footer />
-        </div>
+      <div id = "Main-Container">
+        <HashtagStats hashtags={this.state.hashtags}/>
+        {rolls}
       </div>
     );
   }
