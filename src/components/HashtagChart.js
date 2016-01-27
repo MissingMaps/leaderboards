@@ -9,7 +9,9 @@ export default React.createClass({
     var hashtags = this.props.hashtags || {};
     return {
       hashtags: hashtags,
-      data: []
+      data: [],
+      startDate: new Date(),
+      endDate: new Date()
     };
   },
   componentDidMount: function () {
@@ -26,13 +28,26 @@ export default React.createClass({
     var hardcodedHashtag = 'missingmaps';
     var data = this.state.hashtags[hardcodedHashtag].times;
 
-    data = Object.keys(data).map(function (date) {
+    var dates = Object.keys(data).sort(function (a, b) {
+      a = new Date(a);
+      b = new Date(b);
+      return b > a ? -1 : b < a ? 1 : 0;
+    });
+    var cumulativeEdits = 0;
+    var graphData = dates.map(function (date) {
       var dateData = data[date];
+      cumulativeEdits += R.sum([dateData.roads, dateData.buildings, dateData.pois, dateData.waterways]);
       return {
         x: new Date(date),
-        y: R.sum([dateData.roads, dateData.buildings, dateData.pois, dateData.waterways])};
+        y: cumulativeEdits
+      };
     });
-    this.setState({data: data});
+
+    this.setState({
+      data: graphData,
+      startDate: dates[0],
+      endDate: dates[dates.length - 1]
+    });
   },
 
   render: function () {
@@ -49,8 +64,8 @@ export default React.createClass({
       <VictoryAxis
         label="Submitted Changes"
         tickValues={[
-          new Date(2016, 1, 1),
-          new Date(2016, 4, 31)
+          new Date(this.state.startDate),
+          new Date(this.state.endDate)
         ]}
         tickFormat={d3.time.format('%B')}/>
       <VictoryLine
