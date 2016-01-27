@@ -64,10 +64,22 @@ export default React.createClass({
       endDate: startEndDates[startEndDates.length - 1]
     };
   },
-
+  strokeColor: function (hashtagOrder) {
+    var colorLookup = {
+      hashtag1: '#9dcf80',
+      hashtag2: '#1e9fcc',
+      hashtag3: '#ea6957'
+    }
+    return colorLookup[hashtagOrder]
+  },
   render: function () {
     var lines = Object.keys(this.props.hashtags).map(function (hashtag) {
-      return <VictoryLine data={this.state.graphData[hashtag]} />;
+      return <VictoryLine data={this.state.graphData[hashtag]}
+      style={
+        {data:
+          {stroke: this.strokeColor(this.props.colors[hashtag]),
+          strokeWidth: 3}}
+        } />
     }, this);
     return <VictoryChart
       height={300}
