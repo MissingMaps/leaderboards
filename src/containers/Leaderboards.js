@@ -86,7 +86,7 @@ export default React.createClass({
           <div id = "Page-Container">
             <div id = "Main-Container">
               <HashtagNav />
-              <HashtagStats data={this.state}/>
+              <HashtagStats hashtags={this.state.hashtags}/>
               {rolls}
             </div>
           </div>
