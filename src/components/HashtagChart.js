@@ -8,10 +8,9 @@ export default React.createClass({
   getInitialState: function () {
     return {
       hashtags: {},
-      graphData: [{x: new Date(), y: 0},
-                  {x: new Date(), y: 1}],
+      graphData: [],
       startDate: new Date(),
-      endDate: new Date() + 1
+      endDate: new Date()
     };
   },
   componentWillReceiveProps: function (nextProps) {
@@ -24,34 +23,52 @@ export default React.createClass({
       });
     }
   },
-  getChartData: function (props) {
-    // change to dynamic
-    var hardcodedHashtag = 'missingmaps';
-    var data = props.hashtags[hardcodedHashtag].times;
-
-    var dates = Object.keys(data).sort(function (a, b) {
+  sortDates: function (dates) {
+    return dates.sort(function (a, b) {
       a = new Date(a);
       b = new Date(b);
       return b > a ? -1 : b < a ? 1 : 0;
     });
-    var cumulativeEdits = 0;
-    var graphData = dates.map(function (date) {
-      var dateData = data[date];
-      cumulativeEdits += R.sum([dateData.roads, dateData.buildings, dateData.pois, dateData.waterways]);
-      return {
-        x: new Date(date),
-        y: cumulativeEdits
-      };
-    });
+  },
+  getChartData: function (props) {
+    var graphData = {};
+    var startEndDates = [];
 
+    Object.keys(props.hashtags).forEach(function (hashtag) {
+      var data = props.hashtags[hashtag].times;
+
+      // Sort dates
+      var dates = this.sortDates(Object.keys(data));
+
+      // Keep track of minimum and maximum dates
+      startEndDates.push(dates[0]);
+      startEndDates.push(dates[dates.length - 1]);
+
+      // Create the graph data object
+      var cumulativeEdits = 0;
+      var lineData = dates.map(function (date) {
+        var dateData = data[date];
+        cumulativeEdits += R.sum([dateData.roads, dateData.buildings, dateData.pois, dateData.waterways]);
+        return {
+          x: new Date(date),
+          y: cumulativeEdits
+        };
+      });
+      graphData[hashtag] = lineData;
+    }, this);
+
+    startEndDates = this.sortDates(startEndDates);
     return {
       graphData: graphData,
-      startDate: dates[0],
-      endDate: dates[dates.length - 1]
+      startDate: startEndDates[0],
+      endDate: startEndDates[startEndDates.length - 1]
     };
   },
 
   render: function () {
+    var lines = Object.keys(this.props.hashtags).map(function (hashtag) {
+      return <VictoryLine data={this.state.graphData[hashtag]} />;
+    }, this);
     return <VictoryChart
       height={300}
       width={300}
@@ -66,8 +83,7 @@ export default React.createClass({
           new Date(this.state.endDate)
         ]}
         tickFormat={d3.time.format('%B')}/>
-      <VictoryLine
-        data={this.state.graphData}/>
+      {lines}
     </VictoryChart>;
   }
 });
