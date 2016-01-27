@@ -69,8 +69,8 @@ export default React.createClass({
       hashtag1: '#9dcf80',
       hashtag2: '#1e9fcc',
       hashtag3: '#ea6957'
-    }
-    return colorLookup[hashtagOrder]
+    };
+    return colorLookup[hashtagOrder];
   },
   render: function () {
     var lines = Object.keys(this.props.hashtags).map(function (hashtag) {
@@ -79,7 +79,7 @@ export default React.createClass({
         {data:
           {stroke: this.strokeColor(this.props.colors[hashtag]),
           strokeWidth: 3}}
-        } />
+        } />;
     }, this);
     return <VictoryChart
       height={300}
