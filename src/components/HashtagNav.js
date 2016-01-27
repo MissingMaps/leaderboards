@@ -1,7 +1,7 @@
 import React from 'react';
 
 export default function () {
-	document.querySelectorAll('.Additional');
+  document.querySelectorAll('.Additional');
   return (
 		<div className='Leaderboard-Navbar-Container'>
 			<div className='LN-Hashtag-Container'>
