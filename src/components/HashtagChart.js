@@ -8,24 +8,26 @@ export default React.createClass({
   getInitialState: function () {
     return {
       hashtags: {},
-      graphData: [],
+      graphData: [{x: new Date(), y: 0},
+                  {x: new Date(), y: 1}],
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date() + 1
     };
   },
-  componentDidMount: function () {
-    this.setState({hashtags: this.props.hashtags});
-  },
   componentWillReceiveProps: function (nextProps) {
-    this.setState({hashtags: nextProps.hashtags});
-    if (Object.keys(this.state.hashtags).length > 0) {
-      this.plotData();
+    if (Object.keys(nextProps.hashtags).length) {
+      var data = this.getChartData(nextProps);
+      this.setState({
+        graphData: data.graphData,
+        startDate: data.startDate,
+        endDate: data.endDate
+      });
     }
   },
-  plotData: function () {
+  getChartData: function (props) {
     // change to dynamic
     var hardcodedHashtag = 'missingmaps';
-    var data = this.state.hashtags[hardcodedHashtag].times;
+    var data = props.hashtags[hardcodedHashtag].times;
 
     var dates = Object.keys(data).sort(function (a, b) {
       a = new Date(a);
@@ -42,17 +44,14 @@ export default React.createClass({
       };
     });
 
-    this.setState({
+    return {
       graphData: graphData,
       startDate: dates[0],
       endDate: dates[dates.length - 1]
-    });
+    };
   },
 
   render: function () {
-    // console.log('hashtagData', this.state.hashtags);
-    // console.log('colors', this.props.colors);
-
     return <VictoryChart
       height={300}
       width={300}
