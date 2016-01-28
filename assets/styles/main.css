@@ -680,6 +680,7 @@ table {
   margin-right: auto; }
 
 .search-bar-suggestions {
+  position: absolute;
   text-align: left;
   margin-top: 10px; }
   .search-bar-suggestions li {
