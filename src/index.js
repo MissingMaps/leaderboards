@@ -11,7 +11,7 @@ var history = createHashHistory({
 
 ReactDOM.render((
   <Router history={history}>
-    <Redirect from="/" to="/missingmaps" />
+    <Redirect from="/" to="/MissingMaps" />
     <Route path="/:id" component={App}>
       <IndexRoute component={Leaderboards} />
     </Route>

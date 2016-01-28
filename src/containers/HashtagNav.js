@@ -1,18 +1,27 @@
 import React from 'react';
 import R from 'ramda';
 import Searchbar from 'react-search-bar';
+import fetch from 'isomorphic-fetch';
 
 export default React.createClass({
   getInitialState: function () {
     return {
       trending: [
-        'osmgeoweek',
-        'missingmaps',
-        'Mali',
-        'Zambia'
       ],
       all: []
     };
+  },
+  componentDidMount: function () {
+    var component = this;
+    fetch('http://missingmaps-api.devseed.com/hashtags')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (results) {
+      component.setState({
+        trending: results
+      });
+    });
   },
   onChange: function (input, resolve) {
     var arr = this.state.trending.filter(function (word) {
@@ -23,8 +32,6 @@ export default React.createClass({
   onSubmit: function (input) {
     var params = this.props.id;
     var hashtags = params.split(',');
-    console.log(input);
-    console.log(hashtags);
     if (!R.contains(input, hashtags)) {
       params = params + ',' + input;
       this.props.history.push('/' + params);
