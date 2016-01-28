@@ -81583,60 +81583,7 @@ exports.default = _react2.default.createClass({
             )
           )
         ),
-        _react2.default.createElement('div', { className: 'whitespace' }),
-        _react2.default.createElement(
-          'div',
-          { className: 'center-text' },
-          _react2.default.createElement(
-            'strong',
-            null,
-            'Trending Hashtags'
-          )
-        ),
-        _react2.default.createElement(
-          'table',
-          { className: 'User-roll-table' },
-          _react2.default.createElement(
-            'tbody',
-            null,
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                '#MissingMaps'
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                '#SecondHashtag'
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                '#ThirdHashtag'
-              )
-            ),
-            _react2.default.createElement(
-              'tr',
-              null,
-              _react2.default.createElement(
-                'td',
-                null,
-                '#FourthHashtag'
-              )
-            )
-          )
-        )
+        _react2.default.createElement('div', { className: 'whitespace' })
       )
     );
   }
@@ -82113,12 +82060,12 @@ exports.default = _react2.default.createClass({
         _react2.default.createElement(
           'div',
           { className: 'View-Toggle' },
-          'Leaderboards'
+          'Map View'
         ),
         _react2.default.createElement(
           'div',
           { className: 'View-Toggle' },
-          'Map Wow!'
+          'Leaderboards'
         )
       )
     );
