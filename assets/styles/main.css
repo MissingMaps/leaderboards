@@ -8,7 +8,8 @@ body, ul, li {
   margin: 0px;
   padding: 0px;
   font-family: 'Lato', sans-serif;
-  color: #6e6f71; }
+  color: #6e6f71;
+  background-color: #dbdbda; }
 
 ul, li {
   list-style: none; }
@@ -81,6 +82,9 @@ a {
   font-weight: 400;
   font-size: 1.1em;
   line-height: 1.4; }
+
+.whitespace {
+  margin-top: 20px; }
 
 /*----------------------------------------------*/
 /*Nav Bar Style & Footer*/
@@ -436,12 +440,17 @@ input[type="text"] {
 .hashtag-title {
   font-weight: 900;
   font-size: 1.8em;
-  text-align: center; }
+  text-align: center;
+  padding-bottom: 20px;
+  color: #67a940;
+  padding-top: 10px; }
 
 .user-roll {
   width: 240px;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  overflow: scroll;
+  margin-bottom: 40px; }
   .user-roll li {
     padding-bottom: 4px; }
 
@@ -504,7 +513,7 @@ input[type="text"] {
       padding: 0px; } }
 
 /*----------------------------------------------*/
-/*FullStats Sytling*/
+/*FullStats Styling*/
 /*----------------------------------------------*/
 #Recent-Container {
   width: 500px;
@@ -565,7 +574,7 @@ input[type="text"] {
 /*----------------------------------------------*/
 /* Card Styling */
 /*----------------------------------------------*/
-.card {
+.Card {
   width: 100%;
   height: inherit;
   background-color: #FFF;
@@ -749,7 +758,6 @@ table {
 .Leaderboard-Navbar-Container {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  padding-top: 52px;
   height: 50px; }
 
 .LN-Hashtag-Container {
@@ -813,26 +821,29 @@ table {
   cursor: pointer; }
 
 .View-Toggle {
+  color: white;
   width: 120px;
   height: 38px;
   margin: 10px;
   display: inline-block;
-  background-color: white;
   line-height: 38px;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
-  float: right; }
+  float: right;
+  background-color: #dbdbda;
+  border-radius: 3px; }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container {
   width: 25.5%;
-  height: 500px;
   display: inline-block;
   vertical-align: bottom;
-  float: left; }
+  background-color: white;
+  float: left;
+  padding-top: 20px; }
 
 .Hashtag-Timeline-Container {
   width: 100%;
@@ -851,7 +862,8 @@ table {
   width: 240px;
   max-width: 100%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 40px; }
 
 .Stats-Togglebox {
   margin-top: 10px;
@@ -943,9 +955,9 @@ table {
 /*----------------------------------------------*/
 .Leaderboard-Container {
   width: 74.5%;
-  height: 500px;
   display: inline-block;
-  float: right; }
+  float: right;
+  background-color: #dbdbda; }
 
 .Leaderboard-1 {
   vertical-align: bottom;

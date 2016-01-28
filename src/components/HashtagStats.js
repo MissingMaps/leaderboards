@@ -52,41 +52,59 @@ export default React.createClass({
 
     return (
       <div className='Leaderboard-Stats-Container'>
-        <div className='Hashtag-Timeline-Container'>
-          <Chart hashtags={hashtags} colors={this.state.colors}/>
-        </div>
-        <div className='Stats-Content'>
-          <div className = 'Stats-Togglebox'>
-            <Toggle onChange={this.handleChange} hashtags={this.state.colors}/>
+          <div className='Hashtag-Timeline-Container'>
+            <Chart hashtags={hashtags} colors={this.state.colors}/>
           </div>
-          <div className = 'Stats-Statbox'>
-            <table className = "table-curve">
-              <tbody>
-                <tr>
-                  <th>Total Edits</th>
-                  <th>{R.sum(R.map(R.nth(1), R.toPairs(totals)))}</th>
-                </tr>
-                <tr>
-                  <td>Roads</td>
-                  <td>{totals.roads}</td>
-                </tr>
-                <tr>
-                  <td>Roads</td>
-                  <td>{totals.buildings}</td>
-                </tr>
-                <tr>
-                  <td>Waterways</td>
-                  <td>{totals.waterways}</td>
-                </tr>
-                <tr>
-                  <td>Point of Interests</td>
-                  <td>{totals.pois}</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+          <div className='Stats-Content'>
+            <div className = 'Stats-Togglebox'>
+              <Toggle onChange={this.handleChange} hashtags={this.state.colors}/>
+            </div>
+            <div className = 'Stats-Statbox'>
+              <table className = "table-curve">
+                <tbody>
+                  <tr>
+                    <th>Total Edits</th>
+                    <th>{R.sum(R.map(R.nth(1), R.toPairs(totals)))}</th>
+                  </tr>
+                  <tr>
+                    <td>Roads</td>
+                    <td>{totals.roads}</td>
+                  </tr>
+                  <tr>
+                    <td>Roads</td>
+                    <td>{totals.buildings}</td>
+                  </tr>
+                  <tr>
+                    <td>Waterways</td>
+                    <td>{totals.waterways}</td>
+                  </tr>
+                  <tr>
+                    <td>Point of Interests</td>
+                    <td>{totals.pois}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+              <div className = "whitespace"></div>
+              <div className = "center-text"><strong>Trending Hashtags</strong></div>
+                <table className = "User-roll-table">
+                <tbody>
+                  <tr>
+                    <td>#MissingMaps</td>
+                  </tr>
+                  <tr>
+                    <td>#SecondHashtag</td>
+                  </tr>
+                  <tr>
+                    <td>#ThirdHashtag</td>
+                  </tr>
+                  <tr>
+                    <td>#FourthHashtag</td>
+                  </tr>
+                </tbody>
+              </table>
+              </div>
         </div>
-      </div>
     );
   }
 });
