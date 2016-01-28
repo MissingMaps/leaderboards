@@ -21,9 +21,17 @@ export default React.createClass({
     R.map(clearInterval, this.state.intervals);
     this.state.hashtags = {};
 
+    var colorClasses = ['hashtag1', 'hashtag2', 'hashtag3'];
+
     // Create new intervals
     var hashtags = R.split(',', props.params.id);
     R.map(this.createInterval, hashtags);
+
+    // Not efficient use of setState
+    var colors = R.zipObj(hashtags, colorClasses);
+    this.setState({
+      colors: colors
+    });
   },
   createInterval: function (hashtag) {
     var component = this;
@@ -68,17 +76,17 @@ export default React.createClass({
     var rolls = {};
     var numRolls = Object.keys(this.state.hashtags).length;
     if (numRolls === 1) {
-      rolls = <Leaderboard1 hashtags={this.state.hashtags} />;
+      rolls = <Leaderboard1 hashtags={this.state.hashtags} colors={this.state.colors}/>;
     } else if (numRolls === 2) {
-      rolls = <Leaderboard2 hashtags={this.state.hashtags} />;
+      rolls = <Leaderboard2 hashtags={this.state.hashtags} colors={this.state.colors}/>;
     } else if (numRolls === 3) {
-      rolls = <Leaderboard3 hashtags={this.state.hashtags} />;
+      rolls = <Leaderboard3 hashtags={this.state.hashtags} colors={this.state.colors}/>;
     } else {
       rolls = <div>Loading...</div>;
     }
     return (
       <div id = "Main-Container">
-        <HashtagStats hashtags={this.state.hashtags}/>
+        <HashtagStats hashtags={this.state.hashtags} colors={this.state.colors}/>
         {rolls}
       </div>
     );

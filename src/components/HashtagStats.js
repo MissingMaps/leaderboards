@@ -11,24 +11,17 @@ export default React.createClass({
       colors: {}
     };
   },
-  assignColors: function (props) {
-    var colorClasses = ['hashtag1', 'hashtag2', 'hashtag3'];
-    var colors = R.zipObj(Object.keys(props.hashtags), colorClasses);
-    this.setState({
-      colors: colors
-    });
-  },
   componentDidMount: function () {
     this.setState({
-      hashtags: this.props.hashtags
+      hashtags: this.props.hashtags,
+      colors: this.props.colors
     });
-    this.assignColors(this.props);
   },
   componentWillReceiveProps: function (nextProps) {
     this.setState({
-      hashtags: nextProps.hashtags
+      hashtags: nextProps.hashtags,
+      colors: nextProps.colors
     });
-    this.assignColors(nextProps);
   },
   handleChange: function (toggles) {
     this.setState({

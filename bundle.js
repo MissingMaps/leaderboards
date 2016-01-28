@@ -81444,24 +81444,17 @@ exports.default = _react2.default.createClass({
       colors: {}
     };
   },
-  assignColors: function assignColors(props) {
-    var colorClasses = ['hashtag1', 'hashtag2', 'hashtag3'];
-    var colors = _ramda2.default.zipObj(Object.keys(props.hashtags), colorClasses);
-    this.setState({
-      colors: colors
-    });
-  },
   componentDidMount: function componentDidMount() {
     this.setState({
-      hashtags: this.props.hashtags
+      hashtags: this.props.hashtags,
+      colors: this.props.colors
     });
-    this.assignColors(this.props);
   },
   componentWillReceiveProps: function componentWillReceiveProps(nextProps) {
     this.setState({
-      hashtags: nextProps.hashtags
+      hashtags: nextProps.hashtags,
+      colors: nextProps.colors
     });
-    this.assignColors(nextProps);
   },
   handleChange: function handleChange(toggles) {
     this.setState({
@@ -81600,6 +81593,13 @@ exports.default = function (props) {
   var hashtagNames = Object.keys(props.hashtags);
   var hashtags = props.hashtags;
   var first = hashtagNames[0];
+  var colors = props.colors;
+  var colorLookup = {
+    hashtag1: '#9dcf80',
+    hashtag2: '#1e9fcc',
+    hashtag3: '#ea6957'
+  };
+  var color = colorLookup[colors[first]];
   return _react2.default.createElement(
     'div',
     { className: 'Leaderboard-Container' },
@@ -81614,7 +81614,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title ', style: { color: color } },
             '#',
             first
           ),
@@ -81647,6 +81647,14 @@ exports.default = function (props) {
   var hashtagNames = Object.keys(hashtags);
   var first = hashtagNames[0];
   var second = hashtagNames[1];
+  var colors = props.colors;
+  var colorLookup = {
+    hashtag1: '#9dcf80',
+    hashtag2: '#1e9fcc',
+    hashtag3: '#ea6957'
+  };
+  var color1 = colorLookup[colors[first]];
+  var color2 = colorLookup[colors[second]];
   return _react2.default.createElement(
     'div',
     { className: 'Leaderboard-Container' },
@@ -81661,7 +81669,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title', style: { color: color1 } },
             '#',
             first
           ),
@@ -81680,7 +81688,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title', style: { color: color2 } },
             '#',
             second
           ),
@@ -81714,6 +81722,15 @@ exports.default = function (props) {
   var first = hashtagNames[0];
   var second = hashtagNames[1];
   var third = hashtagNames[2];
+  var colors = props.colors;
+  var colorLookup = {
+    hashtag1: '#9dcf80',
+    hashtag2: '#1e9fcc',
+    hashtag3: '#ea6957'
+  };
+  var color1 = colorLookup[colors[first]];
+  var color2 = colorLookup[colors[second]];
+  var color3 = colorLookup[colors[third]];
   return _react2.default.createElement(
     'div',
     { className: 'Leaderboard-Container' },
@@ -81728,7 +81745,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title', style: { color: color1 } },
             '#',
             first
           ),
@@ -81747,7 +81764,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title', style: { color: color2 } },
             '#',
             second
           ),
@@ -81766,7 +81783,7 @@ exports.default = function (props) {
           { className: 'Card' },
           _react2.default.createElement(
             'div',
-            { className: 'Hashtag-Title' },
+            { className: 'Hashtag-Title', style: { color: color3 } },
             '#',
             third
           ),
@@ -82129,9 +82146,17 @@ exports.default = _react2.default.createClass({
     _ramda2.default.map(clearInterval, this.state.intervals);
     this.state.hashtags = {};
 
+    var colorClasses = ['hashtag1', 'hashtag2', 'hashtag3'];
+
     // Create new intervals
     var hashtags = _ramda2.default.split(',', props.params.id);
     _ramda2.default.map(this.createInterval, hashtags);
+
+    // Not efficient use of setState
+    var colors = _ramda2.default.zipObj(hashtags, colorClasses);
+    this.setState({
+      colors: colors
+    });
   },
   createInterval: function createInterval(hashtag) {
     var component = this;
@@ -82175,11 +82200,11 @@ exports.default = _react2.default.createClass({
     var rolls = {};
     var numRolls = Object.keys(this.state.hashtags).length;
     if (numRolls === 1) {
-      rolls = _react2.default.createElement(_Leaderboard2.default, { hashtags: this.state.hashtags });
+      rolls = _react2.default.createElement(_Leaderboard2.default, { hashtags: this.state.hashtags, colors: this.state.colors });
     } else if (numRolls === 2) {
-      rolls = _react2.default.createElement(_Leaderboard4.default, { hashtags: this.state.hashtags });
+      rolls = _react2.default.createElement(_Leaderboard4.default, { hashtags: this.state.hashtags, colors: this.state.colors });
     } else if (numRolls === 3) {
-      rolls = _react2.default.createElement(_Leaderboard6.default, { hashtags: this.state.hashtags });
+      rolls = _react2.default.createElement(_Leaderboard6.default, { hashtags: this.state.hashtags, colors: this.state.colors });
     } else {
       rolls = _react2.default.createElement(
         'div',
@@ -82190,7 +82215,7 @@ exports.default = _react2.default.createClass({
     return _react2.default.createElement(
       'div',
       { id: 'Main-Container' },
-      _react2.default.createElement(_HashtagStats2.default, { hashtags: this.state.hashtags }),
+      _react2.default.createElement(_HashtagStats2.default, { hashtags: this.state.hashtags, colors: this.state.colors }),
       rolls
     );
   }
