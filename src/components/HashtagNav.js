@@ -18,7 +18,7 @@ export default function () {
 			</div>
 			<div className='LN-View-Navigation'>
 				<div className='View-Toggle'>Leaderboards</div>
-				<div className='View-Toggle'>Map Wow!</div>
+				<div className='View-Toggle'>Map View</div>
 			</div>
 		</div>
   );

@@ -30,6 +30,7 @@ body, ul, li{
   padding: 0px;
   font-family: 'Lato', sans-serif;
   color: $darkgrey;
+  background-color: $lightgrey;
 }
 
 ul, li{
@@ -124,6 +125,10 @@ a{
   font-weight: 400;
   font-size: 1.1em;
   line-height: 1.4;
+}
+
+.whitespace {
+  margin-top: 20px;
 }
 
 /*----------------------------------------------*/
@@ -537,12 +542,16 @@ input[type="text"]{
   font-weight: 900;
   font-size: 1.8em;
   text-align: center;
+  padding-bottom: 10px;
+  color: darken($osmgreen, 20%);
 }
 
 .user-roll{
   width: 240px;
+  height: 200px;
   margin-left: auto;
   margin-right: auto;
+  overflow: scroll;
   li{
     padding-bottom:4px;
   }
@@ -618,7 +627,7 @@ input[type="text"]{
 
 
 /*----------------------------------------------*/
-/*FullStats Sytling*/ 
+/*FullStats Styling*/ 
 /*----------------------------------------------*/
 
 #Recent-Container{
@@ -688,7 +697,7 @@ input[type="text"]{
 /* Card Styling */ 
 /*----------------------------------------------*/
 
-.card{
+.Card{
   width: 100%;
   height: inherit;
   background-color: #FFF;
@@ -979,16 +988,18 @@ table{
 }
 
 .View-Toggle{
+  color: white;
   width: 120px;
   height: 38px;
   margin: 10px;
   display: inline-block;
-  background-color: white;
   line-height: 38px;
   padding-left: 10px;
   padding-right: 10px;
   text-align: center;
   float: right;
+  background-color: $lightgrey;
+  border-radius: 3px;
 }
 
 /*----------------------------------------------*/
@@ -996,10 +1007,12 @@ table{
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container{
   width: 25.5%;
-  height: 500px;
+  height: 700px;
   display: inline-block;
   vertical-align: bottom;
+  background-color: $lightgrey;
   float: left;
+  padding-top: 20px;
 };
 
 .Hashtag-Timeline-Container{
@@ -1124,6 +1137,7 @@ table{
   height: 500px;
   display: inline-block;
   float:right;
+  background-color: $lightgrey;
 }
 
 .Leaderboard-1{
