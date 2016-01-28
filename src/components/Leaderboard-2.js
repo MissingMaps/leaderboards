@@ -10,14 +10,18 @@ export default function (props) {
     <div className = "Leaderboard-Container">
       <div className = "Leaderboard-2">
         <div className = "Hashtag-Container">
+          <div className = "Card">
             <div className = "Hashtag-Title">#{first}</div>
             <Userlist users={hashtags[first].users} />
+          </div>
         </div>
       </div>
         <div className = "Leaderboard-2">
           <div className = "Hashtag-Container">
+           <div className = "Card">          
               <div className = "Hashtag-Title">#{second}</div>
               <Userlist users={hashtags[second].users} />
+            </div>
           </div>
         </div>
       </div>

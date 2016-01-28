@@ -54,7 +54,7 @@ module.exports = React.createClass({
         </div>
       );
     } else {
-      return <p>This project doesn't exist!</p>;
+      return <div className='roll-error'><p>This project doesn't exist!</p></div>;
     }
   }
 });

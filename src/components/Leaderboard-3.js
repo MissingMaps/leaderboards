@@ -10,21 +10,27 @@ export default function (props) {
   return (
     <div className = "Leaderboard-Container">
       <div className = "Leaderboard-1">
-        <div className = "Hashtag-Container">
-          <div className = "Hashtag-Title">#{first}</div>
-          <Userlist users={hashtags[first].users} />
+        <div className = "Hashtag-Container-Split">
+          <div className = "Card">
+            <div className = "Hashtag-Title">#{first}</div>
+            <Userlist users={hashtags[first].users} />
+          </div>
         </div>
       </div>
       <div className = "Leaderboard-1">
-        <div className = "Hashtag-Container">
-          <div className = "Hashtag-Title">#{second}</div>
-          <Userlist users={hashtags[second].users} />
+        <div className = "Hashtag-Container-Split">
+          <div className = "Card">
+            <div className = "Hashtag-Title">#{second}</div>
+            <Userlist users={hashtags[second].users} />
+          </div>
         </div>
       </div>
       <div className = "Leaderboard-1">
-        <div className = "Hashtag-Container">
-          <div className = "Hashtag-Title">#{third}</div>
-          <Userlist users={hashtags[third].users} />
+        <div className = "Hashtag-Container-Split">
+          <div className = "Card">
+            <div className = "Hashtag-Title">#{third}</div>
+            <Userlist users={hashtags[third].users} />
+          </div>
         </div>
       </div>
     </div>
