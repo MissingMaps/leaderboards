@@ -16,7 +16,7 @@ export default React.createClass({
   },
   onChange: function (input, resolve) {
     var arr = this.state.trending.filter(function (word) {
-      return word.startsWith(input);
+      return word.toLowerCase().startsWith(input.toLowerCase());
     });
     resolve(arr);
   },
