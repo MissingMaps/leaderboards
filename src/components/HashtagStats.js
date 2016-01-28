@@ -52,7 +52,6 @@ export default React.createClass({
 
     return (
       <div className='Leaderboard-Stats-Container'>
-        <div className= "Card">
           <div className='Hashtag-Timeline-Container'>
             <Chart hashtags={hashtags} colors={this.state.colors}/>
           </div>
@@ -102,13 +101,9 @@ export default React.createClass({
                   <tr>
                     <td>#FourthHashtag</td>
                   </tr>
-                  <tr>
-                    <td>#FifthHashtag</td>
-                  </tr>
                 </tbody>
               </table>
               </div>
-          </div>
         </div>
     );
   }

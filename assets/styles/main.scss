@@ -1,3 +1,4 @@
+
 $osmgreen: #9dcf80;
 $darkgreen: #38803D;
 $lightgrey: #dbdbda;
@@ -542,16 +543,17 @@ input[type="text"]{
   font-weight: 900;
   font-size: 1.8em;
   text-align: center;
-  padding-bottom: 10px;
+  padding-bottom: 20px;
   color: darken($osmgreen, 20%);
+  padding-top: 10px;
 }
 
 .user-roll{
   width: 240px;
-  height: 200px;
   margin-left: auto;
   margin-right: auto;
   overflow: scroll;
+  margin-bottom: 40px;
   li{
     padding-bottom:4px;
   }
@@ -914,7 +916,6 @@ table{
 .Leaderboard-Navbar-Container{
   width: 100%;
   background-color: $debug;
-  padding-top: $distfromtop + 2px;
   height: 50px;
 }
 
@@ -1007,10 +1008,9 @@ table{
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container{
   width: 25.5%;
-  height: 700px;
   display: inline-block;
   vertical-align: bottom;
-  background-color: $lightgrey;
+  background-color: white;
   float: left;
   padding-top: 20px;
 };
@@ -1035,6 +1035,7 @@ table{
   max-width: 100%;
   margin-left: auto;
   margin-right: auto;
+  margin-bottom: 40px;
 }
 
 .Stats-Togglebox{
@@ -1134,7 +1135,6 @@ table{
 
 .Leaderboard-Container{
   width: 74.5%;
-  height: 500px;
   display: inline-block;
   float:right;
   background-color: $lightgrey;

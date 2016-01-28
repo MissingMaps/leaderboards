@@ -441,15 +441,16 @@ input[type="text"] {
   font-weight: 900;
   font-size: 1.8em;
   text-align: center;
-  padding-bottom: 10px;
-  color: #67a940; }
+  padding-bottom: 20px;
+  color: #67a940;
+  padding-top: 10px; }
 
 .user-roll {
   width: 240px;
-  height: 200px;
   margin-left: auto;
   margin-right: auto;
-  overflow: scroll; }
+  overflow: scroll;
+  margin-bottom: 40px; }
   .user-roll li {
     padding-bottom: 4px; }
 
@@ -756,7 +757,6 @@ table {
 .Leaderboard-Navbar-Container {
   width: 100%;
   background-color: rgba(0, 0, 0, 0.3);
-  padding-top: 52px;
   height: 50px; }
 
 .LN-Hashtag-Container {
@@ -838,10 +838,9 @@ table {
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container {
   width: 25.5%;
-  height: 700px;
   display: inline-block;
   vertical-align: bottom;
-  background-color: #dbdbda;
+  background-color: white;
   float: left;
   padding-top: 20px; }
 
@@ -862,7 +861,8 @@ table {
   width: 240px;
   max-width: 100%;
   margin-left: auto;
-  margin-right: auto; }
+  margin-right: auto;
+  margin-bottom: 40px; }
 
 .Stats-Togglebox {
   margin-top: 10px;
@@ -954,7 +954,6 @@ table {
 /*----------------------------------------------*/
 .Leaderboard-Container {
   width: 74.5%;
-  height: 500px;
   display: inline-block;
   float: right;
   background-color: #dbdbda; }
