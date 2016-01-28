@@ -822,7 +822,6 @@ table {
   cursor: pointer; }
 
 .View-Toggle {
-  color: white;
   width: 120px;
   height: 38px;
   margin: 10px;
@@ -833,7 +832,12 @@ table {
   text-align: center;
   float: right;
   background-color: #dbdbda;
-  border-radius: 3px; }
+  border-radius: 3px 3px 0px 0px;
+  color: #6e6f71;
+  cursor: pointer;
+  transition: all 0.2s; }
+  .View-Toggle:hover {
+    background-color: #bdbdbd; }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */

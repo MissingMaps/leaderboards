@@ -53,8 +53,8 @@ export default React.createClass({
           </div>
         </div>
         <div className='LN-View-Navigation'>
+          <div className='View-Toggle'>Map View</div>
           <div className='View-Toggle'>Leaderboards</div>
-          <div className='View-Toggle'>Map Wow!</div>
         </div>
       </div>
     );
