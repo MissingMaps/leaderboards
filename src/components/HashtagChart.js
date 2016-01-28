@@ -10,18 +10,33 @@ export default React.createClass({
       hashtags: {},
       graphData: [],
       startDate: new Date(),
-      endDate: new Date()
+      endDate: new Date(),
+      tickFormat: ''
     };
   },
   componentWillReceiveProps: function (nextProps) {
     if (Object.keys(nextProps.hashtags).length) {
       var data = this.getChartData(nextProps);
+      var startDate = data.startDate;
+      var endDate = data.endDate;
       this.setState({
         graphData: data.graphData,
-        startDate: data.startDate,
-        endDate: data.endDate
+        startDate: startDate,
+        endDate: endDate,
+        tickFormat: this.formatTimeTicks(startDate, endDate)
       });
+    } else {
+      this.setState({tickFormat: ''});
     }
+  },
+  formatTimeTicks: function (startDate, endDate) {
+    var dayDif = (new Date(endDate) - new Date(startDate)) / 86400000;
+    // 12:14 PM
+    if (dayDif < 1) return '%I:%M %p';
+    // Jan 22
+    else if (dayDif > 1 && dayDif < 365) return '%b %d';
+    // Jan 2016
+    else return '%b %Y';
   },
   sortDates: function (dates) {
     return dates.sort(function (a, b) {
@@ -94,7 +109,7 @@ export default React.createClass({
           new Date(this.state.startDate),
           new Date(this.state.endDate)
         ]}
-        tickFormat={d3.time.format('%B')}/>
+        tickFormat={d3.time.format(this.state.tickFormat)}/>
       {lines}
     </VictoryChart>;
   }
