@@ -9,6 +9,7 @@ $darkgrey: #606161;
 $lightgrey: #dbdbda;
 $border-grey: lighten($darkgrey, 40);
 $darkestgrey: #303030;
+$blackgrey: #272626;
 
 $LB1: #f26c59;
 $LB2: #22bdc1;
@@ -70,7 +71,7 @@ header{
   height: 52px;
   color: $lightgrey;
   display: inline-block;
-  position: absolute;
+  //position: absolute;
   input{
   }
   ul{
@@ -272,7 +273,6 @@ a:hover{
 }
 
 
-
 .title{
   font-family: 'Hind';
   font-weight: 700;
@@ -281,6 +281,24 @@ a:hover{
   margin: 0px;
   display: inline-block;
   line-height: 1em;
+}
+
+.title-leaderboard {
+  color: #fff;
+  margin-right: 15px;
+}
+
+.section-headline {
+  font-family: 'Lato';
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  display: block;
+  margin-bottom: 0.5em;
+  font-size: .9em;
+}
+
+.section-headline__lighter {
+  color: darken($lightgrey, 30);
 }
 
 .section-baseline{
@@ -298,6 +316,10 @@ a:hover{
   font-size: 1.6em;
   padding: 0.5em 0px 0.75em 0px;
   letter-spacing: 0.01em;
+}
+
+.sub-descriptor {
+  font-size: .8em;
 }
 
 .textbox{
@@ -733,6 +755,23 @@ table{
   }
 }
 
+.sub-text {
+  font-size: 0.8em;
+  font-family: 'Lato';
+  font-style: italic;
+  text-transform: lowercase;
+}
+
+.text-right {
+  text-align: right;
+  display: block;
+}
+
+.text-center {
+  text-align: center;
+  display: block;
+}
+
 /*----------------------------------------------*/
 /*Badge Styling.*/ 
 /*----------------------------------------------*/
@@ -898,6 +937,125 @@ table{
   margin-bottom: 1em;
 }
 
+.competitor-cards-block {
+  padding: 15px 0 50px;
+}
+
+.competitor-cards {
+  clear: both;
+
+  .card { 
+    width: 26%;
+    float: left;
+    margin-right: 35px;
+    padding: 10px 15px 10px;
+    min-width: 262.859px;
+    margin-bottom: 35px;
+
+    .Card-title {
+      text-align: center;
+      font-weight: normal;
+      font-size: 1em;
+      padding: 5px 0 15px;
+      margin: 0px
+    }
+
+    .card-main {
+      padding: 0 0 15px;
+    }
+
+    .card-details {
+    padding: 15px 15px 0px;
+    border-top: 1px solid $lightgrey;
+    margin: 0px 5px;
+      .card-num { 
+        font-weight: 700;
+      }
+    }
+  }
+
+  .more-options__options {
+    position: absolute;
+    margin: 14px 10px 10px 10px;
+    padding: 6px 10px 4px;
+    border: 1px solid #c6c7c7;
+    box-shadow: 0px 2px #dbdbda;
+    width: 110px;
+    background-color: white;
+    border-radius: 3px;
+
+    :before { 
+      bottom: 100%;
+      left: 90%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(194, 225, 245, 0); 
+      border-bottom-color: #c6c7c7;
+      border-width: 10px;
+      margin-left: -12px;
+    }
+
+    :after {
+      bottom: 100%;
+      left: 90%;
+      border: solid transparent;
+      content: " ";
+      height: 0;
+      width: 0;
+      position: absolute;
+      pointer-events: none;
+      border-color: rgba(49, 213, 213, 0);
+      border-bottom-color: white;
+      border-width: 9px;
+      margin-left: -11px;
+    }
+  }
+
+  .competitor1 { 
+    .card-num {
+      color: $LB2;
+    }
+  }
+  .competitor2 { 
+    .card-num {
+      color: $LB1;
+    }
+  }
+  .competitor3 { 
+    .card-num {
+      color: $mmGreen;
+    }
+  }
+
+  .competitor-winner {
+    .card-num, .Card-title {
+      font-weight: 800;
+    }
+  }
+
+  .feature-num { 
+    text-align: center;
+    font-size: 2.5em;
+    display: block;
+    line-height: 30px;
+  }
+
+  .card-buildings {
+    float: left;
+    width: 50%;
+    margin-right: 15px;
+  }
+
+  .card:nth-child(3) {
+    clear: right;
+    margin-right: 0px;
+  }
+}
+
 .Card-title{
   width: 100%;
   padding-top: 8px;
@@ -907,6 +1065,28 @@ table{
   color: #BBB;
 }
 
+.action-header {
+  padding: 15px 0;
+
+  .sub-text {
+    color: $border-grey;
+    float: right;
+  }
+}
+
+.refresh-page {
+  background-image: url("/assets/graphics/arrow-loop.svg");
+  background-size: 15px 15px;
+  background-repeat: no-repeat;
+  display: block;
+  text-indent: -9999em;
+  float: right;
+  width: 20px;
+  height: 20px;
+  padding-right: 5px;
+  background-position-y: 3px;
+}
+
 .Card-Content{
   padding: 20px;
   padding-top: 10px;
@@ -914,6 +1094,19 @@ table{
   p{
     margin: 4px 0px;
   }
+}
+
+.more-options {
+    text-indent: -9999px;
+    background-image: url("/assets/graphics/more-options.svg");
+    background-repeat: no-repeat;
+    background-size: 25px 25px;
+    background-position: right; 
+    display: block;
+}
+
+.tabbed-nav {
+  clear: both;
 }
 
 .darker-card{
@@ -944,6 +1137,43 @@ table{
 
 .data-number{
   margin-bottom: 10px;
+}
+
+.section-feature { 
+  background-color: lighten($darkestgrey, 5);
+  padding: 45px 0 20px;
+}
+
+.section-secondary { 
+  background-color: darken($darkestgrey, 10);
+
+  .section-headline { 
+    color: #fff;
+  }
+}
+
+.section-leaderboard {
+  background-color: lighten($darkestgrey, 5);
+  clear: both;
+  padding: 50px 0;
+}
+
+.row {
+  position: relative;
+  max-width: 1100px;
+  margin-right: auto;
+  margin-left: auto;
+  padding: 0 20px;
+}
+
+.tab-style {
+  float: left;
+  padding: 10px;
+  margin-right: 15px;
+}
+
+.active-tab {
+    border-bottom: 3px solid $mmGreen;
 }
 
 /*----------------------------------------------*/
@@ -1007,10 +1237,6 @@ Leaderboard Styling
 --------*/
 .alt-darker{
   background-color: $darkestgrey;
-}
-
-.temp-top{
-  height: 120px;
 }
 
 .temp-middle{
@@ -1325,4 +1551,9 @@ $distfromtop: 50px;
   padding: 20px;
   padding-bottom: 40px;
   width: auto;
+}
+
+.card-hack {
+  background-color: #fff;
+  padding: 15px;
 }
