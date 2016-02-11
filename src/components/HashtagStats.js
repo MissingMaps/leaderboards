@@ -1,118 +1,117 @@
 import React from 'react';
 import R from 'ramda';
-import Toggle from '../components/ToggleSwitch.js';
-import Chart from '../components/HashtagChart.js';
+import moment from 'moment';
 
 export default React.createClass({
   getInitialState: function () {
     return {
-      filters: [],
-      hashtags: {},
-      colors: {}
+      hashtags: {}
     };
   },
-  componentDidMount: function () {
+  createTotals: function (props) {
+    var rows = props.rows;
+    var colors = props.colors;
+    var hashtags = {};
+
+    Object.keys(rows).forEach(function (hashtag) {
+      var totals = R.reduce(R.mergeWithKey(function (key, l, r) {
+        if (key === 'edits' || key === 'buildings' || key === 'roads') {
+          return l + r;
+        } else if (key === 'created_at') {
+          return ((moment(l).unix() > moment(r).unix()) ? l : r);
+        } else {
+          return l;
+        }
+      }), {}, rows[hashtag]);
+
+      hashtags[hashtag] = {
+        color: colors[hashtag],
+        roads: Number(totals.roads.toFixed(2)),
+        buildings: totals.buildings,
+        edits: totals.edits,
+        last_update: totals.created_at
+      };
+    });
+
     this.setState({
-      hashtags: this.props.hashtags,
-      colors: this.props.colors
+      hashtags: hashtags
     });
   },
-  componentWillReceiveProps: function (nextProps) {
-    this.setState({
-      hashtags: nextProps.hashtags,
-      colors: nextProps.colors
-    });
+  componentDidMount: function (props) {
+    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('lastRefresh')) {
+      this.setState({
+        lastRefresh: props.lastRefresh
+      });
+    }
   },
-  handleChange: function (toggles) {
-    this.setState({
-      filters: toggles
-    });
+  componentWillReceiveProps: function (props) {
+    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('lastRefresh')) {
+      this.setState({
+        lastRefresh: props.lastRefresh
+      });
+    }
   },
   render: function () {
-    var props = this.props;
     var component = this;
-
-    var hashtags = R.pickBy(function (val, key) {
-      return !R.contains(key, component.state.filters);
-    }, props.hashtags);
-    var list = R.map(R.nth(1), R.toPairs(R.map(R.prop('total'), hashtags)));
-    var totals = list.reduce(R.mergeWith((a, b) => a + b), {
-      buildings: 0,
-      waterways: 0,
-      pois: 0,
-      roads: 0
+    var cards = R.sortBy(function (key) {
+      return component.state.hashtags[key].edits;
+    }, Object.keys(component.state.hashtags))
+    .reverse()
+    .map(function (key, index) {
+      var totals = component.state.hashtags[key];
+      var className = 'card';
+      switch (totals.color) {
+        case 'blueteam':
+          className += ' competitor1';
+          break;
+        case 'redteam':
+          className += ' competitor2';
+          break;
+        case 'greenteam':
+          className += ' competitor3';
+          break;
+        default:
+          className += ' competitor1';
+      }
+      if (index === 0) {
+        className += ' competitor-winner';
+      }
+      return (
+        <li className={className} key={key}>
+          <a className="more-options" href="/">More Options</a>
+          <div className="card-main">
+            <h2 className="Card-title">{key}</h2>
+            <span className="card-num feature-num">{totals.edits}</span>
+            <span className="text-center sub-descriptor">Total Points</span>
+          </div>
+          <div className="card-details">
+            <div className="card-buildings">
+              <span className="card-num">{totals.buildings} </span>
+              <span className="sub-descriptor">Buildings</span>
+            </div>
+            <div>
+              <span className="card-num">{totals.roads} </span>
+              <span className="sub-descriptor">km Roads</span>
+            </div>
+            <span className="sub-text text-center">Last Commit: {moment(totals.last_update).fromNow()}</span>
+          </div>
+        </li>
+      );
     });
 
     return (
       <section className="section-secondary">
         <div className="row">
           <div className="action-header">
-            <span className="action-header-text sub-text text-right">Refreshed: Jan 21, 2015  4:00pm</span>
+            <span className="action-header-text sub-text text-right">Refreshed: {moment(component.state.lastRefresh).calendar()}</span>
             <a className="refresh-page" href="/">Refresh</a>
           </div>
           <div className="competitor-cards-block">
             <span className="section-headline">Current Leader</span>
             <ul className="competitor-cards">
-              <li className="card competitor1 competitor-winner">
-                <a className="more-options" href="/">More Options</a>
-                <div className="more-options__options">
-                  <span>Delete</span>
-                </div>  
-                <div className="card-main">
-                  <h2 className="Card-title">GeorgetownHacks</h2>
-                  <span className="card-num feature-num">18,000</span>
-                  <span className="text-center sub-descriptor">Total Points</span>
-                </div>
-                <div className="card-details">
-                  <div className="card-buildings">
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">Buildings</span>
-                  </div>
-                  <div>
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">km Roads</span>
-                  </div>
-                  <span className="sub-text text-center">Last Commit: Jan</span>
-                </div>
-              </li>
-              <li className="card competitor2">
-                <a className="more-options" href="/">More Options</a>
-                <div className="card-main">
-                  <h2 className="Card-title">GeorgetownHacks</h2>
-                  <span className="card-num feature-num">18,000</span>
-                  <span className="text-center sub-descriptor">Total Points</span>
-                </div>
-                <div className="card-details">
-                  <div className="card-buildings">
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">Buildings</span>
-                  </div>
-                  <div>
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">km Roads</span>
-                  </div>
-                  <span className="sub-text text-center">Last Commit: Jan</span>
-                </div>
-              </li>
-              <li className="card competitor3">
-                <a className="more-options" href="/">More Options</a>
-                <div className="card-main">
-                  <h2 className="Card-title">GeorgetownHacks</h2>
-                  <span className="card-num feature-num">18,000</span>
-                  <span className="text-center sub-descriptor">Total Points</span>
-                </div>
-                <div className="card-details">
-                  <div className="card-buildings">
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">Buildings</span> 
-                  </div>
-                  <div>
-                    <span className="card-num">9,000</span>
-                    <span className="sub-descriptor">km Roads</span>
-                  </div>
-                  <span className="sub-text text-center">Last Commit: Jan</span>
-                </div>
-              </li>
+              {cards}
             </ul>
           </div>
           <ul className="tabbed-nav">
