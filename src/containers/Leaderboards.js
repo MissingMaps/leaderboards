@@ -58,7 +58,7 @@ export default React.createClass({
   render: function () {
     return (
       <div>
-        <HashtagStats />
+        <HashtagStats colors={this.state.colors} rows={this.state.hashtags}/>
         <Leaderboard colors={this.state.colors} rows={this.state.hashtags}/>
       </div>
     );
