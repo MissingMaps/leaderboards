@@ -1,9 +1,6 @@
 import React from 'react';
 import R from 'ramda';
 import HashtagStats from '../components/HashtagStats.js';
-import Leaderboard1 from '../components/Leaderboard-1.js';
-import Leaderboard2 from '../components/Leaderboard-2.js';
-import Leaderboard3 from '../components/Leaderboard-3.js';
 import Leaderboard from '../components/Leaderboard.js';
 import fetch from 'isomorphic-fetch';
 
@@ -19,7 +16,7 @@ export default React.createClass({
     R.map(clearInterval, this.state.intervals);
     this.state.hashtags = {};
 
-    var colorClasses = ['hashtag1', 'hashtag2', 'hashtag3'];
+    var colorClasses = ['redteam', 'blueteam', 'greenteam'];
 
     // Create new intervals
     var hashtags = R.split(',', props.params.id);
@@ -33,8 +30,8 @@ export default React.createClass({
   },
   createInterval: function (hashtag) {
     var component = this;
-    var interval = setInterval(() => {
-      fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag)
+    var fetchData = () => {
+      fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users')
       .then(function (res) {
         return res.json();
       })
@@ -43,7 +40,9 @@ export default React.createClass({
         nextState.hashtags[hashtag] = json;
         component.setState(nextState);
       });
-    }, 30000);
+    };
+    var interval = setInterval(fetchData, 30000);
+    fetchData();
     this.state.intervals.push(interval);
   },
   componentDidMount: function () {
@@ -57,21 +56,10 @@ export default React.createClass({
     }
   },
   render: function () {
-    var rolls = {};
-    var numRolls = Object.keys(this.state.hashtags).length;
-    if (numRolls === 1) {
-      rolls = <Leaderboard1 hashtags={this.state.hashtags} colors={this.state.colors}/>;
-    } else if (numRolls === 2) {
-      rolls = <Leaderboard2 hashtags={this.state.hashtags} colors={this.state.colors}/>;
-    } else if (numRolls === 3) {
-      rolls = <Leaderboard3 hashtags={this.state.hashtags} colors={this.state.colors}/>;
-    } else {
-      rolls = <div>Loading...</div>;
-    }
     return (
       <div>
         <HashtagStats />
-        <Leaderboard />
+        <Leaderboard colors={this.state.colors} rows={this.state.hashtags}/>
       </div>
     );
   }

@@ -1,7 +1,5 @@
 import React from 'react';
 import R from 'ramda';
-import Toggle from '../components/ToggleSwitch.js';
-import Chart from '../components/HashtagChart.js';
 
 export default React.createClass({
   getInitialState: function () {
