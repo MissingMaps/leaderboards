@@ -318,6 +318,7 @@ a:hover{
   display: inline;
   float: left;
   color: #fff;
+  margin-top: 32px;
 }
 
 .sub-head{
@@ -590,6 +591,10 @@ input[type='text']:before{
 .search-bar-input-test{
   float: right;
   right: 20px;
+
+  .search-bar-input {
+    height: 30px;
+  }
 }
 
 .search-bar-side{
@@ -611,16 +616,6 @@ input[type='text']:before{
   font-family: 'lato';
 }
 
-
-.search-bar-suggestions{
-  text-align: left;
-  margin: 0;
-  li {
-  }
-  span{
-    color: $border-grey;
-  }
-}
 
 .search-glass{
   width: 16px;
@@ -1420,7 +1415,7 @@ $distfromtop: 50px;
   }
 
   .search-bar-submit {
-    background-color: #23bcc1;
+    background-color: $mmTeal;
     position: absolute;
     right: 4%;
     top: 20px;
@@ -1429,6 +1424,32 @@ $distfromtop: 50px;
     color: #fff;
     width: 70px;
     height: 27px;
+  }
+}
+
+.search-bar-submit, .search-bar-side { 
+  &:hover { 
+    background-color: darken($mmTeal, 5);
+  }
+}
+
+.search-bar-suggestions { 
+  margin-top: 5px;
+  position: absolute;
+  background-color: lighten($lightgrey, 10);
+  width: 85%;
+  font-size: .8em;
+  border: $lightgrey;
+
+  li {
+    color: $darkgrey;
+    border-bottom: 1px solid $lightgrey;
+    padding: 10px;
+    display: block;
+
+    &:hover {
+      background-color: lighten($lightgrey, 12);
+    }
   }
 }
 

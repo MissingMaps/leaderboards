@@ -248,7 +248,8 @@ a:hover {
 .section-header__light {
   display: inline;
   float: left;
-  color: #fff; }
+  color: #fff;
+  margin-top: 32px; }
 
 .sub-head {
   font-family: 'Lato';
@@ -475,6 +476,8 @@ input[type='text']:before {
 .search-bar-input-test {
   float: right;
   right: 20px; }
+  .search-bar-input-test .search-bar-input {
+    height: 30px; }
 
 .search-bar-side {
   height: 30px;
@@ -492,12 +495,6 @@ input[type='text']:before {
   text-align: center;
   line-height: 28px;
   font-family: 'lato'; }
-
-.search-bar-suggestions {
-  text-align: left;
-  margin: 0; }
-  .search-bar-suggestions span {
-    color: #c6c7c7; }
 
 .search-glass {
   width: 16px;
@@ -1123,6 +1120,24 @@ Leaderboard Styling
     color: #fff;
     width: 70px;
     height: 27px; }
+
+.search-bar-submit:hover, .search-bar-side:hover {
+  background-color: #1fa7ab; }
+
+.search-bar-suggestions {
+  margin-top: 5px;
+  position: absolute;
+  background-color: #f4f4f4;
+  width: 85%;
+  font-size: .8em;
+  border: #dbdbda; }
+  .search-bar-suggestions li {
+    color: #6e6f71;
+    border-bottom: 1px solid #dbdbda;
+    padding: 10px;
+    display: block; }
+    .search-bar-suggestions li:hover {
+      background-color: #f9f9f9; }
 
 .additional {
   padding: 0px 10px;
