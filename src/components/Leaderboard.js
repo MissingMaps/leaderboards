@@ -9,7 +9,7 @@ var SortTypes = {
 };
 
 function reverseSortDirection (sortDir) {
-  return sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC;
+  return sortDir === SortTypes.ASC ? SortTypes.DESC : SortTypes.ASC;
 }
 
 var SortHeaderCell = React.createClass({
@@ -18,7 +18,7 @@ var SortHeaderCell = React.createClass({
     return (
       <Cell className='LB-header-descriptor' {...props}>
         <a onClick={this._onSortChange}>
-          {children} {sortDir ? (sortDir === SortTypes.DESC ? '↓' : '↑') : '↕'}
+          {children} {sortDir ? (sortDir === SortTypes.ASC ? '↑' : '↓') : '↕'}
         </a>
       </Cell>
     );
@@ -32,7 +32,7 @@ var SortHeaderCell = React.createClass({
         this.props.columnKey,
         this.props.sortDir
           ? reverseSortDirection(this.props.sortDir)
-          : SortTypes.DESC
+          : SortTypes.ASC
       );
     }
   }
@@ -41,10 +41,11 @@ var SortHeaderCell = React.createClass({
 function StatsCell (props) {
   var {rowIndex, data, field, ...other} = props;
   if (!data[rowIndex]) return <Cell></Cell>;
-
   var display = data[rowIndex][field];
   if (field === 'created_at') {
     display = moment(display).fromNow();
+  } else if (field === 'roads') {
+    display = (display).toFixed(1)+ " km";
   }
   return (
     <Cell className='statsCell' {...other } >
