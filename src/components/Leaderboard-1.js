@@ -13,15 +13,10 @@ export default function (props) {
   };
   var color = colorLookup[colors[first]];
   return (
-    <div className = "Leaderboard-Container">
-      <div className = "Leaderboard-2">
-        <div className = "Hashtag-Container">
-          <div className = "Card">
-            <div className = "Hashtag-Title " style={{color: color}}>#{first}</div>
-            <Userlist users={hashtags[first].users}/>
-          </div>
-        </div>
-      </div>
+  <section className="section-leaderboard">
+    <div className="row">
+      <h2 className="section-header">Leaderboard</h2>
     </div>
+  </section>
   );
 }

@@ -4,6 +4,7 @@ import HashtagStats from '../components/HashtagStats.js';
 import Leaderboard1 from '../components/Leaderboard-1.js';
 import Leaderboard2 from '../components/Leaderboard-2.js';
 import Leaderboard3 from '../components/Leaderboard-3.js';
+import Leaderboard from '../components/Leaderboard.js';
 import fetch from 'isomorphic-fetch';
 
 export default React.createClass({
@@ -68,9 +69,9 @@ export default React.createClass({
       rolls = <div>Loading...</div>;
     }
     return (
-      <div id = "Main-Container">
-        <HashtagStats hashtags={this.state.hashtags} colors={this.state.colors}/>
-        {rolls}
+      <div>
+        <HashtagStats />
+        <Leaderboard />
       </div>
     );
   }

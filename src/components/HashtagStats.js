@@ -44,43 +44,83 @@ export default React.createClass({
     });
 
     return (
-      <div className='Leaderboard-Stats-Container'>
-        <div className='Hashtag-Timeline-Container'>
-          <Chart hashtags={hashtags} colors={this.state.colors}/>
-        </div>
-        <div className='Stats-Content'>
-          <div className = 'Stats-Togglebox'>
-            <Toggle onChange={this.handleChange} hashtags={this.state.colors}/>
+      <section className="section-secondary">
+        <div className="row">
+          <div className="action-header">
+            <span className="action-header-text sub-text text-right">Refreshed: Jan 21, 2015  4:00pm</span>
+            <a className="refresh-page" href="/">Refresh</a>
           </div>
-          <div className = 'Stats-Statbox'>
-            <table className = "table-curve">
-              <tbody>
-                <tr>
-                  <th>Total Edits</th>
-                  <th>{R.sum(R.map(R.nth(1), R.toPairs(totals)))}</th>
-                </tr>
-                <tr>
-                  <td>Roads</td>
-                  <td>{totals.roads}</td>
-                </tr>
-                <tr>
-                  <td>Roads</td>
-                  <td>{totals.buildings}</td>
-                </tr>
-                <tr>
-                  <td>Waterways</td>
-                  <td>{totals.waterways}</td>
-                </tr>
-                <tr>
-                  <td>Point of Interests</td>
-                  <td>{totals.pois}</td>
-                </tr>
-              </tbody>
-            </table>
+          <div className="competitor-cards-block">
+            <span className="section-headline">Current Leader</span>
+            <ul className="competitor-cards">
+              <li className="card competitor1 competitor-winner">
+                <a className="more-options" href="/">More Options</a>
+                <div className="more-options__options">
+                  <span>Delete</span>
+                </div>  
+                <div className="card-main">
+                  <h2 className="Card-title">GeorgetownHacks</h2>
+                  <span className="card-num feature-num">18,000</span>
+                  <span className="text-center sub-descriptor">Total Points</span>
+                </div>
+                <div className="card-details">
+                  <div className="card-buildings">
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">Buildings</span>
+                  </div>
+                  <div>
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">km Roads</span>
+                  </div>
+                  <span className="sub-text text-center">Last Commit: Jan</span>
+                </div>
+              </li>
+              <li className="card competitor2">
+                <a className="more-options" href="/">More Options</a>
+                <div className="card-main">
+                  <h2 className="Card-title">GeorgetownHacks</h2>
+                  <span className="card-num feature-num">18,000</span>
+                  <span className="text-center sub-descriptor">Total Points</span>
+                </div>
+                <div className="card-details">
+                  <div className="card-buildings">
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">Buildings</span>
+                  </div>
+                  <div>
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">km Roads</span>
+                  </div>
+                  <span className="sub-text text-center">Last Commit: Jan</span>
+                </div>
+              </li>
+              <li className="card competitor3">
+                <a className="more-options" href="/">More Options</a>
+                <div className="card-main">
+                  <h2 className="Card-title">GeorgetownHacks</h2>
+                  <span className="card-num feature-num">18,000</span>
+                  <span className="text-center sub-descriptor">Total Points</span>
+                </div>
+                <div className="card-details">
+                  <div className="card-buildings">
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">Buildings</span> 
+                  </div>
+                  <div>
+                    <span className="card-num">9,000</span>
+                    <span className="sub-descriptor">km Roads</span>
+                  </div>
+                  <span className="sub-text text-center">Last Commit: Jan</span>
+                </div>
+              </li>
+            </ul>
           </div>
-          <div className = "whitespace"></div>
+          <ul className="tabbed-nav">
+            <li className="tab-style active-tab section-headline">Leaderboard</li>
+            <li className="tab-style section-headline">Map View</li>
+          </ul>
         </div>
-      </div>
+      </section>
     );
   }
 });
