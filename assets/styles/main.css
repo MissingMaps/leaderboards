@@ -245,6 +245,11 @@ a:hover {
   margin-top: 1em;
   margin-bottom: 0px; }
 
+.section-header__light {
+  display: inline;
+  float: left;
+  color: #fff; }
+
 .sub-head {
   font-family: 'Lato';
   font-weight: 300;
@@ -461,7 +466,8 @@ input[type='text']:before {
   display: inline-block; }
 
 .search-bar-input-test {
-  position: relative; }
+  float: right;
+  right: 20px; }
 
 .search-bar-side {
   height: 30px;
@@ -921,7 +927,7 @@ table {
 
 .section-leaderboard {
   background-color: #3d3d3d;
-  padding: 50px 0; }
+  padding: 35px 0; }
 
 .row {
   position: relative;
@@ -937,6 +943,11 @@ table {
 
 .active-tab {
   border-bottom: 3px solid #8bc544; }
+
+.Table-Container {
+  margin-top: 50px; }
+  .Table-Container a {
+    color: #c6c7c7; }
 
 /*----------------------------------------------*/
 /*Events Styles*/

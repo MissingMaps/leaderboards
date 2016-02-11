@@ -314,6 +314,12 @@ a:hover{
   margin-bottom: 0px;
 }
 
+.section-header__light {
+  display: inline;
+  float: left;
+  color: #fff;
+}
+
 .sub-head{
   font-family: 'Lato';
   font-weight: 300;
@@ -573,7 +579,8 @@ input[type='text']:before{
 }
 
 .search-bar-input-test{
-  position: relative;
+  float: right;
+  right: 20px;
 }
 
 .search-bar-side{
@@ -1158,7 +1165,7 @@ table{
 
 .section-leaderboard {
   background-color: lighten($darkestgrey, 5);
-  padding: 50px 0;
+  padding: 35px 0;
 }
 
 .row {
@@ -1177,6 +1184,14 @@ table{
 
 .active-tab {
     border-bottom: 3px solid $mmGreen;
+}
+
+.Table-Container {
+  margin-top: 50px;
+
+  a { 
+    color: $border-grey;
+  }
 }
 
 /*----------------------------------------------*/

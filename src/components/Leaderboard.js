@@ -167,7 +167,7 @@ export default React.createClass({
       <div>
         <section className="section-leaderboard">
           <div className="row">
-            <h2 className="section-header">Leaderboard</h2>
+            <h2 className="section-header section-header__light">Leaderboard</h2>
         <div className='search-bar-input-test'>
           <input onChange={this._onFilterChange}
             className='search-bar-input'
@@ -176,7 +176,7 @@ export default React.createClass({
             autoCapitalize='none'
             autoComplete='off'
             autoCorrect='off'
-            placeholder='User Searchbar'/>
+            placeholder='Search'/>
           <div className='search-bar-side'>
             <div className='search-glass'><div style={{'WebkitTransform': 'rotate(45deg)', 'MozTransform': 'rotate(45deg)', 'OTransform': 'rotate(45deg)'}}>&#9906;</div></div>
           </div>
@@ -187,7 +187,7 @@ export default React.createClass({
           rowsCount={sortedDataList.length}
           rowHeight={60}
           width={1100}
-          height={500}
+          height={700}
           headerHeight={30}>
           <Column
             columnKey='Rank'
