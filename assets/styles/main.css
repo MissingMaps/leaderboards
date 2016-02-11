@@ -706,17 +706,17 @@ table {
     padding: 0px 12px;
     border-left: solid 1px #b3b3b3; }
   #Leaderboard-Container .LB-red {
-    background-color: #f26c59; }
+    background-color: #15b7b7; }
   #Leaderboard-Container .LB-blu {
-    background-color: #22bdc1; }
+    background-color: #bdcc32; }
   #Leaderboard-Container .LB-grn {
-    background-color: #A069E0; }
+    background-color: #f37346; }
   #Leaderboard-Container .LB-name-red {
-    color: #f26c59; }
+    color: #15b7b7; }
   #Leaderboard-Container .LB-name-blu {
-    color: #22bdc1; }
+    color: #bdcc32; }
   #Leaderboard-Container .LB-name-grn {
-    color: #A069E0; }
+    color: #f37346; }
 
 #Leaderboard-Header {
   width: 700px; }
@@ -822,11 +822,11 @@ table {
       border-width: 9px;
       margin-left: -11px; }
   .competitor-cards .competitor1 .card-num {
-    color: #22bdc1; }
+    color: #bdcc32; }
   .competitor-cards .competitor2 .card-num {
-    color: #f26c59; }
+    color: #15b7b7; }
   .competitor-cards .competitor3 .card-num {
-    color: #8bc544; }
+    color: #f37346; }
   .competitor-cards .competitor-winner .card-num, .competitor-cards .competitor-winner .Card-title {
     font-weight: 800; }
   .competitor-cards .feature-num {
@@ -1250,3 +1250,14 @@ Leaderboard Styling
 .card-hack {
   background-color: #fff;
   padding: 15px; }
+
+.table-username {
+  font-weight: 600;
+  font-family: Hind;
+  margin-top: 1px;
+  margin-left: 4px; }
+  .table-username a {
+    color: #3bd6dc;
+    transition: color 0.2s; }
+    .table-username a:hover {
+      color: #a3d16b; }

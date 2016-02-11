@@ -53,6 +53,25 @@ function StatsCell (props) {
   );
 }
 
+const LinkCell = (props) => {
+  var {rowIndex, data, field, ...other} = props;
+  if (!data[rowIndex]) return <Cell></Cell>;
+
+  var userid = props.data[rowIndex].user_id;
+  var userlink = "http://devseed.com/osm-gamification-users/#/"+userid
+
+  var display = data[rowIndex][field];
+  if (field === 'created_at') {
+    display = moment(display).fromNow();
+  }
+
+  return (
+    <Cell className='statsCell table-username' {...other } >
+      <a href={userlink}>{ display }</a>
+    </Cell>
+  );
+};
+
 function RankCell (props) {
   var {rowIndex, data, ...other} = props;
   if (!data[rowIndex]) return <Cell></Cell>;
@@ -172,7 +191,7 @@ export default React.createClass({
             columnKey='Rank'
             header={<Cell className='LB-header-descriptor'></Cell>}
             cell={<RankCell data={sortedDataList} />}
-            width={30}
+            width={45}
             fixed={true}
 
           />
@@ -185,8 +204,8 @@ export default React.createClass({
                 NAME
               </SortHeaderCell>
             }
-            cell={<StatsCell data={sortedDataList} field='name' />}
-            width={150}
+            cell={<LinkCell data={sortedDataList} field='name' />}
+            width={200}
 
           />
           <Column

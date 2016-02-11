@@ -11,9 +11,9 @@ $border-grey: lighten($darkgrey, 40);
 $darkestgrey: #303030;
 $blackgrey: #272626;
 
-$LB1: #f26c59;
-$LB2: #22bdc1;
-$LB3: #A069E0;
+$LB1: #15b7b7;
+$LB2: #bdcc32;
+$LB3: #f37346;
 
 $MaxWidth: 1100px;
 $TextColor: $darkgrey;
@@ -1031,7 +1031,7 @@ table{
   }
   .competitor3 { 
     .card-num {
-      color: $mmGreen;
+      color: $LB3;
     }
   }
 
@@ -1560,3 +1560,21 @@ $distfromtop: 50px;
   background-color: #fff;
   padding: 15px;
 }
+
+
+.table-username{
+  font-weight: 600;
+  font-family: Hind;
+  margin-top: 1px;
+  margin-left: 4px;
+  a{
+    color: lighten($mmTeal, 10);
+    transition: color 0.2s;
+    &:hover{
+      color: lighten($mmGreen, 10);    
+    }
+    &:visited{
+    }
+  }
+}
+

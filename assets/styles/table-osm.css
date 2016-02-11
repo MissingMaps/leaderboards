@@ -60,15 +60,18 @@ a {
 }
 
 .blueteam {
-  background-color: #22bdc1;
+  background-color: #bdcc32;
+  text-align: center;
 }
 
 .redteam {
-  background-color: #f26c59;
+  background-color: #15b7b7;
+  text-align: center;
 }
 
 .greenteam {
-  background-color: #8bc544;
+  background-color: #f37346;
+  text-align: center;
 }
 
 .search-bar-input-test {
