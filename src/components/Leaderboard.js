@@ -9,7 +9,7 @@ var SortTypes = {
 };
 
 function reverseSortDirection (sortDir) {
-  return sortDir === SortTypes.DESC ? SortTypes.ASC : SortTypes.DESC;
+  return sortDir === SortTypes.ASC ? SortTypes.DESC : SortTypes.ASC;
 }
 
 var SortHeaderCell = React.createClass({
@@ -18,7 +18,7 @@ var SortHeaderCell = React.createClass({
     return (
       <Cell className='LB-header-descriptor' {...props}>
         <a onClick={this._onSortChange}>
-          {children} {sortDir ? (sortDir === SortTypes.DESC ? '↓' : '↑') : '↕'}
+          {children} {sortDir ? (sortDir === SortTypes.ASC ? '↑' : '↓') : '↕'}
         </a>
       </Cell>
     );
@@ -32,7 +32,7 @@ var SortHeaderCell = React.createClass({
         this.props.columnKey,
         this.props.sortDir
           ? reverseSortDirection(this.props.sortDir)
-          : SortTypes.DESC
+          : SortTypes.ASC
       );
     }
   }
@@ -41,10 +41,11 @@ var SortHeaderCell = React.createClass({
 function StatsCell (props) {
   var {rowIndex, data, field, ...other} = props;
   if (!data[rowIndex]) return <Cell></Cell>;
-
   var display = data[rowIndex][field];
   if (field === 'created_at') {
     display = moment(display).fromNow();
+  } else if (field === 'roads') {
+    display = (display).toFixed(1)+ " km";
   }
   return (
     <Cell className='statsCell' {...other } >
@@ -52,6 +53,26 @@ function StatsCell (props) {
     </Cell>
   );
 }
+
+const LinkCell = (props) => {
+  var {rowIndex, data, field, ...other} = props;
+  if (!data[rowIndex]) return <Cell></Cell>;
+
+  var userid = props.data[rowIndex].user_id;
+  var userlink = "http://devseed.com/osm-gamification-users/#/"+userid
+  var userClass = data[rowIndex].team + '-name statsCell table-username';
+
+  var display = data[rowIndex][field];
+  if (field === 'created_at') {
+    display = moment(display).fromNow();
+  }
+
+  return (
+    <Cell className={userClass} {...other } >
+      <a href={userlink}>{ display }</a>
+    </Cell>
+  );
+};
 
 function RankCell (props) {
   var {rowIndex, data, ...other} = props;
@@ -88,7 +109,7 @@ export default React.createClass({
     });
 
     this.setState({
-      sortedDataList: R.sortBy(R.prop('edits'), list),
+      sortedDataList: R.reverse(R.sortBy(R.prop('edits'), list)),
       list: list,
       colSortDirs: {}
     });
@@ -146,7 +167,7 @@ export default React.createClass({
       <div>
         <section className="section-leaderboard">
           <div className="row">
-            <h2 className="section-header">Leaderboard</h2>
+            <h2 className="section-header section-header__light">Leaderboard</h2>
         <div className='search-bar-input-test'>
           <input onChange={this._onFilterChange}
             className='search-bar-input'
@@ -155,23 +176,30 @@ export default React.createClass({
             autoCapitalize='none'
             autoComplete='off'
             autoCorrect='off'
-            placeholder='User Searchbar'/>
+            placeholder='Search'/>
           <div className='search-bar-side'>
             <div className='search-glass'><div style={{'WebkitTransform': 'rotate(45deg)', 'MozTransform': 'rotate(45deg)', 'OTransform': 'rotate(45deg)'}}>&#9906;</div></div>
           </div>
         </div>
         <br />
+        <div className='Table-Container'>
         <Table
           rowsCount={sortedDataList.length}
           rowHeight={60}
           width={1100}
-          height={500}
+          height={700}
           headerHeight={30}>
           <Column
             columnKey='Rank'
-            header={<Cell className='LB-header-descriptor'></Cell>}
+            header=
+              {<SortHeaderCell
+                onSortChange={this._onSortChange}
+                sortDir={colSortDirs.hashtag} >
+                RANK
+              </SortHeaderCell>}            
             cell={<RankCell data={sortedDataList} />}
-            width={30}
+            width={48}
+            fixed={true}
 
           />
           <Column
@@ -183,9 +211,8 @@ export default React.createClass({
                 NAME
               </SortHeaderCell>
             }
-            cell={<StatsCell data={sortedDataList} field='name' />}
-            width={150}
-
+            cell={<LinkCell data={sortedDataList} field='name' />}
+            width={200}
           />
           <Column
             columnKey='hashtag'
@@ -246,6 +273,7 @@ export default React.createClass({
             flexGrow={1}
           />
         </Table>
+        </div>
           </div>
         </section>
       </div>
