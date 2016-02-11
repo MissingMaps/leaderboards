@@ -100,7 +100,6 @@ export default React.createClass({
         </li>
       );
     });
-    console.log(component.state.lastRefresh)
 
     return (
       <section className="section-secondary">

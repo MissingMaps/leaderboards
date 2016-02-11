@@ -9,7 +9,8 @@ export default React.createClass({
     return {
       trending: [
       ],
-      all: []
+      all: [],
+      showModal: false
     };
   },
   componentDidMount: function () {
@@ -37,6 +38,9 @@ export default React.createClass({
       params = params + ',' + input;
       this.props.history.push('/' + params);
     }
+    this.setState({
+      showModal: false
+    });
   },
   kill: function (input) {
     var params = this.props.id;
@@ -44,7 +48,7 @@ export default React.createClass({
     this.props.history.push('/' + hashtags.join(','));
   },
   render: function () {
-    var component = this;
+    var list = this.props.id.split(',');
     return (
       <div>
         <Header />
@@ -53,24 +57,25 @@ export default React.createClass({
             <span className="section-headline section-headline__lighter">Hackathon</span>
             <h1 className="title title-leaderboard">
               {
-                this.props.id.split(',').map(function (hashtag) {
-                  return <span className="header-spacer-multiple">
-                    {hashtag}  <span>vs.</span>
+                list.map(function (hashtag, index) {
+                  return <span className="header-spacer-multiple" key={hashtag}>
+                    {hashtag} {(list.length > 1 && index < list.length - 1) ? <span>vs.</span> : <div style={{'display': 'none'}}></div>}
                   </span>;
                 })
               }
             </h1>
             <div className='Leaderboard-Navbar-Container'>
-              <a className="link-actionlink" href="/">Add Competitor</a>
-              <div className='LN-Hashtag-Container'>
-                {/*
-                  this.props.id.split(',').map(function (hashtag) {
-                    return <div className='Current-Hashtag'>
-                      <div className='killswitch' onClick={component.kill.bind(component, hashtag)}>x</div>
-                      #{hashtag}
-                    </div>;
-                  })
-                */}
+              <a className="link-actionlink" onClick={
+                (e) => {
+                  e.preventDefault();
+                  this.setState({
+                    showModal: !this.state.showModal
+                  });
+                }
+              }>Add Competitor</a>
+            <div className='LN-Hashtag-Container' style={{
+              'display': (this.state.showModal ? '' : 'none')
+            }}>
                 <div className="Input-hashtag">
                   <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
                 </div>
@@ -92,7 +97,7 @@ export default React.createClass({
             </div>
           </div>
         </section>
-      </div> 
+      </div>
     );
   }
 });

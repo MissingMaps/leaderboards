@@ -45,7 +45,7 @@ function StatsCell (props) {
   if (field === 'created_at') {
     display = moment(display).fromNow();
   } else if (field === 'roads') {
-    display = (display).toFixed(1)+ " km";
+    display = (display).toFixed(1) + ' km';
   }
   return (
     <Cell className='statsCell' {...other } >
@@ -59,7 +59,7 @@ const LinkCell = (props) => {
   if (!data[rowIndex]) return <Cell></Cell>;
 
   var userid = props.data[rowIndex].user_id;
-  var userlink = "http://devseed.com/osm-gamification-users/#/"+userid
+  var userlink = 'http://devseed.com/osm-gamification-users/#/' + userid;
   var userClass = data[rowIndex].team + '-name statsCell table-username';
 
   var display = data[rowIndex][field];
@@ -196,7 +196,7 @@ export default React.createClass({
                 onSortChange={this._onSortChange}
                 sortDir={colSortDirs.hashtag} >
                 RANK
-              </SortHeaderCell>}            
+              </SortHeaderCell>}
             cell={<RankCell data={sortedDataList} />}
             width={48}
             fixed={true}
