@@ -1261,3 +1261,21 @@ Leaderboard Styling
     transition: color 0.2s; }
     .table-username a:hover {
       color: #a3d16b; }
+
+.blueteam-name a {
+  color: #cbd75a;
+  transition: color 0.2s; }
+  .blueteam-name a:hover {
+    color: #97a328; }
+
+.redteam-name a {
+  color: #1ae5e5;
+  transition: color 0.2s; }
+  .redteam-name a:hover {
+    color: #108989; }
+
+.greenteam-name a {
+  color: #f69776;
+  transition: color 0.2s; }
+  .greenteam-name a:hover {
+    color: #f04f16; }

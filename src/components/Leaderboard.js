@@ -60,6 +60,7 @@ const LinkCell = (props) => {
 
   var userid = props.data[rowIndex].user_id;
   var userlink = "http://devseed.com/osm-gamification-users/#/"+userid
+  var userClass = data[rowIndex].team + '-name statsCell table-username';
 
   var display = data[rowIndex][field];
   if (field === 'created_at') {
@@ -67,7 +68,7 @@ const LinkCell = (props) => {
   }
 
   return (
-    <Cell className='statsCell table-username' {...other } >
+    <Cell className={userClass} {...other } >
       <a href={userlink}>{ display }</a>
     </Cell>
   );
@@ -108,7 +109,7 @@ export default React.createClass({
     });
 
     this.setState({
-      sortedDataList: R.sortBy(R.prop('edits'), list),
+      sortedDataList: R.reverse(R.sortBy(R.prop('edits'), list)),
       list: list,
       colSortDirs: {}
     });

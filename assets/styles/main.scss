@@ -1578,3 +1578,38 @@ $distfromtop: 50px;
   }
 }
 
+.blueteam-name {
+  a{
+    color: lighten(#bdcc32, 10);
+    transition: color 0.2s;
+    &:hover{
+      color: darken(#bdcc32, 10);    
+    }
+    &:visited{
+    }
+  }
+}
+
+.redteam-name {
+  a{
+    color: lighten(#15b7b7, 10);
+    transition: color 0.2s;
+    &:hover{
+      color: darken(#15b7b7, 10);    
+    }
+    &:visited{
+    }
+  }
+}
+
+.greenteam-name {
+  a{
+    color: lighten(#f37346, 10);
+    transition: color 0.2s;
+    &:hover{
+      color: darken(#f37346, 10);    
+    }
+    &:visited{
+    }
+  }
+}
