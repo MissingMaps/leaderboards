@@ -2,6 +2,7 @@ import React from 'react';
 import R from 'ramda';
 import Searchbar from 'react-search-bar';
 import fetch from 'isomorphic-fetch';
+import Header from '../components/Header.js';
 
 export default React.createClass({
   getInitialState: function () {
@@ -45,23 +46,41 @@ export default React.createClass({
   render: function () {
     var component = this;
     return (
-      <div className='Leaderboard-Navbar-Container'>
-        <div className='LN-Hashtag-Container'>
-          {
-            this.props.id.split(',').map(function (hashtag) {
-              return <div className='Current-Hashtag'>
-                <div className='killswitch' onClick={component.kill.bind(component, hashtag)}>x</div>
-                #{hashtag}
-              </div>;
-            })
-          }
-          <div className="Input-hashtag">
-            <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
+      <div>
+        <Header />
+        <section className="section-feature">
+          <div className="row">
+            <span className="section-headline section-headline__lighter">Hackathon</span>
+            <h1 className="title title-leaderboard">
+              {
+                this.props.id.split(',').map(function (hashtag) {
+                  return <div>
+                    {hashtag}
+                  </div>;
+                })
+              }
+            </h1>
+            <a className="" href="/">Add Competitor</a>
           </div>
-        </div>
-        <div className='LN-View-Navigation'>
-          <div className='View-Toggle'>Map View</div>
-          <div className='View-Toggle'>Leaderboards</div>
+        </section>
+        <div className='Leaderboard-Navbar-Container'>
+          <div className='LN-Hashtag-Container'>
+            {
+              this.props.id.split(',').map(function (hashtag) {
+                return <div className='Current-Hashtag'>
+                  <div className='killswitch' onClick={component.kill.bind(component, hashtag)}>x</div>
+                  #{hashtag}
+                </div>;
+              })
+            }
+            <div className="Input-hashtag">
+              <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
+            </div>
+          </div>
+          <div className='LN-View-Navigation'>
+            <div className='View-Toggle'>Map View</div>
+            <div className='View-Toggle'>Leaderboards</div>
+          </div>
         </div>
       </div>
     );
