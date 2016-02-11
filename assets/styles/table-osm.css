@@ -18,6 +18,11 @@
     font-weight: 300;
 }
 
+.fixedDataTableLayout_main, .public_fixedDataTable_main{
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
 .public_fixedDataTableRow_main {
   border-bottom: 1px solid #999;
 }

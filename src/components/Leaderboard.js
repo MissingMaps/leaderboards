@@ -161,6 +161,7 @@ export default React.createClass({
           </div>
         </div>
         <br />
+        <div className='Table-Container'>
         <Table
           rowsCount={sortedDataList.length}
           rowHeight={60}
@@ -172,6 +173,7 @@ export default React.createClass({
             header={<Cell className='LB-header-descriptor'></Cell>}
             cell={<RankCell data={sortedDataList} />}
             width={30}
+            fixed={true}
 
           />
           <Column
@@ -246,6 +248,7 @@ export default React.createClass({
             flexGrow={1}
           />
         </Table>
+        </div>
           </div>
         </section>
       </div>
