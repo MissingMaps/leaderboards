@@ -39,9 +39,19 @@ export default React.createClass({
   },
   componentDidMount: function (props) {
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('lastRefresh')) {
+      this.setState({
+        lastRefresh: props.lastRefresh
+      });
+    }
   },
   componentWillReceiveProps: function (props) {
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('lastRefresh')) {
+      this.setState({
+        lastRefresh: props.lastRefresh
+      });
+    }
   },
   render: function () {
     var component = this;
@@ -95,7 +105,7 @@ export default React.createClass({
       <section className="section-secondary">
         <div className="row">
           <div className="action-header">
-            <span className="action-header-text sub-text text-right">Refreshed: Jan 21, 2015  4:00pm</span>
+            <span className="action-header-text sub-text text-right">Refreshed: {moment(component.state.lastRefresh).calendar()}</span>
             <a className="refresh-page" href="/">Refresh</a>
           </div>
           <div className="competitor-cards-block">

@@ -8,7 +8,8 @@ export default React.createClass({
   getInitialState: function () {
     return {
       hashtags: {},
-      intervals: []
+      intervals: [],
+      lastRefresh: ''
     };
   },
   createIntervalsFromProps: function (props) {
@@ -38,6 +39,7 @@ export default React.createClass({
       .then(function (json) {
         var nextState = component.state;
         nextState.hashtags[hashtag] = json;
+        nextState.lastRefresh = new Date();
         component.setState(nextState);
       });
     };
@@ -58,7 +60,7 @@ export default React.createClass({
   render: function () {
     return (
       <div>
-        <HashtagStats colors={this.state.colors} rows={this.state.hashtags}/>
+        <HashtagStats colors={this.state.colors} rows={this.state.hashtags} refresh={this.state.lastRefresh}/>
         <Leaderboard colors={this.state.colors} rows={this.state.hashtags}/>
       </div>
     );
