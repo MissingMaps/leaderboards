@@ -54,35 +54,45 @@ export default React.createClass({
             <h1 className="title title-leaderboard">
               {
                 this.props.id.split(',').map(function (hashtag) {
-                  return <div>
-                    {hashtag}
-                  </div>;
+                  return <span className="header-spacer-multiple">
+                    {hashtag}  <span>vs.</span>
+                  </span>;
                 })
               }
             </h1>
-            <a className="" href="/">Add Competitor</a>
-          </div>
-        </section>
-        <div className='Leaderboard-Navbar-Container'>
-          <div className='LN-Hashtag-Container'>
-            {
-              this.props.id.split(',').map(function (hashtag) {
-                return <div className='Current-Hashtag'>
-                  <div className='killswitch' onClick={component.kill.bind(component, hashtag)}>x</div>
-                  #{hashtag}
-                </div>;
-              })
-            }
-            <div className="Input-hashtag">
-              <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
+            <div className='Leaderboard-Navbar-Container'>
+              <a className="link-actionlink" href="/">Add Competitor</a>
+              <div className='LN-Hashtag-Container'>
+                {/*
+                  this.props.id.split(',').map(function (hashtag) {
+                    return <div className='Current-Hashtag'>
+                      <div className='killswitch' onClick={component.kill.bind(component, hashtag)}>x</div>
+                      #{hashtag}
+                    </div>;
+                  })
+                */}
+                <div className="Input-hashtag">
+                  <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
+                </div>
+                <div className="dropdown-details">
+                  <h5 className="header-style__plain">Popular Options</h5>
+                  <ul>
+                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                  </ul>
+                </div>
+              </div>
+         {/*   <div className='LN-View-Navigation'>
+                <div className='View-Toggle'>Map View</div>
+                <div className='View-Toggle'>Leaderboards</div>
+              </div>*/}
             </div>
           </div>
-          <div className='LN-View-Navigation'>
-            <div className='View-Toggle'>Map View</div>
-            <div className='View-Toggle'>Leaderboards</div>
-          </div>
-        </div>
-      </div>
+        </section>
+      </div> 
     );
   }
 });

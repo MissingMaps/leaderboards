@@ -232,7 +232,7 @@ a:hover {
   text-transform: uppercase;
   letter-spacing: 0.07em;
   display: block;
-  margin-bottom: 0.5em;
+  margin-bottom: 0.7em;
   font-size: .9em; }
 
 .section-headline__lighter {
@@ -245,6 +245,9 @@ a:hover {
   margin-top: 1em;
   margin-bottom: 0px; }
 
+leaderboard-section-header {
+  color: #fff; }
+
 .sub-head {
   font-family: 'Lato';
   font-weight: 300;
@@ -254,6 +257,13 @@ a:hover {
 
 .sub-descriptor {
   font-size: .8em; }
+
+.dropdown-option {
+  font-size: .8em;
+  line-height: 2em; }
+
+.header-style__plain {
+  margin: 0 0 5px; }
 
 .textbox {
   padding-bottom: 0.5em;
@@ -761,7 +771,7 @@ table {
   margin-bottom: 1em; }
 
 .competitor-cards-block {
-  padding: 15px 0 50px; }
+  padding: 40px 0 50px; }
 
 .competitor-cards {
   clear: both; }
@@ -781,46 +791,11 @@ table {
     .competitor-cards .card .card-main {
       padding: 0 0 15px; }
     .competitor-cards .card .card-details {
-      padding: 15px 15px 0px;
+      padding: 15px 10px 0px;
       border-top: 1px solid #dbdbda;
       margin: 0px 5px; }
       .competitor-cards .card .card-details .card-num {
         font-weight: 700; }
-  .competitor-cards .more-options__options {
-    position: absolute;
-    margin: 14px 10px 10px 10px;
-    padding: 6px 10px 4px;
-    border: 1px solid #c6c7c7;
-    box-shadow: 0px 2px #dbdbda;
-    width: 110px;
-    background-color: white;
-    border-radius: 3px; }
-    .competitor-cards .more-options__options :before {
-      bottom: 100%;
-      left: 90%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-color: rgba(194, 225, 245, 0);
-      border-bottom-color: #c6c7c7;
-      border-width: 10px;
-      margin-left: -12px; }
-    .competitor-cards .more-options__options :after {
-      bottom: 100%;
-      left: 90%;
-      border: solid transparent;
-      content: " ";
-      height: 0;
-      width: 0;
-      position: absolute;
-      pointer-events: none;
-      border-color: rgba(49, 213, 213, 0);
-      border-bottom-color: white;
-      border-width: 9px;
-      margin-left: -11px; }
   .competitor-cards .competitor1 .card-num {
     color: #22bdc1; }
   .competitor-cards .competitor2 .card-num {
@@ -842,6 +817,65 @@ table {
     clear: right;
     margin-right: 0px; }
 
+.more-options__options, .LN-Hashtag-Container {
+  position: absolute;
+  margin: 14px 10px 10px 10px;
+  border: 1px solid #c6c7c7;
+  box-shadow: 0px 2px #dbdbda;
+  background-color: white;
+  border-radius: 3px;
+  z-index: 5; }
+  .more-options__options:before, .LN-Hashtag-Container:before {
+    bottom: 100%;
+    left: 90%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(194, 225, 245, 0);
+    border-bottom-color: #c6c7c7;
+    border-width: 10px;
+    margin-left: -60px; }
+  .more-options__options:after, .LN-Hashtag-Container:after {
+    bottom: 100%;
+    left: 90%;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(49, 213, 213, 0);
+    border-bottom-color: white;
+    border-width: 9px;
+    margin-left: -59px; }
+
+.more-options__options {
+  width: 110px;
+  padding: 6px 10px 4px; }
+
+.LN-Hashtag-Container {
+  left: 10;
+  width: 270px;
+  padding: 20px 15px 5px; }
+  .LN-Hashtag-Container:before {
+    margin-left: -240px; }
+  .LN-Hashtag-Container:after {
+    margin-left: -239px; }
+  @media screen and (max-width: 411px) {
+    .LN-Hashtag-Container {
+      left: 5px; } }
+  @media screen and (max-width: 320px) {
+    .LN-Hashtag-Container {
+      width: 80%; } }
+
+.dropdown-details {
+  padding: 18px 0 0;
+  margin-top: 20px;
+  border-top: 1px solid #dbdbda; }
+
 .Card-title {
   width: 100%;
   padding-top: 8px;
@@ -855,6 +889,9 @@ table {
   .action-header .sub-text {
     color: #c6c7c7;
     float: right; }
+
+.header-spacer-multiple {
+  padding-right: 10px; }
 
 .refresh-page {
   background-image: url("/assets/graphics/arrow-loop.svg");
@@ -884,7 +921,8 @@ table {
   display: block; }
 
 .tabbed-nav {
-  clear: both; }
+  clear: both;
+  padding-top: 40px; }
 
 .darker-card {
   margin-top: 1em;
@@ -929,6 +967,9 @@ table {
   margin-right: auto;
   margin-left: auto;
   padding: 0 20px; }
+  @media screen and (max-width: 320px) {
+    .row {
+      padding: 0 5px; } }
 
 .tab-style {
   float: left;
@@ -937,6 +978,13 @@ table {
 
 .active-tab {
   border-bottom: 3px solid #8bc544; }
+
+.link-actionlink {
+  margin-top: 10px;
+  display: block; }
+  @media screen and (max-width: 320px) {
+    .link-actionlink {
+      clear: both; } }
 
 /*----------------------------------------------*/
 /*Events Styles*/
@@ -1011,17 +1059,18 @@ Leaderboard Styling
 /*----------------------------------------------*/
 /* Leaderboard Navigation Bar */
 /*----------------------------------------------*/
-.Leaderboard-Navbar-Container {
+/*.Leaderboard-Navbar-Container{
   width: 100%;
-  background-color: rgba(0, 0, 0, 0.3);
-  height: 50px; }
+  background-color: $debug;
+  height: 50px;
+}
 
-.LN-Hashtag-Container {
+.LN-Hashtag-Container{
   width: 55%;
   height: 46px;
   margin: 2px;
-  display: inline-block; }
-
+  display: inline-block;
+}*/
 .LN-View-Navigation {
   width: 40%;
   height: 46px;
@@ -1041,24 +1090,31 @@ Leaderboard Styling
   position: relative; }
 
 .Input-Hashtag {
-  display: inline-block;
-  margin-left: 4px; }
+  display: inline-block; }
   .Input-Hashtag input {
-    border: 0px solid #dbdbda;
+    border: 1px solid #dbdbda;
     box-sizing: none;
-    width: auto;
     height: 26px;
-    margin: none;
+    margin: 0;
     color: #6e6f71;
     vertical-align: top;
-    margin-top: -18px;
-    -webkit-border-radius: 0px 5px 5px 0px;
+    -webkit-border-radius: 5px;
     background-color: #f4f4f4;
-    box-shadow: -1px -2px #dbdbda;
-    padding: 2px 6px 4px 6px;
     outline: none; }
     .Input-Hashtag input:focus {
       background-color: white; }
+  .Input-Hashtag .search-bar-input {
+    width: 160%; }
+  .Input-Hashtag .search-bar-submit {
+    background-color: #23bcc1;
+    position: absolute;
+    right: 4%;
+    top: 20px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+    color: #fff;
+    width: 70px;
+    height: 27px; }
 
 .additional {
   padding: 0px 10px;
