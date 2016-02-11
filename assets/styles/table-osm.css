@@ -37,13 +37,13 @@
 
 .public_fixedDataTableRow_highlighted,
 .public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
-   background-color: rgb(59,59,59) !important;
+   background-color: #3d3d3d !important;
 }
 
 .public_fixedDataTableRow_main,
 .public_fixedDataTableRow_main .public_fixedDataTableCell_main
  {
-   background-color: rgb(59,59,59) !important;
+   background-color: #3d3d3d !important;
 }
 
 a {
@@ -83,7 +83,7 @@ input[type="text"] {
     font-family: 'lato';
     font-size: 0.9em;
     width: 180px;
-    height: 24px;
+    height: 30px;
     margin: none;
     color: #606161;
     border: 1px solid #c6c7c7;
@@ -110,7 +110,8 @@ input[type="text"] {
 .search-glass {
     width: 16px;
     position: absolute;
-    top: 5px;
-    left: 9px;
+    top: 6px;
+    left: 8px;
     color: #eee;
+    font-size:1.4em;
 }

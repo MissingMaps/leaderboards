@@ -191,9 +191,14 @@ export default React.createClass({
           headerHeight={30}>
           <Column
             columnKey='Rank'
-            header={<Cell className='LB-header-descriptor'></Cell>}
+            header=
+              {<SortHeaderCell
+                onSortChange={this._onSortChange}
+                sortDir={colSortDirs.hashtag} >
+                RANK
+              </SortHeaderCell>}            
             cell={<RankCell data={sortedDataList} />}
-            width={45}
+            width={48}
             fixed={true}
 
           />
@@ -208,7 +213,6 @@ export default React.createClass({
             }
             cell={<LinkCell data={sortedDataList} field='name' />}
             width={200}
-
           />
           <Column
             columnKey='hashtag'
