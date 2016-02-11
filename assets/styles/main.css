@@ -245,6 +245,11 @@ a:hover {
   margin-top: 1em;
   margin-bottom: 0px; }
 
+.section-header__light {
+  display: inline;
+  float: left;
+  color: #fff; }
+
 .sub-head {
   font-family: 'Lato';
   font-weight: 300;
@@ -461,7 +466,8 @@ input[type='text']:before {
   display: inline-block; }
 
 .search-bar-input-test {
-  position: relative; }
+  float: right;
+  right: 20px; }
 
 .search-bar-side {
   height: 30px;
@@ -706,17 +712,17 @@ table {
     padding: 0px 12px;
     border-left: solid 1px #b3b3b3; }
   #Leaderboard-Container .LB-red {
-    background-color: #f26c59; }
+    background-color: #15b7b7; }
   #Leaderboard-Container .LB-blu {
-    background-color: #22bdc1; }
+    background-color: #bdcc32; }
   #Leaderboard-Container .LB-grn {
-    background-color: #A069E0; }
+    background-color: #f37346; }
   #Leaderboard-Container .LB-name-red {
-    color: #f26c59; }
+    color: #15b7b7; }
   #Leaderboard-Container .LB-name-blu {
-    color: #22bdc1; }
+    color: #bdcc32; }
   #Leaderboard-Container .LB-name-grn {
-    color: #A069E0; }
+    color: #f37346; }
 
 #Leaderboard-Header {
   width: 700px; }
@@ -822,11 +828,11 @@ table {
       border-width: 9px;
       margin-left: -11px; }
   .competitor-cards .competitor1 .card-num {
-    color: #22bdc1; }
+    color: #bdcc32; }
   .competitor-cards .competitor2 .card-num {
-    color: #f26c59; }
+    color: #15b7b7; }
   .competitor-cards .competitor3 .card-num {
-    color: #8bc544; }
+    color: #f37346; }
   .competitor-cards .competitor-winner .card-num, .competitor-cards .competitor-winner .Card-title {
     font-weight: 800; }
   .competitor-cards .feature-num {
@@ -921,7 +927,7 @@ table {
 
 .section-leaderboard {
   background-color: #3d3d3d;
-  padding: 50px 0; }
+  padding: 35px 0; }
 
 .row {
   position: relative;
@@ -937,6 +943,11 @@ table {
 
 .active-tab {
   border-bottom: 3px solid #8bc544; }
+
+.Table-Container {
+  margin-top: 50px; }
+  .Table-Container a {
+    color: #c6c7c7; }
 
 /*----------------------------------------------*/
 /*Events Styles*/
@@ -1250,3 +1261,35 @@ Leaderboard Styling
 .card-hack {
   background-color: #fff;
   padding: 15px; }
+
+.table-username {
+  font-weight: 600;
+  font-family: Hind;
+  margin-top: 1px;
+  margin-left: 4px; }
+  .table-username a {
+    color: #3bd6dc;
+    transition: color 0.2s; }
+    .table-username a:hover {
+      color: #a3d16b; }
+
+.blueteam-name a {
+  color: #cbd75a;
+  transition: color 0.2s; }
+  .blueteam-name a:hover {
+    color: #97a328; }
+
+.redteam-name a {
+  color: #1ae5e5;
+  transition: color 0.2s; }
+  .redteam-name a:hover {
+    color: #108989; }
+
+.greenteam-name a {
+  color: #f69776;
+  transition: color 0.2s; }
+  .greenteam-name a:hover {
+    color: #f04f16; }
+
+.testme {
+  display: inline-block; }
