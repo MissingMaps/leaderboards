@@ -53,12 +53,12 @@ export default React.createClass({
     });
   },
   fetchData: function (hashtag) {
-    return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users')
+    return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/users')
     .then(function (res) {
       return res.json();
     })
     .then(function (hashtagResult) {
-      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/' + hashtag + '/map')
+      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/map')
       .then(function (res) {
         return res.json();
       })
