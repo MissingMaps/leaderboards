@@ -1431,6 +1431,9 @@ $distfromtop: 50px;
   &:hover { 
     background-color: darken($mmTeal, 5);
   }
+  &:visited{
+    background-color: darken($mmTeal, 5);
+  }
 }
 
 .search-bar-suggestions { 
@@ -1726,14 +1729,18 @@ $distfromtop: 50px;
 }
 
 #MapContainer {
-  width: 96%;
+  width: 100%;
   min-width: 300px;
-  margin: 10 auto 20px auto;
+  padding: 35px 0 3em 0;
+  background-color: #3d3d3d;
 }
 
 .MapContent {
-  height: 360px;
-  padding: 10px;
+  width: 94%;
+  height: 84%;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto;
 }
 #map {
   width: 100%;
@@ -1741,4 +1748,9 @@ $distfromtop: 50px;
   border: solid 1px #ccc;
   box-shadow: 1px 2px 1px rgba( 55, 55, 55, .1);
 }
-
+.Map-Subtext{
+  float: right;
+  padding-top: 0.5em;
+  color: $lightgrey;
+  font-size: 0.9em;
+}

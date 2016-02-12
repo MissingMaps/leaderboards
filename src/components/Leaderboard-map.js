@@ -20,8 +20,8 @@ var styles = {
     'weight': 5,
     'opacity': 0.65
   }
-
 };
+
 function combineFC (elements) {
   var allFeatures = R.flatten(R.map(R.prop('features'), elements));
   return tfc(allFeatures);
@@ -94,6 +94,9 @@ export default React.createClass({
       <div id = "MapContainer">
         <div className = "MapContent">
           <div id="map"></div>
+          <div className = "Map-Subtext">
+            Map updates every 30 seconds to show the last 100 changesets made for the competing hashtags.
+          </div>
         </div>
       </div>);
   }
