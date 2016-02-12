@@ -1124,6 +1124,9 @@ Leaderboard Styling
 .search-bar-submit:hover, .search-bar-side:hover {
   background-color: #1fa7ab; }
 
+.search-bar-submit:visited, .search-bar-side:visited {
+  background-color: #1fa7ab; }
+
 .search-bar-suggestions {
   margin-top: 5px;
   position: absolute;
@@ -1361,3 +1364,28 @@ Leaderboard Styling
 
 .testme {
   display: inline-block; }
+
+#MapContainer {
+  width: 100%;
+  min-width: 300px;
+  padding: 35px 0 3em 0;
+  background-color: #3d3d3d; }
+
+.MapContent {
+  width: 94%;
+  height: 84%;
+  padding: 0 10px;
+  margin-left: auto;
+  margin-right: auto; }
+
+#map {
+  width: 100%;
+  height: 100%;
+  border: solid 1px #ccc;
+  box-shadow: 1px 2px 1px rgba(55, 55, 55, 0.1); }
+
+.Map-Subtext {
+  float: right;
+  padding-top: 0.5em;
+  color: #dbdbda;
+  font-size: 0.9em; }

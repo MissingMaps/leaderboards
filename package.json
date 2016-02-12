@@ -62,6 +62,7 @@
     "babel": "^5.8.34",
     "babel-core": "^5.8.34",
     "babel-eslint": "^4.1.6",
+    "bluebird": "^3.3.0",
     "brfs": "^1.4.2",
     "browserify": "^12.0.1",
     "chance": "^0.8.0",
@@ -75,6 +76,7 @@
     "fixed-data-table": "^0.6.0",
     "history": "^1.17.0",
     "isomorphic-fetch": "^2.2.0",
+    "leaflet": "^0.7.7",
     "lodash": "^4.0.1",
     "moment": "^2.11.2",
     "radium": "^0.16.5",
@@ -83,6 +85,8 @@
     "react-checkbox-group": "^0.3.1",
     "react-dom": "^0.14.5",
     "react-router": "^1.0.3",
-    "react-search-bar": "^1.1.4"
+    "react-search-bar": "^1.1.4",
+    "turf-extent": "^1.0.4",
+    "turf-featurecollection": "^1.0.1"
   }
 }
