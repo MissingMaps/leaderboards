@@ -41,6 +41,16 @@ export default React.createClass({
         nextState.lastRefresh = new Date();
         component.setState(nextState);
       });
+
+      fetch('http://192.168.99.100/hashtags/' + hashtag + '/maps')
+      .then(function (res) {
+        return res.json();
+      })
+      .then(function (json) {
+        var nextState = component.state;
+        nextState.features[hashtag] = json;
+        component.setState(nextState);
+      });
     };
     var interval = setInterval(fetchData, 30000);
     fetchData();
@@ -65,7 +75,8 @@ export default React.createClass({
             <HashtagStats colors={this.state.colors} rows={this.state.hashtags} refresh={this.state.lastRefresh}/>
             {this.props.children && React.cloneElement(this.props.children, {
               colors: this.state.colors,
-              rows: this.state.hashtags
+              rows: this.state.hashtags,
+              features: this.state.features
             })}
           </div>
         </div>
