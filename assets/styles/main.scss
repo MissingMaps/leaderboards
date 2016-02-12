@@ -1724,3 +1724,21 @@ $distfromtop: 50px;
 .testme{
   display: inline-block;
 }
+
+#MapContainer {
+  width: 96%;
+  min-width: 300px;
+  margin: 10 auto 20px auto;
+}
+
+.MapContent {
+  height: 360px;
+  padding: 10px;
+}
+#map {
+  width: 100%;
+  height: 100%;
+  border: solid 1px #ccc;
+  box-shadow: 1px 2px 1px rgba( 55, 55, 55, .1);
+}
+

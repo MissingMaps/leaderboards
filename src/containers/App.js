@@ -8,13 +8,15 @@ export default React.createClass({
     return {
       hashtags: {},
       intervals: [],
-      lastRefresh: ''
+      lastRefresh: '',
+      features: {}
     };
   },
   createIntervalsFromProps: function (props) {
     // Clear existing intervals
     R.map(clearInterval, this.state.intervals);
     this.state.hashtags = {};
+    this.state.features = {};
 
     var colorClasses = ['redteam', 'blueteam', 'greenteam'];
 
@@ -42,7 +44,7 @@ export default React.createClass({
         component.setState(nextState);
       });
 
-      fetch('http://192.168.99.100/hashtags/' + hashtag + '/maps')
+      fetch('http://192.168.99.100/hashtags/' + hashtag + '/map')
       .then(function (res) {
         return res.json();
       })
@@ -62,6 +64,7 @@ export default React.createClass({
     }
   },
   componentWillReceiveProps: function (nextProps) {
+    console.log('nextProps', nextProps);
     if (process.env.NODE_ENV === 'development') {
       this.createIntervalsFromProps(nextProps);
     }
