@@ -976,7 +976,7 @@ table{
     }
 
     .card-main {
-      padding: 0 0 15px;
+      padding: 30px 0 15px;
     }
 
     .card-details {
@@ -1030,7 +1030,15 @@ table{
   }
 }
 
-.more-options__options, .LN-Hashtag-Container {
+.more-options-container { 
+  float: right;
+  width: 34%;
+  @media screen and (max-width: 368px) {
+    width: 48%;
+  }
+}
+
+.more-options-module, .LN-Hashtag-Container {
   position: absolute;
   margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
@@ -1070,9 +1078,19 @@ table{
   }
 }
 
-.more-options__options {
+.more-options-module {
   width: 110px;
   padding: 6px 10px 4px;
+  &:before {
+    @media screen and (max-width: 368px) {
+      margin-left: -25px;
+    }
+  }
+  &:after {
+    @media screen and (max-width: 368px) {
+      margin-left: -24px;
+    }
+  }
 }
 
 .LN-Hashtag-Container {

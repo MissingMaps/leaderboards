@@ -58,7 +58,7 @@ export default React.createClass({
       return res.json();
     })
     .then(function (hashtagResult) {
-      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/' + hashtag + '/map')
+      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/map')
       .then(function (res) {
         return res.json();
       })
