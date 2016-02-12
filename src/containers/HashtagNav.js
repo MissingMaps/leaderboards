@@ -90,10 +90,6 @@ export default React.createClass({
                   </ul>
                 </div>
               </div>
-         {/*   <div className='LN-View-Navigation'>
-                <div className='View-Toggle'>Map View</div>
-                <div className='View-Toggle'>Leaderboards</div>
-              </div>*/}
             </div>
           </div>
         </section>

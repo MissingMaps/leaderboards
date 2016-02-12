@@ -1,11 +1,13 @@
 import React from 'react';
 import R from 'ramda';
 import moment from 'moment';
+import {Link, IndexLink} from 'react-router';
 
 export default React.createClass({
   getInitialState: function () {
     return {
-      hashtags: {}
+      hashtags: {},
+      url: ''
     };
   },
   createTotals: function (props) {
@@ -34,10 +36,12 @@ export default React.createClass({
     });
 
     this.setState({
-      hashtags: hashtags
+      hashtags: hashtags,
+      url: Object.keys(rows).join(',')
     });
   },
-  componentDidMount: function (props) {
+  componentDidMount: function () {
+    var props = this.props;
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
     if (props && props.hasOwnProperty('lastRefresh')) {
       this.setState({
@@ -115,8 +119,8 @@ export default React.createClass({
             </ul>
           </div>
           <ul className="tabbed-nav">
-            <li className="tab-style active-tab section-headline">Leaderboard</li>
-            <li className="tab-style section-headline">Map View</li>
+              <IndexLink to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</IndexLink>
+              <Link to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</Link>
           </ul>
         </div>
       </section>
