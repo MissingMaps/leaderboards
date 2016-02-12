@@ -789,7 +789,7 @@ table {
       padding: 5px 0 15px;
       margin: 0px; }
     .competitor-cards .card .card-main {
-      padding: 0 0 15px; }
+      padding: 30px 0 15px; }
     .competitor-cards .card .card-details {
       padding: 15px 10px 0px;
       border-top: 1px solid #dbdbda;
@@ -817,7 +817,14 @@ table {
     clear: right;
     margin-right: 0px; }
 
-.more-options__options, .LN-Hashtag-Container {
+.more-options-container {
+  float: right;
+  width: 34%; }
+  @media screen and (max-width: 368px) {
+    .more-options-container {
+      width: 48%; } }
+
+.more-options-module, .LN-Hashtag-Container {
   position: absolute;
   margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
@@ -825,7 +832,7 @@ table {
   background-color: white;
   border-radius: 3px;
   z-index: 5; }
-  .more-options__options:before, .LN-Hashtag-Container:before {
+  .more-options-module:before, .LN-Hashtag-Container:before {
     bottom: 100%;
     left: 90%;
     border: solid transparent;
@@ -838,7 +845,7 @@ table {
     border-bottom-color: #c6c7c7;
     border-width: 10px;
     margin-left: -60px; }
-  .more-options__options:after, .LN-Hashtag-Container:after {
+  .more-options-module:after, .LN-Hashtag-Container:after {
     bottom: 100%;
     left: 90%;
     border: solid transparent;
@@ -852,9 +859,15 @@ table {
     border-width: 9px;
     margin-left: -59px; }
 
-.more-options__options {
+.more-options-module {
   width: 110px;
   padding: 6px 10px 4px; }
+  @media screen and (max-width: 368px) {
+    .more-options-module:before {
+      margin-left: -25px; } }
+  @media screen and (max-width: 368px) {
+    .more-options-module:after {
+      margin-left: -24px; } }
 
 .LN-Hashtag-Container {
   left: 10;

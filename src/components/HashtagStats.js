@@ -84,7 +84,12 @@ export default React.createClass({
       }
       return (
         <li className={className} key={key}>
-          <a className="more-options" href="/">More Options</a>
+          <div className="more-options-container">
+            <a className="more-options" href="/">More Options</a>
+            <div className="more-options-module">
+              <span>Delete</span>
+            </div>
+          </div>
           <div className="card-main">
             <h2 className="Card-title">{key}</h2>
             <span className="card-num feature-num">{totals.edits}</span>
