@@ -45,7 +45,10 @@ export default React.createClass({
         layers[hashtag].addData(combineFC(features[hashtag]));
       } else {
         layers[hashtag] = L.geoJson(combineFC(features[hashtag]), {
-          style: styles[props.colors[hashtag]]
+          style: styles[props.colors[hashtag]],
+          pointToLayer: function (feature, latlng) {
+            return L.circleMarker(latlng, {'opacity': 0, radius: 0.1});
+          }
         });
         layers[hashtag].addTo(map);
       }
@@ -62,6 +65,7 @@ export default React.createClass({
     L.tileLayer('http://api.tiles.mapbox.com/v4/mapbox.light/{z}/{x}/{y}.png?access_token=pk.eyJ1Ijoic3RhdGVvZnNhdGVsbGl0ZSIsImEiOiJlZTM5ODI5NGYwZWM2MjRlZmEyNzEyMWRjZWJlY2FhZiJ9.omsA8QDSKggbxiJjumiA_w.', {
       attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
     }).addTo(map);
+    L.Icon.Default.imagePath = 'assets/images/';
 
     this.map = map;
 
@@ -85,8 +89,7 @@ export default React.createClass({
     if (props &&
         props.hasOwnProperty('features') &&
           Object.keys(props.features).length) {
-      var extent = this.addToMap(props);
-      this.map.fitBounds(extent);
+      this.addToMap(props);
     }
   },
   render: function () {
