@@ -15,7 +15,7 @@ export default React.createClass({
   },
   componentDidMount: function () {
     var component = this;
-    fetch('http://missingmaps-api.devseed.com/hashtags')
+    fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags')
     .then(function (res) {
       return res.json();
     })
