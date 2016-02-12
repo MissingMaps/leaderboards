@@ -76,6 +76,7 @@ export default React.createClass({
     });
   },
   componentWillReceiveProps: function (nextProps) {
+    console.log(nextProps);
     Object.keys(this.state.layers).forEach((layerKey) => {
       this.state.map.removeLayer(this.state.layers[layerKey]);
     });
@@ -84,7 +85,7 @@ export default React.createClass({
     if (props &&
         props.hasOwnProperty('features') &&
           Object.keys(props.features).length) {
-      var extent = this.addToMap(this.props);
+      var extent = this.addToMap(props);
       this.map.fitBounds(extent);
     }
   },

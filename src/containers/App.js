@@ -2,6 +2,7 @@ import React from 'react';
 import HashtagNav from '../containers/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
 import R from 'ramda';
+import Promise from 'bluebird';
 
 export default React.createClass({
   getInitialState: function () {
@@ -22,7 +23,28 @@ export default React.createClass({
 
     // Create new intervals
     var hashtags = R.split(',', props.params.id);
-    R.map(this.createInterval, hashtags);
+
+    var component = this;
+    var fetchAll = function () {
+      return Promise.map(hashtags, function (hashtag) {
+        return component.fetchData(hashtag);
+      }).then(function (results) {
+        var nextState = {
+          hashtags: {},
+          features: {}
+        };
+        results.forEach(function (result) {
+          nextState.hashtags = R.merge(nextState.hashtags, result.hashtags);
+          nextState.features = R.merge(nextState.features, result.features);
+        });
+        return nextState;
+      }).then(function (nextState) {
+        component.setState(nextState);
+      });
+    };
+    var interval = setInterval(fetchAll, 30000);
+    fetchAll();
+    this.state.intervals.push(interval);
 
     // Not efficient use of setState
     var colors = R.zipObj(hashtags, colorClasses);
@@ -30,33 +52,26 @@ export default React.createClass({
       colors: colors
     });
   },
-  createInterval: function (hashtag) {
-    var component = this;
-    var fetchData = () => {
-      fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users')
+  fetchData: function (hashtag) {
+    return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users')
+    .then(function (res) {
+      return res.json();
+    })
+    .then(function (hashtagResult) {
+      return fetch('http://192.168.99.100/hashtags/' + hashtag + '/map')
       .then(function (res) {
         return res.json();
       })
-      .then(function (json) {
-        var nextState = component.state;
-        nextState.hashtags[hashtag] = json;
-        nextState.lastRefresh = new Date();
-        component.setState(nextState);
+      .then(function (mapResult) {
+        var nextState = {
+          hashtags: {},
+          features: {}
+        };
+        nextState.hashtags[hashtag] = hashtagResult;
+        nextState.features[hashtag] = mapResult;
+        return nextState;
       });
-
-      fetch('http://192.168.99.100/hashtags/' + hashtag + '/map')
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (json) {
-        var nextState = component.state;
-        nextState.features[hashtag] = json;
-        component.setState(nextState);
-      });
-    };
-    var interval = setInterval(fetchData, 30000);
-    fetchData();
-    this.state.intervals.push(interval);
+    });
   },
   componentDidMount: function () {
     if (process.env.NODE_ENV === 'development') {
