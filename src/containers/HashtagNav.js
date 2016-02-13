@@ -42,11 +42,6 @@ export default React.createClass({
       showModal: false
     });
   },
-  kill: function (input) {
-    var params = this.props.id;
-    var hashtags = R.without([input], params.split(','));
-    this.props.history.push('/' + hashtags.join(','));
-  },
   render: function () {
     var list = this.props.id.split(',');
     return (
