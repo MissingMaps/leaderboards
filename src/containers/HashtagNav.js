@@ -21,12 +21,13 @@ export default React.createClass({
     })
     .then(function (results) {
       component.setState({
-        trending: results
+        all: results.hashtags,
+        trending: results.trending
       });
     });
   },
   onChange: function (input, resolve) {
-    var arr = this.state.trending.filter(function (word) {
+    var arr = this.state.all.filter(function (word) {
       return word.toLowerCase().startsWith(input.toLowerCase());
     });
     resolve(arr);
@@ -42,13 +43,9 @@ export default React.createClass({
       showModal: false
     });
   },
-  kill: function (input) {
-    var params = this.props.id;
-    var hashtags = R.without([input], params.split(','));
-    this.props.history.push('/' + hashtags.join(','));
-  },
   render: function () {
     var list = this.props.id.split(',');
+    var component = this;
     return (
       <div>
         <Header />
@@ -64,7 +61,7 @@ export default React.createClass({
                 })
               }
             </h1>
-            <div className='Leaderboard-Navbar-Container'>
+            <div className='Leaderboard-Navbar-Container' style={{'display': ((list.length < 3) ? '' : 'none')}}>
               <a className="link-actionlink" onClick={
                 (e) => {
                   e.preventDefault();
@@ -82,11 +79,16 @@ export default React.createClass({
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>
                   <ul>
-                    <li className="dropdown-option"><a href="#">Option 1</a></li>
-                    <li className="dropdown-option"><a href="#">Option 1</a></li>
-                    <li className="dropdown-option"><a href="#">Option 1</a></li>
-                    <li className="dropdown-option"><a href="#">Option 1</a></li>
-                    <li className="dropdown-option"><a href="#">Option 1</a></li>
+                    {
+                      this.state.trending.map(function (hashtag) {
+                        return <li className="dropdown-option" key={hashtag}><a href="#" onClick={
+                          (e) => {
+                            e.preventDefault();
+                            component.onSubmit(hashtag);
+                          }
+                        }>{hashtag}</a></li>;
+                      })
+                    }
                   </ul>
                 </div>
               </div>
