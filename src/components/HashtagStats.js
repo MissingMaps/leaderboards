@@ -64,7 +64,12 @@ export default React.createClass({
   deleteHashtag: function (input) {
     var params = this.props.id;
     var hashtags = R.without([input], params.split(','));
-    this.props.history.push('/' + hashtags.join(','));
+    var mapLocation = R.match(/\/.+\/map/, this.props.location.pathname).length;
+    if (mapLocation > 0) {
+      this.props.history.push('/' + hashtags.join(',') + '/map');
+    } else {
+      this.props.history.push('/' + hashtags.join(','));
+    }
   },
   render: function () {
     var component = this;
