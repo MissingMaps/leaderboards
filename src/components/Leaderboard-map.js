@@ -32,7 +32,8 @@ export default React.createClass({
     return {
       map: {},
       position: [0, 0],
-      layers: {}
+      layers: {},
+      numLayersHasChanged: false
     };
   },
   addToMap: function (props) {
@@ -80,16 +81,24 @@ export default React.createClass({
     });
   },
   componentWillReceiveProps: function (nextProps) {
-    console.log(nextProps);
-    Object.keys(this.state.layers).forEach((layerKey) => {
+    var layers = Object.keys(this.state.layers);
+    var numLayers = layers.length;
+    var numLayersHasChanged = (Object.keys(nextProps.features).length !== numLayers);
+
+    layers.forEach((layerKey) => {
       this.state.map.removeLayer(this.state.layers[layerKey]);
     });
     this.state.layers = {};
     var props = nextProps;
+
     if (props &&
         props.hasOwnProperty('features') &&
           Object.keys(props.features).length) {
-      this.addToMap(props);
+      var extent = this.addToMap(props);
+
+      if (numLayersHasChanged) {
+        this.map.fitBounds(extent);
+      }
     }
   },
   render: function () {
