@@ -90,7 +90,13 @@ export default React.createClass({
         <div>
           <div id = "Page-Container">
             <HashtagNav id={this.props.params.id} history={this.props.history}/>
-            <HashtagStats colors={this.state.colors} rows={this.state.hashtags} refresh={this.state.lastRefresh}/>
+            <HashtagStats
+              colors={this.state.colors}
+              rows={this.state.hashtags}
+              refresh={this.state.lastRefresh}
+              id={this.props.params.id}
+              history={this.props.history} />
+
             {this.props.children && React.cloneElement(this.props.children, {
               colors: this.state.colors,
               rows: this.state.hashtags,

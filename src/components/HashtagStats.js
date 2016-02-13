@@ -2,6 +2,7 @@ import React from 'react';
 import R from 'ramda';
 import moment from 'moment';
 import {Link, IndexLink} from 'react-router';
+import HashtagCard from './HashtagCard.js';
 
 export default React.createClass({
   getInitialState: function () {
@@ -57,6 +58,15 @@ export default React.createClass({
       });
     }
   },
+  moreOptionsClick: function (event) {
+    event.preventDefault();
+    console.log(event.target);
+  },
+  deleteHashtag: function (input) {
+    var params = this.props.id;
+    var hashtags = R.without([input], params.split(','));
+    this.props.history.push('/' + hashtags.join(','));
+  },
   render: function () {
     var component = this;
     var cards = R.sortBy(function (key) {
@@ -65,49 +75,31 @@ export default React.createClass({
     .reverse()
     .map(function (key, index) {
       var totals = component.state.hashtags[key];
-      var className = 'card';
+      var isWinner = false;
+      var color = 'competitor1';
       switch (totals.color) {
         case 'blueteam':
-          className += ' competitor1';
+          color = 'competitor1';
           break;
         case 'redteam':
-          className += ' competitor2';
+          color = 'competitor2';
           break;
         case 'greenteam':
-          className += ' competitor3';
+          color = 'competitor3';
           break;
         default:
-          className += ' competitor1';
+          color = 'competitor1';
       }
       if (index === 0) {
-        className += ' competitor-winner';
+        isWinner = true;
       }
-      return (
-        <li className={className} key={key}>
-          <div className="more-options-container">
-            <a className="more-options" href="/">More Options</a>
-            <div className="more-options-module">
-              <span>Delete</span>
-            </div>
-          </div>
-          <div className="card-main">
-            <h2 className="Card-title">{key}</h2>
-            <span className="card-num feature-num">{totals.edits}</span>
-            <span className="text-center sub-descriptor">Total Points</span>
-          </div>
-          <div className="card-details">
-            <div className="card-buildings">
-              <span className="card-num">{totals.buildings} </span>
-              <span className="sub-descriptor">Buildings</span>
-            </div>
-            <div>
-              <span className="card-num">{totals.roads} </span>
-              <span className="sub-descriptor">km Roads</span>
-            </div>
-            <span className="sub-text text-center">Last Commit: {moment(totals.last_update).fromNow()}</span>
-          </div>
-        </li>
-      );
+      return <HashtagCard
+                isWinner={isWinner}
+                color={color}
+                totals={totals}
+                hashtag={key}
+                key={key}
+                deleteHashtag={component.deleteHashtag} />;
     });
 
     return (
