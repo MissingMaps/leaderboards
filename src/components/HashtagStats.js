@@ -43,7 +43,10 @@ export default React.createClass({
   },
   componentDidMount: function () {
     var props = this.props;
-    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows') &&
+        Object.keys(props.rows).length > 0) {
+      this.createTotals(props);
+    }
     if (props && props.hasOwnProperty('lastRefresh')) {
       this.setState({
         lastRefresh: props.lastRefresh
@@ -57,10 +60,6 @@ export default React.createClass({
         lastRefresh: props.lastRefresh
       });
     }
-  },
-  moreOptionsClick: function (event) {
-    event.preventDefault();
-    console.log(event.target);
   },
   deleteHashtag: function (input) {
     var params = this.props.id;
