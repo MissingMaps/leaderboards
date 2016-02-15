@@ -3,6 +3,7 @@ import R from 'ramda';
 import Searchbar from 'react-search-bar';
 import fetch from 'isomorphic-fetch';
 import Header from '../components/Header.js';
+import Footer from '../components/Footer.js'
 
 export default React.createClass({
   getInitialState: function () {
@@ -100,7 +101,7 @@ export default React.createClass({
             </div>
           </div>
         </section>
-      </div>
+     </div>
     );
   }
 });
