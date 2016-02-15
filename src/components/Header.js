@@ -5,7 +5,7 @@ export default function () {
 		<header>
 			<div className="navbar-background">
 				<div className="nav-icon">
-					<a href="{{site.baseurl}}/">
+					<a href="/">
 						<img src="../assets/graphics/MissingMapsLogo-White.svg" width="94px"></img>
 					</a>
 				</div>
