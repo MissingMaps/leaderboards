@@ -56,7 +56,7 @@ export default React.createClass({
         <Header />
         <section className="section-feature">
           <div className="row">
-            <span className="section-headline section-headline__lighter">Hackathon</span>
+            <span className="section-headline section-headline__lighter">Leaderboard</span>
             <h1 className="title title-leaderboard">
               {
                 list.map(function (hashtag, index) {
