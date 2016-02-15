@@ -74,7 +74,6 @@ header{
   height: 52px;
   color: $lightgrey;
   display: inline-block;
-  position:absolute;
   z-index:9999;
   ul{
     display: inline-block;
@@ -225,7 +224,7 @@ header{
     position: absolute;
     background-color: lighten($darkestgrey, 10);
     width: 100%;
-    z-index: 1;
+    z-index:9999;
     top:52px;
     left: 0px;
     a{
