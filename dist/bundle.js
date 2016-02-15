@@ -42195,10 +42195,7 @@ var ReactDOMOption = {
       }
     });
 
-    if (content) {
-      nativeProps.children = content;
-    }
-
+    nativeProps.children = content;
     return nativeProps;
   }
 
@@ -48328,7 +48325,7 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.7';
+module.exports = '0.14.6';
 },{}],218:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -49420,7 +49417,6 @@ var warning = require('fbjs/lib/warning');
  */
 var EventInterface = {
   type: null,
-  target: null,
   // currentTarget is set when dispatching; no use in copying it here
   currentTarget: emptyFunction.thatReturnsNull,
   eventPhase: null,
@@ -49454,6 +49450,8 @@ function SyntheticEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEvent
   this.dispatchConfig = dispatchConfig;
   this.dispatchMarker = dispatchMarker;
   this.nativeEvent = nativeEvent;
+  this.target = nativeEventTarget;
+  this.currentTarget = nativeEventTarget;
 
   var Interface = this.constructor.Interface;
   for (var propName in Interface) {
@@ -49464,11 +49462,7 @@ function SyntheticEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEvent
     if (normalize) {
       this[propName] = normalize(nativeEvent);
     } else {
-      if (propName === 'target') {
-        this.target = nativeEventTarget;
-      } else {
-        this[propName] = nativeEvent[propName];
-      }
+      this[propName] = nativeEvent[propName];
     }
   }
 
@@ -53102,8 +53096,8 @@ exports.default = function () {
         { className: "nav-icon" },
         _react2.default.createElement(
           "a",
-          { href: "/" },
-          _react2.default.createElement("img", { src: "assets/graphics/MissingMapsLogo-White.svg", width: "94px" })
+          { href: "http://missingmaps-demo.devseed.com/" },
+          _react2.default.createElement("img", { src: "./assets/graphics/MissingMapsLogo-White.svg", width: "94px" })
         )
       ),
       _react2.default.createElement(
@@ -53114,7 +53108,7 @@ exports.default = function () {
           null,
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/contribute/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53123,7 +53117,7 @@ exports.default = function () {
           ),
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/events/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53132,7 +53126,7 @@ exports.default = function () {
           ),
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/about/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53148,7 +53142,7 @@ exports.default = function () {
               { className: "dropdown-content" },
               _react2.default.createElement(
                 "a",
-                { href: "" },
+                { href: "http://missingmaps-users-demo.devseed.com/" },
                 _react2.default.createElement(
                   "div",
                   { className: "nav-item" },
@@ -53157,7 +53151,7 @@ exports.default = function () {
               ),
               _react2.default.createElement(
                 "a",
-                { href: "" },
+                { href: "http://missingmaps-leaderboards-demo.devseed.com/" },
                 _react2.default.createElement(
                   "div",
                   { className: "nav-item" },
@@ -53182,7 +53176,7 @@ exports.default = function () {
         { className: "resp-dropdown-content" },
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/contribute/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53191,7 +53185,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/events/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53200,7 +53194,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/about/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53209,7 +53203,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-users-demo.devseed.com" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53218,7 +53212,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-leaderboards-demo.devseed.com" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53383,11 +53377,11 @@ exports.default = _react2.default.createClass({
 },{"leaflet":101,"ramda":105,"react":262,"turf-extent":264,"turf-featurecollection":265}],274:[function(require,module,exports){
 'use strict';
 
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
