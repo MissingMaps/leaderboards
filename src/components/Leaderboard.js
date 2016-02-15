@@ -92,7 +92,9 @@ export default React.createClass({
     return {
       sortedDataList: [],
       list: [],
-      colSortDirs: {}
+      colSortDirs: {
+        'edits': 'ASC'
+      }
     };
   },
   setTableData: function (props) {
@@ -108,10 +110,16 @@ export default React.createClass({
       });
     });
 
+    // Sort
+    var sortedList = list;
+    var colSortKeys = Object.keys(this.state.colSortDirs);
+    var key = colSortKeys[0];
+    var dir = this.state.colSortDirs[key];
+    sortedList = this._sort(list, key, dir);
+
     this.setState({
-      sortedDataList: R.reverse(R.sortBy(R.prop('edits'), list)),
-      list: list,
-      colSortDirs: {}
+      sortedDataList: sortedList,
+      list: list
     });
   },
   componentDidMount: function (props) {
@@ -139,9 +147,7 @@ export default React.createClass({
       sortedDataList: filteredList
     });
   },
-  _onSortChange: function (columnKey, sortDir) {
-    var list = this.state.sortedDataList;
-
+  _sort: function (list, columnKey, sortDir) {
     var sortedList = list;
     if (columnKey === 'created_at') {
       sortedList = R.sortBy(function (element) {
@@ -154,6 +160,13 @@ export default React.createClass({
     if (sortDir === SortTypes.ASC) {
       sortedList = R.reverse(sortedList);
     }
+    return sortedList;
+  },
+  _onSortChange: function (columnKey, sortDir) {
+    var list = this.state.sortedDataList;
+
+    var sortedList = this._sort(list, columnKey, sortDir);
+
     this.setState({
       sortedDataList: sortedList,
       colSortDirs: {
