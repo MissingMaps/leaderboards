@@ -12,7 +12,7 @@ var history = createHashHistory({
 
 ReactDOM.render((
   <Router history={history}>
-    <Redirect from="/" to="/MissingMaps" />
+    <Redirect from="/" to="/missingmaps" />
     <Route path="/:id" component={App}>
       <IndexRoute component={Leaderboard} />
       <Route path="/:id/map" component={LeaderboardMap} />
