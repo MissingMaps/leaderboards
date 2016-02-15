@@ -5,8 +5,9 @@
   "main": "index.js",
   "scripts": {
     "start": "NODE_ENV=development budo src/index.js:bundle.js --live & npm run watch-sass",
-    "build-dev": "NODE_ENV=development browserify src/index.js -o bundle.js",
-    "build-prod": "NODE_ENV=production browserify src/index.js -o bundle.js",
+    "build-dev": "npm run cp-static && NODE_ENV=development browserify src/index.js -o dist/bundle.js",
+    "build-prod": "npm run cp-static && NODE_ENV=production browserify src/index.js -o dist/bundle.js",
+    "cp-static": "cp index.html dist/index.html && cp -r assets dist/",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
     "build-sass": "node-sass assets/styles/main.scss assets/styles/main.css",
