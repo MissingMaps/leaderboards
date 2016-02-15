@@ -20,7 +20,7 @@ ul {
   margin-bottom: 0.5em; }
 
 body {
-  background-color: #F2F2F2; }
+  background-color: #3d3d3d; }
 
 ::-moz-selection {
   /* Code for Firefox */
@@ -45,7 +45,6 @@ header {
   height: 52px;
   color: #dbdbda;
   display: inline-block;
-  position: absolute;
   z-index: 9999;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; }
@@ -172,7 +171,7 @@ header {
   position: absolute;
   background-color: #4a4a4a;
   width: 100%;
-  z-index: 1;
+  z-index: 9999;
   top: 52px;
   left: 0px; }
   .resp-dropdown-content a {
@@ -1059,6 +1058,14 @@ Leaderboard Styling
 
 .push-down {
   padding-top: 70px; }
+
+.footer-mm {
+  height: 50px;
+  width: 100%;
+  line-height: 50px;
+  color: #dbdbda;
+  background-color: #303030;
+  text-align: center; }
 
 /*----------------------------------------------*/
 /*               OLD STYLE                      */

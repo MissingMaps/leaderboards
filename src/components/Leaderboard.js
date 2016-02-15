@@ -2,6 +2,7 @@ import React from 'react';
 import {Cell, Table, Column} from 'fixed-data-table';
 import R from 'ramda';
 import moment from 'moment';
+import Footer from '../components/Footer.js';
 
 var SortTypes = {
   ASC: 'ASC',
@@ -277,6 +278,7 @@ export default React.createClass({
         </div>
           </div>
         </section>
+        <Footer />
       </div>
     );
   }
