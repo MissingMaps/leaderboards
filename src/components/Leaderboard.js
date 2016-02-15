@@ -114,7 +114,8 @@ export default React.createClass({
       colSortDirs: {}
     });
   },
-  componentDidMount: function (props) {
+  componentDidMount: function () {
+    var props = this.props;
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.setTableData(props);
   },
   componentWillReceiveProps: function (props) {

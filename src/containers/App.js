@@ -2,106 +2,135 @@ import React from 'react';
 import HashtagNav from '../containers/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
 import R from 'ramda';
-import Promise from 'bluebird';
 
 export default React.createClass({
   getInitialState: function () {
     return {
+      colors: {},
       hashtags: {},
-      intervals: [],
-      lastRefresh: '',
-      features: {}
+      intervals: {},
+      lastRefresh: ''
     };
   },
-  createIntervalsFromProps: function (props) {
-    // Clear existing intervals
-    R.map(clearInterval, this.state.intervals);
-    this.state.hashtags = {};
-    this.state.features = {};
-
+  initializeIntervals: function (props) {
+    var hashtags = R.split(',', props.params.id);
     var colorClasses = ['redteam', 'blueteam', 'greenteam'];
 
-    // Create new intervals
-    var hashtags = R.split(',', props.params.id);
-
+    var intervals = {};
+    var colors = {};
     var component = this;
-    var fetchAll = function () {
-      return Promise.map(hashtags, function (hashtag) {
-        return component.fetchData(hashtag);
-      }).then(function (results) {
-        var nextState = {
-          hashtags: {},
-          features: {}
-        };
-        results.forEach(function (result) {
-          nextState.hashtags = R.merge(nextState.hashtags, result.hashtags);
-          nextState.features = R.merge(nextState.features, result.features);
-        });
-        return nextState;
-      }).then(function (nextState) {
-        component.setState(nextState);
-      });
-    };
-    var interval = setInterval(fetchAll, 30000);
-    fetchAll();
-    this.state.intervals.push(interval);
+    hashtags.forEach(function (hashtag, index) {
+      intervals[hashtag] = setInterval(() => {
+        component.fetchData(hashtag);
+      }, 30000);
+      component.fetchData(hashtag);
+      colors[hashtag] = colorClasses[index];
+    });
 
-    // Not efficient use of setState
-    var colors = R.zipObj(hashtags, colorClasses);
-    this.setState({
+    component.setState({
+      intervals: intervals,
       colors: colors
     });
   },
   fetchData: function (hashtag) {
-    return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/users')
+    var component = this;
+    return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' +
+                 hashtag + '/users')
     .then(function (res) {
       return res.json();
     })
     .then(function (hashtagResult) {
-      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/map')
+      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' +
+                   hashtag + '/map')
       .then(function (res) {
         return res.json();
       })
       .then(function (mapResult) {
-        var nextState = {
-          hashtags: {},
-          features: {}
+        var state = component.state;
+        state.hashtags[hashtag] = {
+          users: hashtagResult,
+          features: mapResult
         };
-        nextState.hashtags[hashtag] = hashtagResult;
-        nextState.features[hashtag] = mapResult;
-        return nextState;
+        component.setState(state);
       });
     });
   },
   componentDidMount: function () {
-    if (process.env.NODE_ENV === 'development') {
-      this.createIntervalsFromProps(this.props);
-    }
+    this.initializeIntervals(this.props);
   },
   componentWillReceiveProps: function (nextProps) {
-    console.log('nextProps', nextProps);
-    if (process.env.NODE_ENV === 'development') {
-      this.createIntervalsFromProps(nextProps);
+    var newHashtags = R.split(',', nextProps.params.id);
+    var currentHashtags = Object.keys(this.state.hashtags);
+    if (newHashtags.length < currentHashtags.length) {
+      this.handleHashtagDelete(R.difference(currentHashtags, newHashtags));
+    } else if (newHashtags.length > currentHashtags.length) {
+      this.handleHashtagAdd(R.difference(newHashtags, currentHashtags));
+    } else {
+      console.log('here');
     }
   },
+  handleHashtagDelete: function (hashtags) {
+    var component = this;
+    hashtags.forEach(function (hashtag) {
+      var state = component.state;
+      delete state.hashtags[hashtag];
+      delete state.colors[hashtag];
+      clearInterval(state.intervals[hashtag]);
+      component.setState(state);
+    });
+  },
+  handleHashtagAdd: function (hashtags) {
+    var component = this;
+    var colorClasses = ['redteam', 'blueteam', 'greenteam'];
+    hashtags.forEach(function (hashtag) {
+      var intervals = component.state.intervals;
+      var colors = component.state.colors;
+      var interval = setInterval(() => {
+        component.fetchData(hashtag);
+      }, 30000);
+      component.fetchData(hashtag);
+      var currentColors = R.values(colors);
+      var toPick = R.difference(colorClasses, currentColors);
+      colors[hashtag] = toPick[0];
+      intervals[hashtag] = interval;
+      component.setState({
+        intervals: intervals,
+        colors: colors
+      });
+    });
+  },
   render: function () {
+    var users = {}; var features = {};
+    var hashtags = this.state.hashtags;
+    Object.keys(hashtags).forEach((hashtag) => {
+      users[hashtag] = hashtags[hashtag].users;
+      features[hashtag] = hashtags[hashtag].features;
+    });
     return (
       <div>
         <div>
           <div id = "Page-Container">
-            <HashtagNav id={this.props.params.id} history={this.props.history}/>
+            <HashtagNav
+              id={this.props.params.id}
+              history={this.props.history}
+              location={this.props.location}
+            />
             <HashtagStats
               colors={this.state.colors}
-              rows={this.state.hashtags}
+              rows={users}
               refresh={this.state.lastRefresh}
               id={this.props.params.id}
-              history={this.props.history} />
+              history={this.props.history}
+              location={this.props.location}
+            />
 
-            {this.props.children && React.cloneElement(this.props.children, {
-              colors: this.state.colors,
-              rows: this.state.hashtags,
-              features: this.state.features
-            })}
+            {
+              this.props.children && React.cloneElement(this.props.children, {
+                colors: this.state.colors,
+                rows: users,
+                features: features
+              })
+            }
           </div>
         </div>
       </div>

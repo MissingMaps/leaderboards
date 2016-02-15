@@ -43,7 +43,10 @@ export default React.createClass({
   },
   componentDidMount: function () {
     var props = this.props;
-    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.createTotals(props);
+    if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows') &&
+        Object.keys(props.rows).length > 0) {
+      this.createTotals(props);
+    }
     if (props && props.hasOwnProperty('lastRefresh')) {
       this.setState({
         lastRefresh: props.lastRefresh
@@ -58,14 +61,15 @@ export default React.createClass({
       });
     }
   },
-  moreOptionsClick: function (event) {
-    event.preventDefault();
-    console.log(event.target);
-  },
   deleteHashtag: function (input) {
     var params = this.props.id;
     var hashtags = R.without([input], params.split(','));
-    this.props.history.push('/' + hashtags.join(','));
+    var mapLocation = R.match(/\/.+\/map/, this.props.location.pathname).length;
+    if (mapLocation > 0) {
+      this.props.history.push('/' + hashtags.join(',') + '/map');
+    } else {
+      this.props.history.push('/' + hashtags.join(','));
+    }
   },
   render: function () {
     var component = this;

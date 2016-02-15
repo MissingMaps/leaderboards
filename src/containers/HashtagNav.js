@@ -37,7 +37,12 @@ export default React.createClass({
     var hashtags = params.split(',');
     if (!R.contains(input, hashtags)) {
       params = params + ',' + input;
-      this.props.history.push('/' + params);
+      var mapLocation = R.match(/\/.+\/map/, this.props.location.pathname).length;
+      if (mapLocation > 0) {
+        this.props.history.push('/' + params + '/map');
+      } else {
+        this.props.history.push('/' + params);
+      }
     }
     this.setState({
       showModal: false
