@@ -92,7 +92,10 @@ export default React.createClass({
     return {
       sortedDataList: [],
       list: [],
-      colSortDirs: {}
+      colSortDirs: {
+        'edits': 'ASC'
+      },
+      filterBy: ''
     };
   },
   setTableData: function (props) {
@@ -108,10 +111,22 @@ export default React.createClass({
       });
     });
 
+    // Sort
+    var sortedList = list;
+    var colSortKeys = Object.keys(this.state.colSortDirs);
+    var key = colSortKeys[0];
+    var dir = this.state.colSortDirs[key];
+    sortedList = this._sort(list, key, dir);
+
+    // Filter
+    var filteredList = sortedList;
+    if (this.state.filterBy.length > 0) {
+      filteredList = this._filter(sortedList, this.state.filterBy);
+    }
+
     this.setState({
-      sortedDataList: R.reverse(R.sortBy(R.prop('edits'), list)),
-      list: list,
-      colSortDirs: {}
+      sortedDataList: filteredList,
+      list: sortedList
     });
   },
   componentDidMount: function () {
@@ -121,28 +136,32 @@ export default React.createClass({
   componentWillReceiveProps: function (props) {
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.setTableData(props);
   },
+  _filter: function (list, filterBy) {
+    return R.filter(function (element) {
+      var {name} = element;
+      return (name.toLowerCase().indexOf(filterBy) !== -1);
+    }, list);
+  },
   _onFilterChange: function (e) {
     if (e.target.value.length === 0 || !e.target.value) {
       this.setState({
-        sortedDataList: this.state.list
+        sortedDataList: this.state.list,
+        filterBy: ''
       });
       return;
     }
 
     var filterBy = e.target.value.toLowerCase();
-    var list = this.state.sortedDataList;
-    var filteredList = R.filter(function (element) {
-      var {name} = element;
-      return (name.toLowerCase().indexOf(filterBy) !== -1);
-    }, list);
+    var list = this.state.list;
+
+    var filteredList = this._filter(list, filterBy);
 
     this.setState({
-      sortedDataList: filteredList
+      sortedDataList: filteredList,
+      filterBy: filterBy
     });
   },
-  _onSortChange: function (columnKey, sortDir) {
-    var list = this.state.sortedDataList;
-
+  _sort: function (list, columnKey, sortDir) {
     var sortedList = list;
     if (columnKey === 'created_at') {
       sortedList = R.sortBy(function (element) {
@@ -155,8 +174,16 @@ export default React.createClass({
     if (sortDir === SortTypes.ASC) {
       sortedList = R.reverse(sortedList);
     }
+    return sortedList;
+  },
+  _onSortChange: function (columnKey, sortDir) {
+    var list = this.state.sortedDataList;
+
+    var sortedList = this._sort(list, columnKey, sortDir);
+
     this.setState({
       sortedDataList: sortedList,
+      list: sortedList,
       colSortDirs: {
         [columnKey]: sortDir
       }
