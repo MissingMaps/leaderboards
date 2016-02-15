@@ -94,7 +94,8 @@ export default React.createClass({
       list: [],
       colSortDirs: {
         'edits': 'ASC'
-      }
+      },
+      filterBy: ''
     };
   },
   setTableData: function (props) {
@@ -117,9 +118,15 @@ export default React.createClass({
     var dir = this.state.colSortDirs[key];
     sortedList = this._sort(list, key, dir);
 
+    // Filter
+    var filteredList = sortedList;
+    if (this.state.filterBy.length > 0) {
+      filteredList = this._filter(sortedList, this.state.filterBy);
+    }
+
     this.setState({
-      sortedDataList: sortedList,
-      list: list
+      sortedDataList: filteredList,
+      list: sortedList
     });
   },
   componentDidMount: function (props) {
@@ -128,23 +135,29 @@ export default React.createClass({
   componentWillReceiveProps: function (props) {
     if (props && props.hasOwnProperty('colors') && props.hasOwnProperty('rows')) this.setTableData(props);
   },
+  _filter: function (list, filterBy) {
+    return R.filter(function (element) {
+      var {name} = element;
+      return (name.toLowerCase().indexOf(filterBy) !== -1);
+    }, list);
+  },
   _onFilterChange: function (e) {
     if (e.target.value.length === 0 || !e.target.value) {
       this.setState({
-        sortedDataList: this.state.list
+        sortedDataList: this.state.list,
+        filterBy: ''
       });
       return;
     }
 
     var filterBy = e.target.value.toLowerCase();
-    var list = this.state.sortedDataList;
-    var filteredList = R.filter(function (element) {
-      var {name} = element;
-      return (name.toLowerCase().indexOf(filterBy) !== -1);
-    }, list);
+    var list = this.state.list;
+
+    var filteredList = this._filter(list, filterBy);
 
     this.setState({
-      sortedDataList: filteredList
+      sortedDataList: filteredList,
+      filterBy: filterBy
     });
   },
   _sort: function (list, columnKey, sortDir) {
@@ -169,6 +182,7 @@ export default React.createClass({
 
     this.setState({
       sortedDataList: sortedList,
+      list: sortedList,
       colSortDirs: {
         [columnKey]: sortDir
       }
