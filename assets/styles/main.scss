@@ -1772,3 +1772,47 @@ $distfromtop: 50px;
   color: $lightgrey;
   font-size: 0.9em;
 }
+
+.Comparison-Block{
+  clear: both;
+  margin: 10px 0;
+}
+
+.comparison-card{
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  height: 10px;
+}
+
+.comparison-number{
+  size: 1.2em;
+  width: 10%;
+  min-width: 80px;
+  float: left;
+}
+
+.comparison-bar-container{
+  width: 88%;
+  float: right;
+  height: 22px;
+  @media screen and (max-width: 750px) {
+    width: 86%;
+  }
+  @media screen and (max-width: 690px) {
+    width: 84%;
+  }
+  @media screen and (max-width: 580px) {
+    width: 80%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 74%;
+  }
+}
+
+.comparison-bar{
+  background-color: red;
+  height: 3px;
+  margin-top: 8px;
+}
+

@@ -1401,3 +1401,41 @@ Leaderboard Styling
   padding-top: 0.5em;
   color: #dbdbda;
   font-size: 0.9em; }
+
+.Comparison-Block {
+  clear: both;
+  margin: 10px 0; }
+
+.comparison-card {
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  height: 10px; }
+
+.comparison-number {
+  size: 1.2em;
+  width: 10%;
+  min-width: 80px;
+  float: left; }
+
+.comparison-bar-container {
+  width: 88%;
+  float: right;
+  height: 22px; }
+  @media screen and (max-width: 750px) {
+    .comparison-bar-container {
+      width: 86%; } }
+  @media screen and (max-width: 690px) {
+    .comparison-bar-container {
+      width: 84%; } }
+  @media screen and (max-width: 580px) {
+    .comparison-bar-container {
+      width: 80%; } }
+  @media screen and (max-width: 500px) {
+    .comparison-bar-container {
+      width: 74%; } }
+
+.comparison-bar {
+  background-color: red;
+  height: 3px;
+  margin-top: 8px; }
