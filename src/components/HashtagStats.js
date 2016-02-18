@@ -111,7 +111,7 @@ export default React.createClass({
         <div className="row">
           <div className="action-header">
             <span className="action-header-text sub-text text-right">Refreshed: {moment(component.state.lastRefresh).calendar()}</span>
-            <a className="refresh-page" href="/">Refresh</a>
+            <div className="refresh-page"></div>
           </div>
           <div className="competitor-cards-block">
             <span className="section-headline">Current Leader</span>
@@ -119,6 +119,32 @@ export default React.createClass({
               {cards}
             </ul>
           </div>
+          <div className="Comparison-Block">
+            <div className = "section-headline">
+              Project Comparison by total edits
+            </div>
+
+            <div className = "comparison-card">
+              <div className = "comparison-number">
+                missingmaps
+              </div>
+              <div className = "comparison-bar-container">
+                <div className = "comparison-bar">
+                </div>
+              </div>
+            </div>
+
+            <div className = "comparison-card">
+              <div className = "comparison-number">
+                missingmaps
+              </div>
+              <div className = "comparison-bar-container">
+                <div className = "comparison-bar">
+                </div>
+              </div>
+            </div>
+          </div>
+
           <ul className="tabbed-nav">
               <IndexLink to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</IndexLink>
               <Link to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</Link>

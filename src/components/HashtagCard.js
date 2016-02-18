@@ -35,7 +35,7 @@ export default React.createClass({
           <div className="card-main">
             <h2 className="Card-title">{this.props.hashtag}</h2>
             <span className="card-num feature-num">{this.props.totals.edits}</span>
-            <span className="text-center sub-descriptor">Total Points</span>
+            <span className="text-center sub-descriptor">Total Changesets</span>
           </div>
           <div className="card-details">
             <div className="card-buildings">
