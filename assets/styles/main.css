@@ -1414,26 +1414,26 @@ Leaderboard Styling
 
 .comparison-number {
   size: 1.2em;
-  width: 10%;
+  width: 20%;
   min-width: 80px;
   float: left; }
 
 .comparison-bar-container {
-  width: 88%;
+  width: 78%;
   float: right;
   height: 22px; }
   @media screen and (max-width: 750px) {
     .comparison-bar-container {
-      width: 86%; } }
+      width: 76%; } }
   @media screen and (max-width: 690px) {
     .comparison-bar-container {
-      width: 84%; } }
+      width: 74%; } }
   @media screen and (max-width: 580px) {
     .comparison-bar-container {
-      width: 80%; } }
+      width: 70%; } }
   @media screen and (max-width: 500px) {
     .comparison-bar-container {
-      width: 74%; } }
+      width: 64%; } }
 
 .comparison-bar {
   background-color: red;

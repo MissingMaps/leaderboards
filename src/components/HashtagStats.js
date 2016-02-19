@@ -108,6 +108,8 @@ export default React.createClass({
     });
 
     var hashtags = Object.keys(component.state.hashtags);
+    var totals = R.map(R.prop('edits'), R.values(component.state.hashtags));
+    var max = R.reduce(R.max, 0, totals);
     var list = (hashtags.length > 1)
       ? (
         <div className="Comparison-Block">
@@ -119,7 +121,7 @@ export default React.createClass({
               return <ComparisonBar
                 hashtag={hashtag}
                 key={hashtag}
-                totals={component.state.hashtags[hashtag]} />;
+                totals={component.state.hashtags[hashtag]} max={max}/>;
             })
           }
         </div>
