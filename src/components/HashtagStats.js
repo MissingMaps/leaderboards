@@ -3,6 +3,7 @@ import R from 'ramda';
 import moment from 'moment';
 import {Link, IndexLink} from 'react-router';
 import HashtagCard from './HashtagCard.js';
+import ComparisonBar from './ComparisonBar.js';
 
 export default React.createClass({
   getInitialState: function () {
@@ -106,12 +107,35 @@ export default React.createClass({
                 deleteHashtag={component.deleteHashtag} />;
     });
 
+    var sorted = R.sortBy(R.nth(1),
+                          R.toPairs(R.map(R.prop('edits'), component.state.hashtags)));
+    var hashtags = R.map(R.nth(0), sorted.reverse());
+    var totals = R.map(R.prop('edits'), R.values(component.state.hashtags));
+    var max = R.reduce(R.max, 0, totals);
+    var list = (hashtags.length > 1)
+      ? (
+        <div className="Comparison-Block">
+          <div className = "section-headline">
+            Project Comparison by total edits
+          </div>
+          {
+            hashtags.map(function (hashtag) {
+              return <ComparisonBar
+                hashtag={hashtag}
+                key={hashtag}
+                totals={component.state.hashtags[hashtag]} max={max}/>;
+            })
+          }
+        </div>
+      )
+      : '';
+
     return (
       <section className="section-secondary">
         <div className="row">
           <div className="action-header">
             <span className="action-header-text sub-text text-right">Refreshed: {moment(component.state.lastRefresh).calendar()}</span>
-            <a className="refresh-page" href="/">Refresh</a>
+            <div className="refresh-page"></div>
           </div>
           <div className="competitor-cards-block">
             <span className="section-headline">Current Leader</span>
@@ -119,6 +143,7 @@ export default React.createClass({
               {cards}
             </ul>
           </div>
+          {list}
           <ul className="tabbed-nav">
               <IndexLink to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</IndexLink>
               <Link to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</Link>
