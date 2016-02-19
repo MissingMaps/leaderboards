@@ -3,6 +3,7 @@ import R from 'ramda';
 import moment from 'moment';
 import {Link, IndexLink} from 'react-router';
 import HashtagCard from './HashtagCard.js';
+import ComparisonBar from './ComparisonBar.js';
 
 export default React.createClass({
   getInitialState: function () {
@@ -106,6 +107,25 @@ export default React.createClass({
                 deleteHashtag={component.deleteHashtag} />;
     });
 
+    var hashtags = Object.keys(component.state.hashtags);
+    var list = (hashtags.length > 1)
+      ? (
+        <div className="Comparison-Block">
+          <div className = "section-headline">
+            Project Comparison by total edits
+          </div>
+          {
+            hashtags.map(function (hashtag) {
+              return <ComparisonBar
+                hashtag={hashtag}
+                key={hashtag}
+                totals={component.state.hashtags[hashtag]} />;
+            })
+          }
+        </div>
+      )
+      : '';
+
     return (
       <section className="section-secondary">
         <div className="row">
@@ -119,32 +139,7 @@ export default React.createClass({
               {cards}
             </ul>
           </div>
-          <div className="Comparison-Block">
-            <div className = "section-headline">
-              Project Comparison by total edits
-            </div>
-
-            <div className = "comparison-card">
-              <div className = "comparison-number">
-                missingmaps
-              </div>
-              <div className = "comparison-bar-container">
-                <div className = "comparison-bar">
-                </div>
-              </div>
-            </div>
-
-            <div className = "comparison-card">
-              <div className = "comparison-number">
-                missingmaps
-              </div>
-              <div className = "comparison-bar-container">
-                <div className = "comparison-bar">
-                </div>
-              </div>
-            </div>
-          </div>
-
+          {list}
           <ul className="tabbed-nav">
               <IndexLink to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</IndexLink>
               <Link to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</Link>
