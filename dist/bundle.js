@@ -53102,8 +53102,8 @@ exports.default = function () {
         { className: "nav-icon" },
         _react2.default.createElement(
           "a",
-          { href: "/" },
-          _react2.default.createElement("img", { src: "assets/graphics/MissingMapsLogo-White.svg", width: "94px" })
+          { href: "http://missingmaps-demo.devseed.com/" },
+          _react2.default.createElement("img", { src: "./assets/graphics/MissingMapsLogo-White.svg", width: "94px" })
         )
       ),
       _react2.default.createElement(
@@ -53114,7 +53114,7 @@ exports.default = function () {
           null,
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/contribute/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53123,7 +53123,7 @@ exports.default = function () {
           ),
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/events/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53132,7 +53132,7 @@ exports.default = function () {
           ),
           _react2.default.createElement(
             "a",
-            { href: "" },
+            { href: "http://missingmaps-demo.devseed.com/about/" },
             _react2.default.createElement(
               "li",
               { className: "nav-item" },
@@ -53148,7 +53148,7 @@ exports.default = function () {
               { className: "dropdown-content" },
               _react2.default.createElement(
                 "a",
-                { href: "" },
+                { href: "http://missingmaps-users-demo.devseed.com/" },
                 _react2.default.createElement(
                   "div",
                   { className: "nav-item" },
@@ -53157,7 +53157,7 @@ exports.default = function () {
               ),
               _react2.default.createElement(
                 "a",
-                { href: "" },
+                { href: "http://missingmaps-leaderboards-demo.devseed.com/" },
                 _react2.default.createElement(
                   "div",
                   { className: "nav-item" },
@@ -53182,7 +53182,7 @@ exports.default = function () {
         { className: "resp-dropdown-content" },
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/contribute/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53191,7 +53191,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/events/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53200,7 +53200,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-demo.devseed.com/about/" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53209,7 +53209,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-users-demo.devseed.com" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53218,7 +53218,7 @@ exports.default = function () {
         ),
         _react2.default.createElement(
           "a",
-          { href: "" },
+          { href: "http://missingmaps-leaderboards-demo.devseed.com" },
           _react2.default.createElement(
             "li",
             { className: "nav-item" },
@@ -53837,10 +53837,10 @@ exports.default = _react2.default.createClass({
   },
   fetchData: function fetchData(hashtag) {
     var component = this;
-    return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/users').then(function (res) {
+    return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users').then(function (res) {
       return res.json();
     }).then(function (hashtagResult) {
-      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' + hashtag + '/map').then(function (res) {
+      return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/map').then(function (res) {
         return res.json();
       }).then(function (mapResult) {
         var state = component.state;
@@ -53963,10 +53963,6 @@ var _Header = require('../components/Header.js');
 
 var _Header2 = _interopRequireDefault(_Header);
 
-var _Footer = require('../components/Footer.js');
-
-var _Footer2 = _interopRequireDefault(_Footer);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _react2.default.createClass({
@@ -53981,7 +53977,7 @@ exports.default = _react2.default.createClass({
   },
   componentDidMount: function componentDidMount() {
     var component = this;
-    (0, _isomorphicFetch2.default)('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags').then(function (res) {
+    (0, _isomorphicFetch2.default)('http://missingmaps-api.devseed.com/hashtags').then(function (res) {
       return res.json();
     }).then(function (results) {
       component.setState({
@@ -54107,7 +54103,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"../components/Footer.js":269,"../components/Header.js":272,"isomorphic-fetch":100,"ramda":105,"react":262,"react-search-bar":131}],277:[function(require,module,exports){
+},{"../components/Header.js":272,"isomorphic-fetch":100,"ramda":105,"react":262,"react-search-bar":131}],277:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
