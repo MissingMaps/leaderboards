@@ -34,13 +34,13 @@ export default React.createClass({
   },
   fetchData: function (hashtag) {
     var component = this;
-    return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' +
+    return fetch('http://missingmaps-api.devseed.com/hashtags/' +
                  hashtag + '/users')
     .then(function (res) {
       return res.json();
     })
     .then(function (hashtagResult) {
-      return fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags/' +
+      return fetch('http://missingmaps-api.devseed.com/hashtags/' +
                    hashtag + '/map')
       .then(function (res) {
         return res.json();

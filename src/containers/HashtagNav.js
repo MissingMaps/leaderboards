@@ -3,7 +3,6 @@ import R from 'ramda';
 import Searchbar from 'react-search-bar';
 import fetch from 'isomorphic-fetch';
 import Header from '../components/Header.js';
-import Footer from '../components/Footer.js'
 
 export default React.createClass({
   getInitialState: function () {
@@ -16,7 +15,7 @@ export default React.createClass({
   },
   componentDidMount: function () {
     var component = this;
-    fetch('http://ec2-52-87-229-14.compute-1.amazonaws.com/hashtags')
+    fetch('http://missingmaps-api.devseed.com/hashtags')
     .then(function (res) {
       return res.json();
     })
