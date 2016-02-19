@@ -107,7 +107,9 @@ export default React.createClass({
                 deleteHashtag={component.deleteHashtag} />;
     });
 
-    var hashtags = Object.keys(component.state.hashtags);
+    var sorted = R.sortBy(R.nth(1),
+                          R.toPairs(R.map(R.prop('edits'), component.state.hashtags)));
+    var hashtags = R.map(R.nth(0), sorted.reverse());
     var totals = R.map(R.prop('edits'), R.values(component.state.hashtags));
     var max = R.reduce(R.max, 0, totals);
     var list = (hashtags.length > 1)
