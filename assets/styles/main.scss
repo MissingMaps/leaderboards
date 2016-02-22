@@ -583,9 +583,18 @@ input[type='text']:before{
 .search-bar-input-test{
   float: right;
   right: 20px;
-
   .search-bar-input {
     height: 30px;
+  }
+  .search-bar-side{
+    @media screen and (max-width: 500px) {
+      left: 135px;
+    }
+  }
+  input{
+    @media screen and (max-width: 500px) {
+      width: 140px;
+    }
   }
 }
 
@@ -1445,7 +1454,7 @@ $distfromtop: 50px;
     width: 70px;
     height: 26px;
     Text-indent: -9999px;
-    background-image: url("/assets/graphics/submit.png");
+    background-image: url("/assets/graphics/submit.svg");
     background-repeat: no-repeat;
     background-position: center;
   }

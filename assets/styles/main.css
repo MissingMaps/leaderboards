@@ -469,6 +469,12 @@ input[type='text']:before {
   right: 20px; }
   .search-bar-input-test .search-bar-input {
     height: 30px; }
+  @media screen and (max-width: 500px) {
+    .search-bar-input-test .search-bar-side {
+      left: 135px; } }
+  @media screen and (max-width: 500px) {
+    .search-bar-input-test input {
+      width: 140px; } }
 
 .search-bar-side {
   height: 30px;
@@ -1134,7 +1140,7 @@ Leaderboard Styling
     width: 70px;
     height: 26px;
     Text-indent: -9999px;
-    background-image: url("/assets/graphics/submit.png");
+    background-image: url("/assets/graphics/submit.svg");
     background-repeat: no-repeat;
     background-position: center; }
 
