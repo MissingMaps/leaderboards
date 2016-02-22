@@ -787,6 +787,8 @@ table {
       margin: 0px 5px; }
       .competitor-cards .card .card-details .card-num {
         font-weight: 700; }
+    .competitor-cards .card .sub-text {
+      margin-top: 10px; }
   .competitor-cards .competitor1 .card-num {
     color: #bdcc32; }
   .competitor-cards .competitor2 .card-num {
@@ -802,7 +804,7 @@ table {
     line-height: 30px; }
   .competitor-cards .card-buildings {
     float: left;
-    width: 50%;
+    width: 54%;
     margin-right: 15px; }
   .competitor-cards .card:nth-child(3) {
     clear: right;
@@ -1115,13 +1117,12 @@ Leaderboard Styling
     margin: 0;
     color: #6e6f71;
     vertical-align: top;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: #f4f4f4;
     outline: none; }
-    .Input-Hashtag input:focus {
-      background-color: white; }
   .Input-Hashtag .search-bar-input {
-    width: 160%; }
+    width: 250px; }
   .Input-Hashtag .search-bar-submit {
     background-color: #23bcc1;
     position: absolute;
@@ -1131,7 +1132,11 @@ Leaderboard Styling
     cursor: pointer;
     color: #fff;
     width: 70px;
-    height: 26px; }
+    height: 26px;
+    Text-indent: -9999px;
+    background-image: url("/assets/graphics/submit.png");
+    background-repeat: no-repeat;
+    background-position: center; }
 
 .search-bar-submit:hover, .search-bar-side:hover {
   background-color: #1fa7ab; }
@@ -1187,6 +1192,13 @@ Leaderboard Styling
   transition: all 0.2s; }
   .View-Toggle:hover {
     background-color: #bdbdbd; }
+
+.Search-text {
+  position: absolute;
+  top: 23px;
+  right: 29px;
+  color: white;
+  font-size: 0.8em; }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */
@@ -1393,7 +1405,6 @@ Leaderboard Styling
 #map {
   width: 100%;
   height: 100%;
-  border: solid 1px #ccc;
   box-shadow: 1px 2px 1px rgba(55, 55, 55, 0.1); }
 
 .Map-Subtext {

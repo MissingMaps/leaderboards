@@ -979,6 +979,9 @@ table{
         font-weight: 700;
       }
     }
+    .sub-text{
+      margin-top: 10px;
+    }
   }
 
   .competitor1 { 
@@ -1012,7 +1015,7 @@ table{
 
   .card-buildings {
     float: left;
-    width: 50%;
+    width: 54%;
     margin-right: 15px;
   }
 
@@ -1419,17 +1422,16 @@ $distfromtop: 50px;
     margin: 0;
     color: $darkgrey;
     vertical-align: top;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: lighten($lightgrey, 10);
-
     &:focus{
-      background-color: white;
     }
     outline: none;
   }
 
   .search-bar-input {
-    width: 160%;
+    width: 250px;
   }
 
   .search-bar-submit {
@@ -1442,6 +1444,10 @@ $distfromtop: 50px;
     color: #fff;
     width: 70px;
     height: 26px;
+    Text-indent: -9999px;
+    background-image: url("/assets/graphics/submit.png");
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
@@ -1511,6 +1517,14 @@ $distfromtop: 50px;
   &:hover{
     background-color: lighten(darkgrey, 8);
   }
+}
+
+.Search-text{
+  position: absolute;
+  top: 23px;
+  right: 29px;
+  color: white;
+  font-size: 0.8em;
 }
 
 /*----------------------------------------------*/
@@ -1763,7 +1777,6 @@ $distfromtop: 50px;
 #map {
   width: 100%;
   height: 100%;
-  border: solid 1px #ccc;
   box-shadow: 1px 2px 1px rgba( 55, 55, 55, .1);
 }
 .Map-Subtext{
