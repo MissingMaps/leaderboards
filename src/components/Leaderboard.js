@@ -205,7 +205,7 @@ export default React.createClass({
             autoCapitalize='none'
             autoComplete='off'
             autoCorrect='off'
-            placeholder='Search'/>
+            placeholder='Search for user'/>
           <div className='search-bar-side'>
             <div className='search-glass'><div style={{'WebkitTransform': 'rotate(45deg)', 'MozTransform': 'rotate(45deg)', 'OTransform': 'rotate(45deg)'}}>&#9906;</div></div>
           </div>
