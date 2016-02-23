@@ -20,9 +20,18 @@ export default React.createClass({
       return res.json();
     })
     .then(function (results) {
+      var resultsCheck = results.trending.length;
+
+      if (resultsCheck == 0) {
+        var defaultText = 'No current trending hashtags.';
+      } else {
+        var defaultText = '';
+      }
+
       component.setState({
         all: results.hashtags,
-        trending: results.trending
+        trending: results.trending,
+        default: defaultText
       });
     });
   },
@@ -84,9 +93,15 @@ export default React.createClass({
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>
                   <ul>
+                    <li className = "dropdown-option">
+                      { this.state.default }
+                    </li>
+                  </ul>
+                  <ul>
                     {
                       this.state.trending.map(function (hashtag) {
-                        return <li className="dropdown-option" key={hashtag}><a href="#" onClick={
+                        return <li className="dropdown-option" key={hashtag}>
+                        <a href="#" onClick={
                           (e) => {
                             e.preventDefault();
                             component.onSubmit(hashtag);

@@ -737,6 +737,16 @@ table{
    color: lighten($darkgrey, 8);  
 }
 
+.fixedDataTableLayout_main{
+  position: initial;
+  height: 608px;
+  .ScrollbarLayout_main{
+    margin-top: 68px;
+  }
+  .public_Scrollbar_main:hover{
+    background-color: darken($darkgrey, 20);
+  }
+}
 
 /*----------------------------------------------*/
 /*Special Text, for data, etc.*/ 

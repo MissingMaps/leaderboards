@@ -593,6 +593,14 @@ table {
 :-ms-input-placeholder {
   color: #747676; }
 
+.fixedDataTableLayout_main {
+  position: initial;
+  height: 608px; }
+  .fixedDataTableLayout_main .ScrollbarLayout_main {
+    margin-top: 68px; }
+  .fixedDataTableLayout_main .public_Scrollbar_main:hover {
+    background-color: #2d2e2e; }
+
 /*----------------------------------------------*/
 /*Special Text, for data, etc.*/
 /*----------------------------------------------*/
