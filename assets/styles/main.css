@@ -496,7 +496,7 @@ input[type='text']:before {
 .search-glass {
   width: 16px;
   position: absolute;
-  top: 7px;
+  top: 6px;
   left: 7px; }
 
 .search-bar-results {
@@ -826,14 +826,13 @@ table {
 
 .more-options-container {
   float: right;
-  width: 34%; }
+  width: 26px; }
   @media screen and (max-width: 368px) {
     .more-options-container {
       width: 48%; } }
 
 .more-options-module, .LN-Hashtag-Container {
   position: absolute;
-  margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
   box-shadow: 0px 2px #dbdbda;
   background-color: white;
@@ -867,8 +866,9 @@ table {
     margin-left: -59px; }
 
 .more-options-module {
-  width: 110px;
-  padding: 6px 10px 4px; }
+  width: 60px;
+  padding: 6px 10px 4px;
+  margin: 14px 10px 10px -8px; }
   @media screen and (max-width: 368px) {
     .more-options-module:before {
       margin-left: -25px; } }
@@ -879,7 +879,8 @@ table {
 .LN-Hashtag-Container {
   left: 10;
   width: 270px;
-  padding: 20px 15px 5px; }
+  padding: 20px 15px 5px;
+  margin: 14px 10px 10px 10px; }
   .LN-Hashtag-Container:before {
     margin-left: -240px; }
   .LN-Hashtag-Container:after {

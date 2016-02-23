@@ -621,7 +621,7 @@ input[type='text']:before{
 .search-glass{
   width: 16px;
   position: absolute;
-  top: 7px;
+  top: 6px;
   left: 7px;
 }
 
@@ -1046,7 +1046,7 @@ table{
 
 .more-options-container { 
   float: right;
-  width: 34%;
+  width: 26px;
   @media screen and (max-width: 368px) {
     width: 48%;
   }
@@ -1054,7 +1054,6 @@ table{
 
 .more-options-module, .LN-Hashtag-Container {
   position: absolute;
-  margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
   box-shadow: 0px 2px #dbdbda;
   background-color: white;
@@ -1093,8 +1092,9 @@ table{
 }
 
 .more-options-module {
-  width: 110px;
+  width: 60px;
   padding: 6px 10px 4px;
+  margin: 14px 10px 10px -8px;
   &:before {
     @media screen and (max-width: 368px) {
       margin-left: -25px;
@@ -1111,6 +1111,7 @@ table{
   left: 10;
   width: 270px;
   padding: 20px 15px 5px;
+  margin: 14px 10px 10px 10px;
 
   &:before {
     margin-left: -240px;
