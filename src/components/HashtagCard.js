@@ -30,8 +30,6 @@ export default React.createClass({
         return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
     };
 
-    console.log(Buildings);
-
     return (
       <div className={className}>
           <div className="more-options-container">
