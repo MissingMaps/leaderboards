@@ -469,6 +469,12 @@ input[type='text']:before {
   right: 20px; }
   .search-bar-input-test .search-bar-input {
     height: 30px; }
+  @media screen and (max-width: 500px) {
+    .search-bar-input-test .search-bar-side {
+      left: 135px; } }
+  @media screen and (max-width: 500px) {
+    .search-bar-input-test input {
+      width: 140px; } }
 
 .search-bar-side {
   height: 30px;
@@ -490,7 +496,7 @@ input[type='text']:before {
 .search-glass {
   width: 16px;
   position: absolute;
-  top: 7px;
+  top: 6px;
   left: 7px; }
 
 .search-bar-results {
@@ -787,6 +793,8 @@ table {
       margin: 0px 5px; }
       .competitor-cards .card .card-details .card-num {
         font-weight: 700; }
+    .competitor-cards .card .sub-text {
+      margin-top: 10px; }
   .competitor-cards .competitor1 .card-num {
     color: #bdcc32; }
   .competitor-cards .competitor2 .card-num {
@@ -802,7 +810,7 @@ table {
     line-height: 30px; }
   .competitor-cards .card-buildings {
     float: left;
-    width: 50%;
+    width: 54%;
     margin-right: 15px; }
   .competitor-cards .card:nth-child(3) {
     clear: right;
@@ -810,14 +818,13 @@ table {
 
 .more-options-container {
   float: right;
-  width: 34%; }
+  width: 26px; }
   @media screen and (max-width: 368px) {
     .more-options-container {
       width: 48%; } }
 
 .more-options-module, .LN-Hashtag-Container {
   position: absolute;
-  margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
   box-shadow: 0px 2px #dbdbda;
   background-color: white;
@@ -851,8 +858,9 @@ table {
     margin-left: -59px; }
 
 .more-options-module {
-  width: 110px;
-  padding: 6px 10px 4px; }
+  width: 60px;
+  padding: 6px 10px 4px;
+  margin: 14px 10px 10px -8px; }
   @media screen and (max-width: 368px) {
     .more-options-module:before {
       margin-left: -25px; } }
@@ -863,7 +871,8 @@ table {
 .LN-Hashtag-Container {
   left: 10;
   width: 270px;
-  padding: 20px 15px 5px; }
+  padding: 20px 15px 5px;
+  margin: 14px 10px 10px 10px; }
   .LN-Hashtag-Container:before {
     margin-left: -240px; }
   .LN-Hashtag-Container:after {
@@ -1115,13 +1124,12 @@ Leaderboard Styling
     margin: 0;
     color: #6e6f71;
     vertical-align: top;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: #f4f4f4;
     outline: none; }
-    .Input-Hashtag input:focus {
-      background-color: white; }
   .Input-Hashtag .search-bar-input {
-    width: 160%; }
+    width: 250px; }
   .Input-Hashtag .search-bar-submit {
     background-color: #23bcc1;
     position: absolute;
@@ -1131,7 +1139,11 @@ Leaderboard Styling
     cursor: pointer;
     color: #fff;
     width: 70px;
-    height: 26px; }
+    height: 26px;
+    Text-indent: -9999px;
+    background-image: url("/assets/graphics/submit.svg");
+    background-repeat: no-repeat;
+    background-position: center; }
 
 .search-bar-submit:hover, .search-bar-side:hover {
   background-color: #1fa7ab; }
@@ -1187,6 +1199,13 @@ Leaderboard Styling
   transition: all 0.2s; }
   .View-Toggle:hover {
     background-color: #bdbdbd; }
+
+.Search-text {
+  position: absolute;
+  top: 23px;
+  right: 29px;
+  color: white;
+  font-size: 0.8em; }
 
 /*----------------------------------------------*/
 /* Leaderboard Left Panel */
@@ -1393,7 +1412,6 @@ Leaderboard Styling
 #map {
   width: 100%;
   height: 100%;
-  border: solid 1px #ccc;
   box-shadow: 1px 2px 1px rgba(55, 55, 55, 0.1); }
 
 .Map-Subtext {

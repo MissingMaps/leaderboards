@@ -79,7 +79,7 @@ export default React.createClass({
               'display': (this.state.showModal ? '' : 'none')
             }}>
                 <div className="Input-hashtag">
-                  <Searchbar onChange={this.onChange} onSubmit={this.onSubmit}/>
+                  <Searchbar onChange={this.onChange} onSubmit={this.onSubmit} value="submit"/>
                 </div>
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>

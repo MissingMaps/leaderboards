@@ -38,13 +38,13 @@ export default React.createClass({
             <span className="text-center sub-descriptor">Total Changesets</span>
           </div>
           <div className="card-details">
-            <div className="card-buildings">
+            <div className="card-buildings text-center">
               <span className="card-num">{this.props.totals.buildings} </span>
-              <span className="sub-descriptor">Buildings</span>
+              <p><span className="sub-descriptor">Buildings</span></p>
             </div>
             <div>
               <span className="card-num">{this.props.totals.roads} </span>
-              <span className="sub-descriptor">km Roads</span>
+              <p><span className="sub-descriptor">km Roads</span></p>
             </div>
             <span className="sub-text text-center">Last Commit: {moment(this.props.totals.last_update).fromNow()}</span>
           </div>
