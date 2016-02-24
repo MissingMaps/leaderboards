@@ -1,5 +1,5 @@
 {
-  "name": "osm-gamification-leaderboards",
+  "name": "leaderboards",
   "version": "0.0.1",
   "description": "Leaderboard page",
   "main": "index.js",
