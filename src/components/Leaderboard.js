@@ -60,7 +60,7 @@ const LinkCell = (props) => {
   if (!data[rowIndex]) return <Cell></Cell>;
 
   var userid = props.data[rowIndex].user_id;
-  var userlink = 'http://devseed.com/osm-gamification-users/#/' + userid;
+  var userlink = 'http://missingmaps.org/users/#/' + userid;
   var userClass = data[rowIndex].team + '-name statsCell table-username';
 
   var display = data[rowIndex][field];
