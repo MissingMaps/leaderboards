@@ -600,6 +600,8 @@ table {
     margin-top: 68px; }
   .fixedDataTableLayout_main .public_Scrollbar_main:hover {
     background-color: #2d2e2e; }
+  .fixedDataTableLayout_main .public_Scrollbar_main:active {
+    background-color: #2d2e2e; }
 
 /*----------------------------------------------*/
 /*Special Text, for data, etc.*/

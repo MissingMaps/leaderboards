@@ -746,6 +746,9 @@ table{
   .public_Scrollbar_main:hover{
     background-color: darken($darkgrey, 20);
   }
+  .public_Scrollbar_main:active{
+    background-color: darken($darkgrey, 20);
+  }
 }
 
 /*----------------------------------------------*/
@@ -1275,7 +1278,6 @@ table{
 
 .Table-Container {
   margin-top: 50px;
-
   a { 
     color: $border-grey;
   }
