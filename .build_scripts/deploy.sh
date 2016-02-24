@@ -4,7 +4,7 @@ set -e # halt script on error
 # If this is the deploy branch, push it up to gh-pages
 if [ $TRAVIS_PULL_REQUEST = "false" ] && [ $TRAVIS_BRANCH = ${DEPLOY_BRANCH} ]; then
   echo "Get ready, we're pushing to gh-pages!"
-  cd _site
+  cd dist
   git init
   git config user.name "Travis-CI"
   git config user.email "travis@somewhere.com"
