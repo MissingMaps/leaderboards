@@ -6,7 +6,7 @@ export default function () {
 		<div className ="footer-container">
 			<div className ="center-text">
 				<div className ="footer-mm center-text">
-				CC-BY Missing Maps 2015
+				CC-BY Missing Maps 2016
 				</div>
 			</div>
 		</div>
