@@ -583,9 +583,18 @@ input[type='text']:before{
 .search-bar-input-test{
   float: right;
   right: 20px;
-
   .search-bar-input {
     height: 30px;
+  }
+  .search-bar-side{
+    @media screen and (max-width: 500px) {
+      left: 135px;
+    }
+  }
+  input{
+    @media screen and (max-width: 500px) {
+      width: 140px;
+    }
   }
 }
 
@@ -612,7 +621,7 @@ input[type='text']:before{
 .search-glass{
   width: 16px;
   position: absolute;
-  top: 7px;
+  top: 6px;
   left: 7px;
 }
 
@@ -728,6 +737,16 @@ table{
    color: lighten($darkgrey, 8);  
 }
 
+.fixedDataTableLayout_main{
+  position: initial;
+  height: 608px;
+  .ScrollbarLayout_main{
+    margin-top: 68px;
+  }
+  .public_Scrollbar_main:hover{
+    background-color: darken($darkgrey, 20);
+  }
+}
 
 /*----------------------------------------------*/
 /*Special Text, for data, etc.*/ 
@@ -979,6 +998,9 @@ table{
         font-weight: 700;
       }
     }
+    .sub-text{
+      margin-top: 10px;
+    }
   }
 
   .competitor1 { 
@@ -1012,7 +1034,7 @@ table{
 
   .card-buildings {
     float: left;
-    width: 50%;
+    width: 54%;
     margin-right: 15px;
   }
 
@@ -1024,7 +1046,7 @@ table{
 
 .more-options-container { 
   float: right;
-  width: 34%;
+  width: 26px;
   @media screen and (max-width: 368px) {
     width: 48%;
   }
@@ -1032,7 +1054,6 @@ table{
 
 .more-options-module, .LN-Hashtag-Container {
   position: absolute;
-  margin: 14px 10px 10px 10px;
   border: 1px solid #c6c7c7;
   box-shadow: 0px 2px #dbdbda;
   background-color: white;
@@ -1071,8 +1092,9 @@ table{
 }
 
 .more-options-module {
-  width: 110px;
+  width: 60px;
   padding: 6px 10px 4px;
+  margin: 14px 10px 10px -8px;
   &:before {
     @media screen and (max-width: 368px) {
       margin-left: -25px;
@@ -1089,6 +1111,7 @@ table{
   left: 10;
   width: 270px;
   padding: 20px 15px 5px;
+  margin: 14px 10px 10px 10px;
 
   &:before {
     margin-left: -240px;
@@ -1419,17 +1442,16 @@ $distfromtop: 50px;
     margin: 0;
     color: $darkgrey;
     vertical-align: top;
+    border-radius: 5px;
     -webkit-border-radius: 5px;
     background-color: lighten($lightgrey, 10);
-
     &:focus{
-      background-color: white;
     }
     outline: none;
   }
 
   .search-bar-input {
-    width: 160%;
+    width: 250px;
   }
 
   .search-bar-submit {
@@ -1442,6 +1464,10 @@ $distfromtop: 50px;
     color: #fff;
     width: 70px;
     height: 26px;
+    Text-indent: -9999px;
+    background-image: url("/assets/graphics/submit.svg");
+    background-repeat: no-repeat;
+    background-position: center;
   }
 }
 
@@ -1511,6 +1537,14 @@ $distfromtop: 50px;
   &:hover{
     background-color: lighten(darkgrey, 8);
   }
+}
+
+.Search-text{
+  position: absolute;
+  top: 23px;
+  right: 29px;
+  color: white;
+  font-size: 0.8em;
 }
 
 /*----------------------------------------------*/
@@ -1763,7 +1797,6 @@ $distfromtop: 50px;
 #map {
   width: 100%;
   height: 100%;
-  border: solid 1px #ccc;
   box-shadow: 1px 2px 1px rgba( 55, 55, 55, .1);
 }
 .Map-Subtext{

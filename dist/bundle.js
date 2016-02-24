@@ -52795,7 +52795,7 @@ exports.default = function () {
 				_react2.default.createElement(
 					"div",
 					{ className: "footer-mm center-text" },
-					"CC-BY Missing Maps 2015"
+					"CC-BY Missing Maps 2016"
 				)
 			)
 		)
@@ -52850,6 +52850,15 @@ exports.default = _react2.default.createClass({
   render: function render() {
     var component = this;
     var className = (0, _classnames2.default)('card', this.props.color, { 'isWinner': this.props.isWinner });
+
+    var Buildings = addCommas(this.props.totals.buildings);
+    var Roads = addCommas(Math.round(this.props.totals.roads));
+    var Totals = addCommas(this.props.totals.edits);
+
+    function addCommas(value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    };
+
     return _react2.default.createElement(
       'div',
       { className: className },
@@ -52884,7 +52893,7 @@ exports.default = _react2.default.createClass({
         _react2.default.createElement(
           'span',
           { className: 'card-num feature-num' },
-          this.props.totals.edits
+          Totals
         ),
         _react2.default.createElement(
           'span',
@@ -52897,17 +52906,21 @@ exports.default = _react2.default.createClass({
         { className: 'card-details' },
         _react2.default.createElement(
           'div',
-          { className: 'card-buildings' },
+          { className: 'card-buildings text-center' },
           _react2.default.createElement(
             'span',
             { className: 'card-num' },
-            this.props.totals.buildings,
+            Buildings,
             ' '
           ),
           _react2.default.createElement(
-            'span',
-            { className: 'sub-descriptor' },
-            'Buildings'
+            'p',
+            null,
+            _react2.default.createElement(
+              'span',
+              { className: 'sub-descriptor' },
+              'Buildings'
+            )
           )
         ),
         _react2.default.createElement(
@@ -52916,13 +52929,17 @@ exports.default = _react2.default.createClass({
           _react2.default.createElement(
             'span',
             { className: 'card-num' },
-            this.props.totals.roads,
+            Roads,
             ' '
           ),
           _react2.default.createElement(
-            'span',
-            { className: 'sub-descriptor' },
-            'km Roads'
+            'p',
+            null,
+            _react2.default.createElement(
+              'span',
+              { className: 'sub-descriptor' },
+              'km Roads'
+            )
           )
         ),
         _react2.default.createElement(
@@ -53709,7 +53726,7 @@ exports.default = _react2.default.createClass({
               autoCapitalize: 'none',
               autoComplete: 'off',
               autoCorrect: 'off',
-              placeholder: 'Search' }),
+              placeholder: 'Search for user' }),
             _react2.default.createElement(
               'div',
               { className: 'search-bar-side' },
@@ -54036,9 +54053,18 @@ exports.default = _react2.default.createClass({
     (0, _isomorphicFetch2.default)('http://missingmaps-api.devseed.com/hashtags').then(function (res) {
       return res.json();
     }).then(function (results) {
+      var resultsCheck = results.trending.length;
+
+      if (resultsCheck == 0) {
+        var defaultText = 'No current trending hashtags.';
+      } else {
+        var defaultText = '';
+      }
+
       component.setState({
         all: results.hashtags,
-        trending: results.trending
+        trending: results.trending,
+        default: defaultText
       });
     });
   },
@@ -54122,7 +54148,7 @@ exports.default = _react2.default.createClass({
               _react2.default.createElement(
                 'div',
                 { className: 'Input-hashtag' },
-                _react2.default.createElement(_reactSearchBar2.default, { onChange: this.onChange, onSubmit: this.onSubmit })
+                _react2.default.createElement(_reactSearchBar2.default, { onChange: this.onChange, onSubmit: this.onSubmit, value: 'submit' })
               ),
               _react2.default.createElement(
                 'div',
@@ -54131,6 +54157,15 @@ exports.default = _react2.default.createClass({
                   'h5',
                   { className: 'header-style__plain' },
                   'Popular Options'
+                ),
+                _react2.default.createElement(
+                  'ul',
+                  null,
+                  _react2.default.createElement(
+                    'li',
+                    { className: 'dropdown-option' },
+                    this.state.default
+                  )
                 ),
                 _react2.default.createElement(
                   'ul',
