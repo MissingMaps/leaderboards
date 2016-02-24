@@ -7,7 +7,7 @@
     "start": "NODE_ENV=development budo src/index.js:bundle.js --live & npm run watch-sass",
     "build-dev": "npm run cp-static && NODE_ENV=development browserify src/index.js -o dist/bundle.js",
     "build-prod": "npm run cp-static && NODE_ENV=production browserify src/index.js -o dist/bundle.js",
-    "cp-static": "cp CNAME dist/CNAME && cp index.html dist/index.html && cp -r assets dist/",
+    "cp-static": "cp index.html dist/index.html && cp -r assets dist/",
     "deploy": "git subtree push --prefix dist origin gh-pages",
     "test": "echo \"Error: no test specified\" && exit 1",
     "lint": "eslint .",
@@ -36,14 +36,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/developmentseed/osm-gamification-leaderboards.git"
+    "url": "https://github.com/MissingMaps/leaderboards.git"
   },
   "author": "Development Seed",
   "license": "GPL-3.0",
   "bugs": {
-    "url": "https://github.com/developmentseed/osm-gamification-leaderboards/issues"
+    "url": "https://github.com/MissingMaps/leaderboards/issues"
   },
-  "homepage": "https://github.com/developmentseed/osm-gamification-leaderboards",
+  "homepage": "https://github.com/MissingMaps/leaderboards",
   "devDependencies": {
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
