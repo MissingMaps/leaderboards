@@ -2,19 +2,38 @@ import React from 'react';
 
 export default function () {
   return (
-	<header>
-		<div className ="headerwidth">
-		<div className ="nav-icon"><a href=""><img src="./assets/graphics/MissingMapsLogo-Grey.svg" width="100px"></img></a></div>
-		<div className ="nav-list">
-			<ul>
-				<li className ="nav-item"><a href="">contribute</a></li>
-				<li className ="nav-item"><a href="">events</a></li>
-				<li className ="nav-item"><a href="">about</a></li>
-				<li className ="nav-item"><a href="">leaderboards</a></li>
-				<li className ="nav-item"><a href="">user pages</a></li>
-			</ul>
-		</div>
-		</div>
-	</header>
+    <header> 
+      <div className="navbar-background">
+        <div className="nav-icon">
+          <a href="http://missingmaps-demo.devseed.com/">
+            <img src="./assets/graphics/MissingMapsLogo-White.svg" width="94px"></img>
+          </a>
+        </div>
+        <div className="nav-list">
+          <ul>
+            <a href="http://missingmaps-demo.devseed.com/contribute/"><li className="nav-item">CONTRIBUTE</li></a>
+            <a href="http://missingmaps-demo.devseed.com/events/"><li className="nav-item">EVENTS</li></a>
+            <a href="http://missingmaps-demo.devseed.com/about/"><li className="nav-item">ABOUT</li></a>
+            <li className="nav-item nav-dropdown">DISCOVER
+              <div className="dropdown-content">
+                <a href="http://missingmaps-users-demo.devseed.com/"><div className="nav-item">USER PROFILES</div></a>
+                <a href="http://missingmaps-leaderboards-demo.devseed.com/"><div className="nav-item">LEADERBOARDS</div></a>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div className="resp-navbar navbar-background resp-nav-dropdown">
+        <p>MENU</p>
+        <div className="resp-dropdown-content">
+          <a href="http://missingmaps-demo.devseed.com/contribute/"><li className="nav-item">CONTRIBUTE</li></a>
+          <a href="http://missingmaps-demo.devseed.com/events/"><li className="nav-item">EVENTS</li></a>
+          <a href="http://missingmaps-demo.devseed.com/about/"><li className="nav-item">ABOUT</li></a>
+          <a href="http://missingmaps-users-demo.devseed.com"><li className="nav-item">USER PROFILES</li></a>
+          <a href="http://missingmaps-leaderboards-demo.devseed.com"><li className="nav-item">LEADERBOARDS</li></a>
+        </div>
+      </div>
+    </header>
   );
 }
+
