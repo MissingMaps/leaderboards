@@ -1,0 +1,117 @@
+.LB-header-descriptor {
+  font-size: 0.8em;
+  font-weight: 400;
+  color: #939494;
+  border-bottom: none;
+}
+
+.public_fixedDataTable_header, .public_fixedDataTable_header .public_fixedDataTableCell_main {
+    background-color: #f6f7f8;
+    background-image: none;
+}
+
+/*main table*/
+.fixedDataTableLayout_main {
+    border-style: none;
+    font-family: 'Lato';
+    color: #eee;
+    font-weight: 300;
+}
+
+.fixedDataTableLayout_main, .public_fixedDataTable_main{
+  max-width: 100%;
+  overflow-x: scroll;
+}
+
+.public_fixedDataTableRow_main {
+  border-bottom: 1px solid #999;
+}
+
+.public_fixedDataTable_header {
+  border-bottom: none;
+}
+
+.fixedDataTableCellLayout_main {
+    border-right-style: none;
+}
+
+.public_fixedDataTableRow_highlighted,
+.public_fixedDataTableRow_highlighted .public_fixedDataTableCell_main {
+   background-color: #3d3d3d !important;
+}
+
+.public_fixedDataTableRow_main,
+.public_fixedDataTableRow_main .public_fixedDataTableCell_main
+ {
+   background-color: #3d3d3d !important;
+}
+
+a {
+  cursor: pointer;
+}
+
+.rankCell {
+    color: white;
+    font-weight: 800;
+}
+
+.statsCell {
+  
+}
+
+.blueteam {
+  background-color: #bdcc32;
+  text-align: center;
+}
+
+.redteam {
+  background-color: #15b7b7;
+  text-align: center;
+}
+
+.greenteam {
+  background-color: #f37346;
+  text-align: center;
+}
+
+.search-bar-input-test {
+    position: relative;
+}
+
+input[type="text"] {
+    box-sizing: none;
+    font-family: 'lato';
+    font-size: 0.9em;
+    width: 180px;
+    height: 30px;
+    margin: none;
+    color: #606161;
+    border: 1px solid #c6c7c7;
+    -webkit-border-radius: 5px 0px 0px 5px;
+    background-color: white;
+    margin-top: 20px;
+    margin-right: 10px;
+    padding: 2px 6px 2px 6px;
+    outline: none;
+    border-right: 0px;
+}
+
+.search-bar-side {
+    height: 30px;
+    width: 30px;
+    background-color: #23bcc1;
+    position: absolute;
+    left: 180px;
+    top: 20px;
+    border-radius: 0px 5px 5px 0px;
+    cursor: pointer;
+}
+
+.search-glass {
+    width: 16px;
+    position: absolute;
+    top: 6px;
+    left: 8px;
+    color: #eee;
+    font-size:1.4em;
+}
