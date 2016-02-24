@@ -1401,3 +1401,79 @@ Leaderboard Styling
   padding-top: 0.5em;
   color: #dbdbda;
   font-size: 0.9em; }
+
+.Comparison-Block {
+  clear: both;
+  margin: 10px 0; }
+
+.comparison-card {
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  height: 10px; }
+
+.comparison-number {
+  size: 1.2em;
+  width: 19%;
+  min-width: 80px;
+  float: left; }
+  @media screen and (max-width: 900px) {
+    .comparison-number {
+      width: 20%; } }
+  @media screen and (max-width: 750px) {
+    .comparison-number {
+      width: 24%; } }
+  @media screen and (max-width: 650px) {
+    .comparison-number {
+      width: 26%; } }
+  @media screen and (max-width: 580px) {
+    .comparison-number {
+      width: 30%; } }
+  @media screen and (max-width: 525px) {
+    .comparison-number {
+      width: 34%; } }
+  @media screen and (max-width: 500px) {
+    .comparison-number {
+      width: 50%; } }
+
+.comparison-bar-container {
+  width: 80%;
+  float: right;
+  min-height: 22px; }
+  .comparison-bar-container .redteam {
+    background-color: #15b7b7; }
+  .comparison-bar-container .blueteam {
+    background-color: #bdcc32; }
+  .comparison-bar-container .greenteam {
+    background-color: #f37346; }
+  @media screen and (max-width: 800px) {
+    .comparison-bar-container {
+      width: 76%; } }
+  @media screen and (max-width: 750px) {
+    .comparison-bar-container {
+      width: 74%; } }
+  @media screen and (max-width: 690px) {
+    .comparison-bar-container {
+      width: 72%; } }
+  @media screen and (max-width: 580px) {
+    .comparison-bar-container {
+      width: 68%; } }
+  @media screen and (max-width: 525px) {
+    .comparison-bar-container {
+      width: 64%; } }
+  @media screen and (max-width: 500px) {
+    .comparison-bar-container {
+      width: 50%; } }
+
+.redteam-proj {
+  color: #15b7b7; }
+
+.blueteam-proj {
+  color: #bdcc32; }
+
+.greenteam-proj {
+  color: #f37346; }
+
+.comparison-bar {
+  height: 3px;
+  margin-top: 8px; }

@@ -42195,7 +42195,10 @@ var ReactDOMOption = {
       }
     });
 
-    nativeProps.children = content;
+    if (content) {
+      nativeProps.children = content;
+    }
+
     return nativeProps;
   }
 
@@ -48325,7 +48328,7 @@ module.exports = ReactUpdates;
 
 'use strict';
 
-module.exports = '0.14.6';
+module.exports = '0.14.7';
 },{}],218:[function(require,module,exports){
 /**
  * Copyright 2013-2015, Facebook, Inc.
@@ -49417,6 +49420,7 @@ var warning = require('fbjs/lib/warning');
  */
 var EventInterface = {
   type: null,
+  target: null,
   // currentTarget is set when dispatching; no use in copying it here
   currentTarget: emptyFunction.thatReturnsNull,
   eventPhase: null,
@@ -49450,8 +49454,6 @@ function SyntheticEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEvent
   this.dispatchConfig = dispatchConfig;
   this.dispatchMarker = dispatchMarker;
   this.nativeEvent = nativeEvent;
-  this.target = nativeEventTarget;
-  this.currentTarget = nativeEventTarget;
 
   var Interface = this.constructor.Interface;
   for (var propName in Interface) {
@@ -49462,7 +49464,11 @@ function SyntheticEvent(dispatchConfig, dispatchMarker, nativeEvent, nativeEvent
     if (normalize) {
       this[propName] = normalize(nativeEvent);
     } else {
-      this[propName] = nativeEvent[propName];
+      if (propName === 'target') {
+        this.target = nativeEventTarget;
+      } else {
+        this[propName] = nativeEvent[propName];
+      }
     }
   }
 
@@ -52738,6 +52744,41 @@ module.exports = warning;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+exports.default = function (props) {
+  var color = "comparison-bar " + props.totals.color;
+  var edits = props.totals.edits;
+  var textcolor = props.totals.color + "-proj comparison-number";
+  var percentage = edits * 100.0 / props.max;
+
+  return _react2.default.createElement(
+    "div",
+    { className: "comparison-card" },
+    _react2.default.createElement(
+      "div",
+      { className: textcolor },
+      props.hashtag
+    ),
+    _react2.default.createElement(
+      "div",
+      { className: "comparison-bar-container" },
+      _react2.default.createElement("div", { className: color, style: { 'width': percentage + "%" } })
+    )
+  );
+};
+
+var _react = require("react");
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+},{"react":262}],270:[function(require,module,exports){
+"use strict";
+
+Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
@@ -52767,7 +52808,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"react":262}],270:[function(require,module,exports){
+},{"react":262}],271:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -52848,7 +52889,7 @@ exports.default = _react2.default.createClass({
         _react2.default.createElement(
           'span',
           { className: 'text-center sub-descriptor' },
-          'Total Points'
+          'Total Changesets'
         )
       ),
       _react2.default.createElement(
@@ -52895,7 +52936,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"classnames":1,"moment":102,"react":262}],271:[function(require,module,exports){
+},{"classnames":1,"moment":102,"react":262}],272:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -52919,6 +52960,10 @@ var _reactRouter = require('react-router');
 var _HashtagCard = require('./HashtagCard.js');
 
 var _HashtagCard2 = _interopRequireDefault(_HashtagCard);
+
+var _ComparisonBar = require('./ComparisonBar.js');
+
+var _ComparisonBar2 = _interopRequireDefault(_ComparisonBar);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -53023,6 +53068,26 @@ exports.default = _react2.default.createClass({
         deleteHashtag: component.deleteHashtag });
     });
 
+    var sorted = _ramda2.default.sortBy(_ramda2.default.nth(1), _ramda2.default.toPairs(_ramda2.default.map(_ramda2.default.prop('edits'), component.state.hashtags)));
+    var hashtags = _ramda2.default.map(_ramda2.default.nth(0), sorted.reverse());
+    var totals = _ramda2.default.map(_ramda2.default.prop('edits'), _ramda2.default.values(component.state.hashtags));
+    var max = _ramda2.default.reduce(_ramda2.default.max, 0, totals);
+    var list = hashtags.length > 1 ? _react2.default.createElement(
+      'div',
+      { className: 'Comparison-Block' },
+      _react2.default.createElement(
+        'div',
+        { className: 'section-headline' },
+        'Project Comparison by total edits'
+      ),
+      hashtags.map(function (hashtag) {
+        return _react2.default.createElement(_ComparisonBar2.default, {
+          hashtag: hashtag,
+          key: hashtag,
+          totals: component.state.hashtags[hashtag], max: max });
+      })
+    ) : '';
+
     return _react2.default.createElement(
       'section',
       { className: 'section-secondary' },
@@ -53038,11 +53103,7 @@ exports.default = _react2.default.createClass({
             'Refreshed: ',
             (0, _moment2.default)(component.state.lastRefresh).calendar()
           ),
-          _react2.default.createElement(
-            'a',
-            { className: 'refresh-page', href: '/' },
-            'Refresh'
-          )
+          _react2.default.createElement('div', { className: 'refresh-page' })
         ),
         _react2.default.createElement(
           'div',
@@ -53058,6 +53119,7 @@ exports.default = _react2.default.createClass({
             cards
           )
         ),
+        list,
         _react2.default.createElement(
           'ul',
           { className: 'tabbed-nav' },
@@ -53077,7 +53139,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"./HashtagCard.js":270,"moment":102,"ramda":105,"react":262,"react-router":126}],272:[function(require,module,exports){
+},{"./ComparisonBar.js":269,"./HashtagCard.js":271,"moment":102,"ramda":105,"react":262,"react-router":126}],273:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -53230,7 +53292,7 @@ var _react2 = _interopRequireDefault(_react);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-},{"react":262}],273:[function(require,module,exports){
+},{"react":262}],274:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -53374,14 +53436,14 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"leaflet":101,"ramda":105,"react":262,"turf-extent":264,"turf-featurecollection":265}],274:[function(require,module,exports){
+},{"leaflet":101,"ramda":105,"react":262,"turf-extent":264,"turf-featurecollection":265}],275:[function(require,module,exports){
 'use strict';
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 Object.defineProperty(exports, "__esModule", {
   value: true
 });
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
 var _react = require('react');
 
@@ -53773,7 +53835,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"../components/Footer.js":269,"fixed-data-table":82,"moment":102,"ramda":105,"react":262}],275:[function(require,module,exports){
+},{"../components/Footer.js":270,"fixed-data-table":82,"moment":102,"ramda":105,"react":262}],276:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -53930,7 +53992,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"../components/HashtagStats.js":271,"../containers/HashtagNav.js":276,"ramda":105,"react":262}],276:[function(require,module,exports){
+},{"../components/HashtagStats.js":272,"../containers/HashtagNav.js":277,"ramda":105,"react":262}],277:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -54097,7 +54159,7 @@ exports.default = _react2.default.createClass({
   }
 });
 
-},{"../components/Header.js":272,"isomorphic-fetch":100,"ramda":105,"react":262,"react-search-bar":131}],277:[function(require,module,exports){
+},{"../components/Header.js":273,"isomorphic-fetch":100,"ramda":105,"react":262,"react-search-bar":131}],278:[function(require,module,exports){
 'use strict';
 
 var _react = require('react');
@@ -54144,4 +54206,4 @@ _reactDom2.default.render(_react2.default.createElement(
   )
 ), document.getElementById('app'));
 
-},{"./components/Leaderboard-map.js":273,"./components/Leaderboard.js":274,"./containers/App.js":275,"history/lib/createHashHistory":89,"react":262,"react-dom":106,"react-router":126}]},{},[277]);
+},{"./components/Leaderboard-map.js":274,"./components/Leaderboard.js":275,"./containers/App.js":276,"history/lib/createHashHistory":89,"react":262,"react-dom":106,"react-router":126}]},{},[278]);

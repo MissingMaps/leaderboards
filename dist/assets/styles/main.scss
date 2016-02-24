@@ -1772,3 +1772,90 @@ $distfromtop: 50px;
   color: $lightgrey;
   font-size: 0.9em;
 }
+
+.Comparison-Block{
+  clear: both;
+  margin: 10px 0;
+}
+
+.comparison-card{
+  width: 100%;
+  margin: 20px 0;
+  position: relative;
+  height: 10px;
+}
+
+.comparison-number{
+  size: 1.2em;
+  width: 19%;
+  min-width: 80px;
+  float: left;
+  @media screen and (max-width: 900px) {
+    width: 20%;
+  }
+  @media screen and (max-width: 750px) {
+    width: 24%;
+  }
+  @media screen and (max-width: 650px) {
+    width: 26%;
+  }
+  @media screen and (max-width: 580px) {
+    width: 30%;
+  }
+  @media screen and (max-width: 525px) {
+    width: 34%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 50%;
+  }
+}
+
+.comparison-bar-container{
+  width: 80%;
+  float: right;
+  min-height: 22px;
+  .redteam{
+    background-color: $LB1;
+  }
+  .blueteam{
+    background-color: $LB2;
+  }
+  .greenteam{
+    background-color: $LB3;
+  }
+  @media screen and (max-width: 800px) {
+    width: 76%;
+  }
+  @media screen and (max-width: 750px) {
+    width: 74%;
+  }
+  @media screen and (max-width: 690px) {
+    width: 72%;
+  }
+  @media screen and (max-width: 580px) {
+    width: 68%;
+  }
+  @media screen and (max-width: 525px) {
+    width: 64%;
+  }
+  @media screen and (max-width: 500px) {
+    width: 50%;
+  }
+}
+
+.redteam-proj{
+  color: $LB1;
+}
+
+.blueteam-proj{
+  color: $LB2;
+}
+
+.greenteam-proj{
+  color: $LB3;
+}
+
+.comparison-bar{
+  height: 3px;
+  margin-top: 8px;
+}
