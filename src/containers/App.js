@@ -66,7 +66,15 @@ export default React.createClass({
     } else if (newHashtags.length > currentHashtags.length) {
       this.handleHashtagAdd(R.difference(newHashtags, currentHashtags));
     } else {
-      console.log('here');
+      var deletes = R.difference(currentHashtags, newHashtags);
+      var additions = R.difference(newHashtags, currentHashtags);
+      if (deletes.length) {
+        this.handleHashtagDelete(deletes);
+      }
+
+      if (additions.length) {
+        this.handleHashtagAdd(additions);
+      }
     }
   },
   handleHashtagDelete: function (hashtags) {
