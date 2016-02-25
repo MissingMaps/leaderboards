@@ -199,7 +199,7 @@ header{
     padding-left: 2px;
     &:before{
       content: "";
-      background: url('/assets/graphics/menubox.svg');
+      background: url('../graphics/menubox.svg');
       display: block;
       width: 16px;
       height: 16px;
@@ -1162,7 +1162,7 @@ table{
 }
 
 .refresh-page {
-  background-image: url("/assets/graphics/arrow-loop.svg");
+  background-image: url("../graphics/arrow-loop.svg");
   background-size: 15px 15px;
   background-repeat: no-repeat;
   display: block;
@@ -1185,7 +1185,7 @@ table{
 
 .more-options {
     text-indent: -9999px;
-    background-image: url("/assets/graphics/more-options.svg");
+    background-image: url("../graphics/more-options.svg");
     background-repeat: no-repeat;
     background-size: 25px 25px;
     background-position: right; 
@@ -1467,7 +1467,7 @@ $distfromtop: 50px;
     width: 70px;
     height: 26px;
     Text-indent: -9999px;
-    background-image: url("/assets/graphics/submit.svg");
+    background-image: url("../graphics/submit.svg");
     background-repeat: no-repeat;
     background-position: center;
   }
