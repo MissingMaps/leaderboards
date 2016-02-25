@@ -38,7 +38,7 @@ export default React.createClass({
               { 'display': (component.state.modalToggle ? '' : 'none'),
                 'cursor': 'pointer'
               }}>
-              <span >Delete</span>
+              <span >Remove</span>
             </div>
           </div>
           <div className="card-main">
