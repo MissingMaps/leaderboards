@@ -15,7 +15,7 @@ export default React.createClass({
   },
   componentDidMount: function () {
     var component = this;
-    fetch('http://missingmaps-api.devseed.com/hashtags')
+    fetch('http://osmstats.redcross.org/hashtags')
     .then(function (res) {
       return res.json();
     })

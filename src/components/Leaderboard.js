@@ -60,8 +60,10 @@ const LinkCell = (props) => {
   if (!data[rowIndex]) return <Cell></Cell>;
 
   var userid = props.data[rowIndex].user_id;
-  var userlink = 'http://missingmaps.org/users/#/' + userid;
+  var userlink = String('missingmaps.org/users/#/' + userid);
   var userClass = data[rowIndex].team + '-name statsCell table-username';
+
+  console.log(userlink);
 
   var display = data[rowIndex][field];
   if (field === 'created_at') {
