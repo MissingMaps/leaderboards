@@ -260,7 +260,7 @@ export default React.createClass({
               <SortHeaderCell
                 onSortChange={this._onSortChange}
                 sortDir={colSortDirs.edits} >
-                EDITS
+                CHANGESETS
               </SortHeaderCell>}
             cell={<StatsCell data={sortedDataList} field='edits' />}
             width={100}

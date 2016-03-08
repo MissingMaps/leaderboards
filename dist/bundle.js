@@ -52865,7 +52865,7 @@ exports.default = _react2.default.createClass({
           _react2.default.createElement(
             'span',
             null,
-            'Delete'
+            'Remove'
           )
         )
       ),
@@ -53785,7 +53785,7 @@ exports.default = _react2.default.createClass({
                   {
                     onSortChange: this._onSortChange,
                     sortDir: colSortDirs.edits },
-                  'EDITS'
+                  'CHANGESETS'
                 ),
                 cell: _react2.default.createElement(StatsCell, { data: sortedDataList, field: 'edits' }),
                 width: 100,
@@ -53897,10 +53897,10 @@ exports.default = _react2.default.createClass({
   },
   fetchData: function fetchData(hashtag) {
     var component = this;
-    return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/users').then(function (res) {
+    return fetch('http://osmstats.redcross.org/hashtags/' + hashtag + '/users').then(function (res) {
       return res.json();
     }).then(function (hashtagResult) {
-      return fetch('http://missingmaps-api.devseed.com/hashtags/' + hashtag + '/map').then(function (res) {
+      return fetch('http://osmstats.redcross.org/hashtags/' + hashtag + '/map').then(function (res) {
         return res.json();
       }).then(function (mapResult) {
         var state = component.state;
@@ -54045,7 +54045,7 @@ exports.default = _react2.default.createClass({
   },
   componentDidMount: function componentDidMount() {
     var component = this;
-    (0, _isomorphicFetch2.default)('http://missingmaps-api.devseed.com/hashtags').then(function (res) {
+    (0, _isomorphicFetch2.default)('http://osmstats.redcross.org/hashtags').then(function (res) {
       return res.json();
     }).then(function (results) {
       var resultsCheck = results.trending.length;
