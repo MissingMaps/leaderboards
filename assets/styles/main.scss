@@ -108,7 +108,7 @@ header{
   float: right;
   position: relative;
   display: inline-block;
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 560px) {
     display: none;
   }
 }
@@ -216,7 +216,7 @@ header{
     background-color: lighten($darkestgrey, 10);
     color: white;
   }
-  @media screen and (max-width: 500px) {
+  @media screen and (max-width: 560px) {
     display: block;
   }
 }
@@ -248,7 +248,7 @@ header{
 .resp-nav-dropdown {
     display: inline-block;
     text-align: center;
-    @media screen and (min-width: 500px) {
+    @media screen and (min-width: 560px) {
       display: none;
     }
 }
