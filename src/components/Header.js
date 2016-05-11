@@ -12,8 +12,14 @@ export default function () {
         <div className="nav-list">
           <ul>
             <a href="http://missingmaps.org/contribute/"><li className="nav-item">CONTRIBUTE</li></a>
-            <a href="http://missingmaps.org/events/"><li className="nav-item">EVENTS</li></a>
+            <li className="nav-item nav-dropdown">EVENTS
+              <div className="dropdown-content nav-events">
+                <a href="http://missingmaps.org/events/"><div className="nav-item">CURRENT EVENTS</div></a>
+                <a href="http://missingmaps.org/host"><div className="nav-item">ORGANIZE AN EVENT</div></a>
+              </div>
+            </li>
             <a href="http://missingmaps.org/about/"><li className="nav-item">ABOUT</li></a>
+            <a href="http://missingmaps.org/blog/"><li className="nav-item">BLOG</li></a>
             <li className="nav-item nav-dropdown">DISCOVER
               <div className="dropdown-content">
                 <a href="http://missingmaps.org/users"><div className="nav-item">USER PROFILES</div></a>
@@ -27,8 +33,10 @@ export default function () {
         <p>MENU</p>
         <div className="resp-dropdown-content">
           <a href="http://missingmaps.org/contribute/"><li className="nav-item">CONTRIBUTE</li></a>
-          <a href="http://missingmaps.org/events/"><li className="nav-item">EVENTS</li></a>
+          <a href="http://missingmaps.org/events/"><div className="nav-item">CURRENT EVENTS</div></a>
+          <a href="http://missingmaps.org/host"><div className="nav-item">ORGANIZE AN EVENT</div></a>
           <a href="http://missingmaps.org/about/"><li className="nav-item">ABOUT</li></a>
+          <a href="http://missingmaps.org/blog/"><li className="nav-item">BLOG</li></a>
           <a href="http://missingmaps.org/users"><li className="nav-item">USER PROFILES</li></a>
           <a href="http://missingmaps.org/leaderboards"><li className="nav-item">LEADERBOARDS</li></a>
         </div>
