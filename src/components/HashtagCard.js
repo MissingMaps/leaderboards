@@ -26,9 +26,9 @@ export default React.createClass({
     var Roads = addCommas(Math.round(this.props.totals.roads));
     var Totals = addCommas(this.props.totals.edits);
 
-    function addCommas(value){
-        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
+    function addCommas (value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
 
     return (
       <div className={className}>
