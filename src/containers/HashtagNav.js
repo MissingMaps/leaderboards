@@ -21,11 +21,9 @@ export default React.createClass({
     })
     .then(function (results) {
       var resultsCheck = results.trending.length;
-
-      if (resultsCheck == 0) {
-        var defaultText = 'No current trending hashtags.';
-      } else {
-        var defaultText = '';
+      var defaultText = '';
+      if (resultsCheck === 0) {
+        defaultText = 'No current trending hashtags.';
       }
 
       component.setState({

@@ -26,9 +26,9 @@ export default React.createClass({
     var Roads = addCommas(Math.round(this.props.totals.roads));
     var Totals = addCommas(this.props.totals.edits);
 
-    function addCommas(value){
-        return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-    };
+    function addCommas (value) {
+      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+    }
 
     return (
       <div className={className}>
@@ -44,7 +44,7 @@ export default React.createClass({
           <div className="card-main">
             <h2 className="Card-title">{this.props.hashtag}</h2>
             <span className="card-num feature-num">{Totals}</span>
-            <span className="text-center sub-descriptor">Total Changesets</span>
+            <span className="text-center sub-descriptor">Total Edits</span>
           </div>
           <div className="card-details">
             <div className="card-buildings text-center">

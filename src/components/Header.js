@@ -2,7 +2,7 @@ import React from 'react';
 
 export default function () {
   return (
-    <header> 
+    <header>
       <div className="navbar-background">
         <div className="nav-icon">
           <a href="http://missingmaps.org/">
