@@ -59,8 +59,10 @@ const LinkCell = (props) => {
   var {rowIndex, data, field, ...other} = props;
   if (!data[rowIndex]) return <Cell></Cell>;
 
-  var userid = props.data[rowIndex].user_id;
-  var userlink = 'http://missingmaps.org/users/#/' + userid;
+  var username = props.data[rowIndex].name;
+  var usernameShift = username.replace(/\s+/g, '-').toLowerCase();
+
+  var userlink = 'http://missingmaps.org/users/#/' + usernameShift;
   var userClass = data[rowIndex].team + '-name statsCell table-username';
 
   var display = data[rowIndex][field];
