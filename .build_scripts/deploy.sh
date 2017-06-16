@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -e # halt script on error
 
-if [ $TRAVIS_PULL_REQUEST = "false" ] && [ $TRAVIS_BRANCH = ${DEPLOY_BRANCH} ]; then
+if [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_BRANCH == ${DEPLOY_BRANCH} ]; then
   echo "Deploying to gh-pages!"
   cd dist
 
