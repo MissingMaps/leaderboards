@@ -34,13 +34,13 @@ export default React.createClass({
   },
   fetchData: function (hashtag) {
     var component = this;
-    return fetch('http://osmstats.redcross.org/hashtags/' +
+    return fetch('https://osmstats.redcross.org/hashtags/' +
                  hashtag + '/users')
     .then(function (res) {
       return res.json();
     })
     .then(function (hashtagResult) {
-      return fetch('http://osmstats.redcross.org/hashtags/' +
+      return fetch('https://osmstats.redcross.org/hashtags/' +
                    hashtag + '/map')
       .then(function (res) {
         return res.json();
