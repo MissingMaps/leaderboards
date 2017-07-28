@@ -2230,7 +2230,7 @@ module.exports = performanceNow;
  *
  * @providesModule shallowEqual
  * @typechecks
- * 
+ *
  */
 
 'use strict';
@@ -15439,7 +15439,7 @@ L.Path = (L.Path.SVG && !window.L_PREFER_CANVAS) || !L.Browser.canvas ? L.Path :
 		}
 
 		this._requestUpdate();
-		
+
 		this.fire('remove');
 		this._map = null;
 	},
@@ -18494,7 +18494,7 @@ L.Control.Attribution = L.Control.extend({
 				this.addAttribution(map._layers[i].getAttribution());
 			}
 		}
-		
+
 		map
 		    .on('layeradd', this._onLayerAdd, this)
 		    .on('layerremove', this._onLayerRemove, this);
@@ -33286,7 +33286,7 @@ function createRouteFromReactElement(element) {
  * nested.
  *
  *   import { Route, createRoutesFromReactChildren } from 'react-router'
- *   
+ *
  *   const routes = createRoutesFromReactChildren(
  *     <Route component={App}>
  *       <Route path="home" component={Dashboard}/>
@@ -54380,10 +54380,10 @@ exports.default = _react2.default.createClass({
   },
   fetchData: function fetchData(hashtag) {
     var component = this;
-    return fetch('http://osmstats.redcross.org/hashtags/' + hashtag + '/users').then(function (res) {
+    return fetch('https://osmstats.redcross.org/hashtags/' + hashtag + '/users').then(function (res) {
       return res.json();
     }).then(function (hashtagResult) {
-      return fetch('http://osmstats.redcross.org/hashtags/' + hashtag + '/map').then(function (res) {
+      return fetch('https://osmstats.redcross.org/hashtags/' + hashtag + '/map').then(function (res) {
         return res.json();
       }).then(function (mapResult) {
         var state = component.state;
@@ -54528,7 +54528,7 @@ exports.default = _react2.default.createClass({
   },
   componentDidMount: function componentDidMount() {
     var component = this;
-    (0, _isomorphicFetch2.default)('http://osmstats.redcross.org/hashtags').then(function (res) {
+    (0, _isomorphicFetch2.default)('https://osmstats.redcross.org/hashtags').then(function (res) {
       return res.json();
     }).then(function (results) {
       var resultsCheck = results.trending.length;
