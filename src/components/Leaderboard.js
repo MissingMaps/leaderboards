@@ -46,7 +46,9 @@ function StatsCell (props) {
   if (field === 'created_at') {
     display = moment(display).fromNow();
   } else if (field === 'roads') {
-    display = (display).toFixed(1) + ' km';
+    display = display.toLocaleString(undefined, { maximumFractionDigits: 1 }) + ' km';
+  } else {
+    display = display.toLocaleString();
   }
   return (
     <Cell className='statsCell' {...other } >
