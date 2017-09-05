@@ -108,7 +108,7 @@ export default React.createClass({
         <div className = "MapContent">
           <div id="map"></div>
           <div className = "Map-Subtext">
-            Map updates every 30 seconds to show the last 100 changesets made for the competing hashtags.
+            Map updates every 30 seconds to show the last 100 changesets made for hashtags being compared.
           </div>
         </div>
       </div>);
