@@ -40,9 +40,13 @@ var SortHeaderCell = React.createClass({
 });
 
 function StatsCell (props) {
-  var {rowIndex, data, field, ...other} = props;
+  var {className, rowIndex, data, field, ...other} = props;
+
+  className = className || 'statsCell';
+
   if (!data[rowIndex]) return <Cell></Cell>;
   var display = data[rowIndex][field];
+
   if (field === 'created_at') {
     display = moment(display).fromNow();
   } else if (field === 'roads') {
@@ -50,8 +54,11 @@ function StatsCell (props) {
   } else {
     display = display.toLocaleString();
   }
+
+  className += ' ' + data[rowIndex].team;
+
   return (
-    <Cell className='statsCell' {...other } >
+    <Cell className={className} {...other } >
       { display }
     </Cell>
   );
@@ -218,7 +225,7 @@ export default React.createClass({
                 sortDir={colSortDirs.hashtag} >
                 RANK
               </SortHeaderCell>}
-            cell={<StatsCell data={sortedDataList} field="rank" />}
+            cell={<StatsCell className="rankCell" data={sortedDataList} field="rank" />}
             width={48}
             fixed={true}
 
