@@ -79,19 +79,6 @@ const LinkCell = (props) => {
   );
 };
 
-function RankCell (props) {
-  var {rowIndex, data, ...other} = props;
-  if (!data[rowIndex]) return <Cell></Cell>;
-
-  var display = rowIndex + 1;
-  var rankClass = data[rowIndex].team + ' rankCell';
-  return (
-    <Cell className={rankClass} {...other } >
-      { display }
-    </Cell>
-  );
-}
-
 export default React.createClass({
   getInitialState: function () {
     return {
@@ -116,12 +103,13 @@ export default React.createClass({
       });
     });
 
-    // Sort
-    var sortedList = list;
+    // Sort by edits so we can add rank
+    var sortedList = this._sort(list, 'edits', 'ASC').map((x, idx) => ({ ...x, rank: idx + 1 }));
+
     var colSortKeys = Object.keys(this.state.colSortDirs);
     var key = colSortKeys[0];
     var dir = this.state.colSortDirs[key];
-    sortedList = this._sort(list, key, dir);
+    sortedList = this._sort(sortedList, key, dir);
 
     // Filter
     var filteredList = sortedList;
@@ -230,7 +218,7 @@ export default React.createClass({
                 sortDir={colSortDirs.hashtag} >
                 RANK
               </SortHeaderCell>}
-            cell={<RankCell data={sortedDataList} />}
+            cell={<StatsCell data={sortedDataList} field="rank" />}
             width={48}
             fixed={true}
 
