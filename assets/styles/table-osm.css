@@ -59,17 +59,17 @@ a {
   
 }
 
-.blueteam {
+.rankCell.blueteam {
   background-color: #bdcc32;
   text-align: center;
 }
 
-.redteam {
+.rankCell.redteam {
   background-color: #15b7b7;
   text-align: center;
 }
 
-.greenteam {
+.rankCell.greenteam {
   background-color: #f37346;
   text-align: center;
 }
