@@ -55,7 +55,7 @@ export default React.createClass({
               <span className="card-num">{Roads} </span>
               <p><span className="sub-descriptor">km Roads</span></p>
             </div>
-            <span className="sub-text text-center">Last Commit: {moment(this.props.totals.last_update).fromNow()}</span>
+            <span className="sub-text text-center">Last Edit: {moment(this.props.totals.last_update).fromNow()}</span>
           </div>
         </div>
     );
