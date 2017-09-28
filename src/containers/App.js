@@ -3,6 +3,10 @@ import HashtagNav from '../containers/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
 import R from 'ramda';
 
+import "../assets/styles/table.css";
+import "../assets/styles/table-osm.css";
+import "../assets/styles/main.css";
+
 export default React.createClass({
   getInitialState: function () {
     return {
