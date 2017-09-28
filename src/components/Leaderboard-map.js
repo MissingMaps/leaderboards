@@ -76,7 +76,10 @@ export default createClass({
         this.props.hasOwnProperty('features') &&
           Object.keys(this.props.features).length) {
       var extent = this.addToMap(this.props);
-      this.map.fitBounds(extent);
+
+      if (extent[0][0] !== Infinity) {
+        this.map.fitBounds(extent);
+      }
     }
     this.setState({
       map: this.map
