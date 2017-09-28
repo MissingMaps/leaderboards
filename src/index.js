@@ -18,5 +18,5 @@ ReactDOM.render((
       <Route path="/:id/map" component={LeaderboardMap} />
     </Route>
   </Router>),
-  document.getElementById('app')
+  document.getElementById('root')
 );
