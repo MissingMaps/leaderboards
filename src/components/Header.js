@@ -8,7 +8,7 @@ export default function () {
       <div className="navbar-background">
         <div className="nav-icon">
           <a href="http://missingmaps.org/">
-            <img src={ missingMapsLogo } width="94px" />
+            <img src={ missingMapsLogo } width="94px" alt="Missing Maps logo "/>
           </a>
         </div>
         <div className="nav-list">
@@ -46,4 +46,3 @@ export default function () {
     </header>
   );
 }
-

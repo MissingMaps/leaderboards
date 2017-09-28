@@ -1,10 +1,12 @@
-import React from 'react';
-import R from 'ramda';
-import Searchbar from 'react-search-bar';
+import createClass from 'create-react-class';
 import fetch from 'isomorphic-fetch';
+import R from 'ramda';
+import React from 'react';
+import Searchbar from 'react-search-bar';
+
 import Header from '../components/Header.js';
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       trending: [
@@ -99,12 +101,12 @@ export default React.createClass({
                     {
                       this.state.trending.map(function (hashtag) {
                         return <li className="dropdown-option" key={hashtag}>
-                        <a href="#" onClick={
+                        <button className="btn-link" onClick={
                           (e) => {
                             e.preventDefault();
                             component.onSubmit(hashtag);
                           }
-                        }>{hashtag}</a></li>;
+                        }>{hashtag}</button></li>;
                       })
                     }
                   </ul>

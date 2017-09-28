@@ -1,11 +1,13 @@
-import React from 'react';
-import R from 'ramda';
+import createClass from 'create-react-class';
 import moment from 'moment';
+import R from 'ramda';
+import React from 'react';
 import {Link, IndexLink} from 'react-router';
+
 import HashtagCard from './HashtagCard.js';
 import ComparisonBar from './ComparisonBar.js';
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       hashtags: {},

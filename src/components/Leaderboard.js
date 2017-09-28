@@ -1,7 +1,9 @@
-import React from 'react';
+import createClass from 'create-react-class';
 import {Cell, Table, Column} from 'fixed-data-table';
-import R from 'ramda';
 import moment from 'moment';
+import React from 'react';
+import R from 'ramda';
+
 import Footer from '../components/Footer.js';
 
 var SortTypes = {
@@ -13,7 +15,7 @@ function reverseSortDirection (sortDir) {
   return sortDir === SortTypes.ASC ? SortTypes.DESC : SortTypes.ASC;
 }
 
-var SortHeaderCell = React.createClass({
+var SortHeaderCell = createClass({
   render: function () {
     var {sortDir, children, ...props} = this.props;
     return (
@@ -86,7 +88,7 @@ const LinkCell = (props) => {
   );
 };
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       sortedDataList: [],
@@ -309,4 +311,3 @@ export default React.createClass({
     );
   }
 });
-

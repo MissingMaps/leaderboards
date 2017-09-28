@@ -1,8 +1,9 @@
-import React from 'react';
 import classNames from 'classnames';
+import createClass from 'create-react-class';
 import moment from 'moment';
+import React from 'react';
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       modalToggle: false

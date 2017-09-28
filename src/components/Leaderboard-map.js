@@ -1,8 +1,9 @@
-import React from 'react';
+import createClass from 'create-react-class';
+import R from 'ramda';
 import L from 'leaflet';
+import React from 'react';
 import tfc from 'turf-featurecollection';
 import turfextent from 'turf-extent';
-import R from 'ramda';
 
 var styles = {
   'redteam': {
@@ -27,7 +28,7 @@ function combineFC (elements) {
   return tfc(allFeatures);
 }
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       map: {},

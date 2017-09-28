@@ -477,6 +477,12 @@ a:hover{
   }
 }
 
+.btn-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: darken($mmGreen, 10);
+}
+
 /*----------------------------------------------*/
 /*Inputs*/
 /*----------------------------------------------*/
