@@ -1464,6 +1464,7 @@ $distfromtop: 50px;
     outline: none;
   }
 
+  .react-autosuggest__input,
   .search-bar-input {
     width: 250px;
   }
@@ -1494,6 +1495,7 @@ $distfromtop: 50px;
   }
 }
 
+.react-autosuggest__suggestions-list,
 .search-bar-suggestions {
   margin-top: 5px;
   position: absolute;
@@ -1507,10 +1509,15 @@ $distfromtop: 50px;
     border-bottom: 1px solid $lightgrey;
     padding: 10px;
     display: block;
+    overflow-x: hidden;
 
     &:hover {
       background-color: lighten($lightgrey, 12);
     }
+  }
+
+  .react-autosuggest__suggestion--highlighted {
+    background-color: lighten($lightgrey, 12);
   }
 }
 
