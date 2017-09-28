@@ -1,9 +1,9 @@
+import bbox from "@turf/bbox";
+import { featureCollection } from '@turf/helpers';
 import createClass from 'create-react-class';
 import R from 'ramda';
 import L from 'leaflet';
 import React from 'react';
-import tfc from 'turf-featurecollection';
-import turfextent from 'turf-extent';
 
 var styles = {
   'redteam': {
@@ -25,7 +25,7 @@ var styles = {
 
 function combineFC (elements) {
   var allFeatures = R.flatten(R.map(R.prop('features'), elements));
-  return tfc(allFeatures);
+  return featureCollection(allFeatures);
 }
 
 export default createClass({
@@ -58,7 +58,7 @@ export default createClass({
     this.setState({
       layers: layers
     });
-    var extent = turfextent(combineFC(R.flatten(R.values(features))));
+    var extent = bbox(combineFC(R.flatten(R.values(features))));
     extent = [[extent[1], extent[0]], [extent[3], extent[2]]];
     return extent;
   },
