@@ -52,7 +52,7 @@
     "create-react-class": "^15.6.2",
     "d3": "^3.5.14",
     "fixed-data-table": "^0.6.0",
-    "history": "^1.17.0",
+    "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.0",
     "leaflet": "^0.7.7",
     "lodash": "^4.0.1",
@@ -63,6 +63,7 @@
     "react-autosuggest": "^9.3.2",
     "react-checkbox-group": "^0.3.1",
     "react-dom": "^15.6.2",
-    "react-router": "^1.0.3"
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   }
 }

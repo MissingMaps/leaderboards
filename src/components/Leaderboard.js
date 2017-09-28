@@ -193,6 +193,7 @@ export default createClass({
   },
   render: function () {
     var {sortedDataList, colSortDirs} = this.state;
+
     return (
       <div>
         <section className="section-leaderboard">

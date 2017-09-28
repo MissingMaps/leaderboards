@@ -2,7 +2,7 @@ import createClass from 'create-react-class';
 import moment from 'moment';
 import R from 'ramda';
 import React from 'react';
-import {Link, IndexLink} from 'react-router';
+import { NavLink } from 'react-router-dom';
 
 import HashtagCard from './HashtagCard.js';
 import ComparisonBar from './ComparisonBar.js';
@@ -147,8 +147,8 @@ export default createClass({
           </div>
           {list}
           <ul className="tabbed-nav">
-              <IndexLink to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</IndexLink>
-              <Link to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</Link>
+              <NavLink exact to={`/${this.state.url}`} className="tab-style section-headline" activeClassName="active-tab" >Leaderboard</NavLink>
+              <NavLink to={`/${this.state.url}/map`} className="tab-style section-headline" activeClassName="active-tab">Map View</NavLink>
           </ul>
         </div>
       </section>

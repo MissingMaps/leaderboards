@@ -1,9 +1,12 @@
 import createClass from 'create-react-class';
 import R from 'ramda';
 import React from 'react';
+import {Router, Route, Switch} from 'react-router';
 
 import HashtagNav from '../containers/HashtagNav.js';
 import HashtagStats from '../components/HashtagStats.js';
+import Leaderboard from '../components/Leaderboard.js';
+import LeaderboardMap from '../components/Leaderboard-map.js';
 
 import "../assets/styles/table.css";
 import "../assets/styles/table-osm.css";
@@ -19,7 +22,9 @@ export default createClass({
     };
   },
   initializeIntervals: function (props) {
-    var hashtags = R.split(',', props.params.id);
+    const { match: { params: { id } } } = this.props;
+
+    var hashtags = R.split(',', id);
     var colorClasses = ['redteam', 'blueteam', 'greenteam'];
 
     var intervals = {};
@@ -65,7 +70,9 @@ export default createClass({
     this.initializeIntervals(this.props);
   },
   componentWillReceiveProps: function (nextProps) {
-    var newHashtags = R.split(',', nextProps.params.id);
+    const { match: { params: { id } } } = nextProps;
+
+    var newHashtags = R.split(',', id);
     var currentHashtags = Object.keys(this.state.hashtags);
     if (newHashtags.length < currentHashtags.length) {
       this.handleHashtagDelete(R.difference(currentHashtags, newHashtags));
@@ -120,12 +127,15 @@ export default createClass({
       users[hashtag] = hashtags[hashtag].users;
       features[hashtag] = hashtags[hashtag].features;
     });
+
+    const { history, match: { params: { id } } } = this.props;
+
     return (
       <div>
         <div>
           <div id = "Page-Container">
             <HashtagNav
-              id={this.props.params.id}
+              id={id}
               history={this.props.history}
               location={this.props.location}
             />
@@ -133,18 +143,17 @@ export default createClass({
               colors={this.state.colors}
               rows={users}
               refresh={this.state.lastRefresh}
-              id={this.props.params.id}
+              id={id}
               history={this.props.history}
               location={this.props.location}
             />
 
-            {
-              this.props.children && React.cloneElement(this.props.children, {
-                colors: this.state.colors,
-                rows: users,
-                features: features
-              })
-            }
+            <Router history={history}>
+              <Switch>
+                <Route path="/:id/map" render={props => <LeaderboardMap colors={this.state.colors} rows={users} features={features} {...props} />} />
+                <Route render={props => <Leaderboard colors={this.state.colors} rows={users} features={features} {...props} />} />
+              </Switch>
+            </Router>
           </div>
         </div>
       </div>
