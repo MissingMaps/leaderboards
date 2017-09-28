@@ -90,7 +90,9 @@ export default createClass({
     layers.forEach((layerKey) => {
       this.state.map.removeLayer(this.state.layers[layerKey]);
     });
-    this.state.layers = {};
+    this.setState({
+      layers: {}
+    });
     var props = nextProps;
 
     if (props &&
@@ -105,10 +107,10 @@ export default createClass({
   },
   render: function () {
     return (
-      <div id = "MapContainer">
-        <div className = "MapContent">
+      <div id="MapContainer">
+        <div className="MapContent">
           <div id="map"></div>
-          <div className = "Map-Subtext">
+          <div className="Map-Subtext">
             Map updates every 30 seconds to show the last 100 changesets made for hashtags being compared.
           </div>
         </div>
