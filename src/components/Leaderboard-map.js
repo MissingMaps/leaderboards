@@ -98,7 +98,7 @@ export default createClass({
           Object.keys(props.features).length) {
       var extent = this.addToMap(props);
 
-      if (numLayersHasChanged) {
+      if (numLayersHasChanged && extent[0][0] !== Infinity) {
         this.map.fitBounds(extent);
       }
     }
