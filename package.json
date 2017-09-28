@@ -58,9 +58,9 @@
     "lodash": "^4.0.1",
     "moment": "^2.11.2",
     "ramda": "^0.24.1",
-    "react": "^15.6.2",
+    "react": "^16.0.0",
     "react-autosuggest": "^9.3.2",
-    "react-dom": "^15.6.2",
+    "react-dom": "^16.0.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
   }
