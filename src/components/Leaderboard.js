@@ -1,5 +1,5 @@
 import createClass from 'create-react-class';
-import {Cell, Table, Column} from 'fixed-data-table';
+import {Cell, Table, Column} from 'fixed-data-table-2';
 import moment from 'moment';
 import React from 'react';
 import R from 'ramda';
@@ -17,7 +17,8 @@ function reverseSortDirection (sortDir) {
 
 var SortHeaderCell = createClass({
   render: function () {
-    var {sortDir, children, ...props} = this.props;
+    var {sortDir, children, onSortChange, ...props} = this.props;
+
     return (
       <Cell className='LB-header-descriptor' {...props}>
         <a onClick={this._onSortChange}>
