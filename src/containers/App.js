@@ -57,12 +57,18 @@ export default createClass({
         return res.json();
       })
       .then(function (mapResult) {
-        var state = component.state;
-        state.hashtags[hashtag] = {
-          users: hashtagResult,
-          features: mapResult
-        };
-        component.setState(state);
+        if (mapResult.error == null) {
+          const { hashtags } = component.state;
+
+          hashtags[hashtag] = {
+            users: hashtagResult,
+            features: mapResult
+          };
+
+          component.setState({
+            hashtags
+          });
+        }
       });
     });
   },
