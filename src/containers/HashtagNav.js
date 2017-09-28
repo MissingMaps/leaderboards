@@ -48,8 +48,7 @@ export default createClass({
       suggested: newValue
     });
   },
-  onSubmit: function () {
-    var input = this.state.suggested;
+  onSubmit: function (input) {
     var params = this.props.id;
     var hashtags = params.split(',');
     if (!R.contains(input, hashtags)) {
@@ -125,7 +124,7 @@ export default createClass({
                     suggestions={suggestions}
                     inputProps={suggestionProps}
                   />
-                  <input className="icon search-bar-submit" type="submit" onSubmit={this.onSubmit} onClick={this.onSubmit} />
+                  <input className="icon search-bar-submit" type="submit" onSubmit={this.onSubmit} onClick={() => this.onSubmit(suggested)} />
                 </div>
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>
