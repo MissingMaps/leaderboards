@@ -129,7 +129,7 @@ export default createClass({
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>
                   <ul>
-                    <li className = "dropdown-option">
+                    <li className="dropdown-option">
                       { this.state.default }
                     </li>
                   </ul>
