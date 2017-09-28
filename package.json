@@ -59,10 +59,10 @@
     "moment": "^2.11.2",
     "radium": "^0.16.5",
     "ramda": "^0.19.1",
-    "react": "^0.14.5",
+    "react": "^15.6.2",
     "react-autosuggest": "^9.3.2",
     "react-checkbox-group": "^0.3.1",
-    "react-dom": "^0.14.5",
+    "react-dom": "^15.6.2",
     "react-router": "^1.0.3"
   }
 }
