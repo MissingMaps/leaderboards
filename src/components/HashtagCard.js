@@ -23,13 +23,9 @@ export default createClass({
     var component = this;
     var className = classNames('card', this.props.color, {'isWinner': this.props.isWinner});
 
-    var Buildings = addCommas(this.props.totals.buildings);
-    var Roads = addCommas(Math.round(this.props.totals.roads));
-    var Totals = addCommas(this.props.totals.edits);
-
-    function addCommas (value) {
-      return value.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-    }
+    var buildings = this.props.totals.buildings.toLocaleString();
+    var roads = Math.round(this.props.totals.roads).toLocaleString();
+    var totals = this.props.totals.edits.toLocaleString()
 
     return (
       <div className={className}>
@@ -44,16 +40,16 @@ export default createClass({
           </div>
           <div className="card-main">
             <h2 className="Card-title">{this.props.hashtag}</h2>
-            <span className="card-num feature-num">{Totals}</span>
+            <span className="card-num feature-num">{totals}</span>
             <span className="text-center sub-descriptor">Total Edits</span>
           </div>
           <div className="card-details">
             <div className="card-buildings text-center">
-              <span className="card-num">{Buildings} </span>
+              <span className="card-num">{buildings} </span>
               <p><span className="sub-descriptor">Buildings</span></p>
             </div>
             <div>
-              <span className="card-num">{Roads} </span>
+              <span className="card-num">{roads} </span>
               <p><span className="sub-descriptor">km Roads</span></p>
             </div>
             <span className="sub-text text-center">Last Edit: {moment(this.props.totals.last_update).fromNow()}</span>
