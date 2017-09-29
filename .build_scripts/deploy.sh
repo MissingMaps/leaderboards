@@ -3,7 +3,7 @@ set -e # halt script on error
 
 if [ $TRAVIS_PULL_REQUEST == "false" ] && [ $TRAVIS_BRANCH == ${DEPLOY_BRANCH} ]; then
   echo "Deploying to gh-pages!"
-  cd dist
+  cd build
 
   # Save some useful information
   SSH_REPO="git@github.com:${TRAVIS_REPO_SLUG}.git"

@@ -1,16 +1,26 @@
-import React from 'react';
-import R from 'ramda';
-import Searchbar from 'react-search-bar';
+import createClass from 'create-react-class';
 import fetch from 'isomorphic-fetch';
+import R from 'ramda';
+import React from 'react';
+import Autosuggest from 'react-autosuggest';
+
 import Header from '../components/Header.js';
 
-export default React.createClass({
+const getSuggestionValue = suggestion => suggestion;
+
+const renderSuggestion = (suggestion, { query, isHighlighted }) => (
+  <span>{query}<strong>{suggestion.slice(query.length)}</strong></span>
+)
+
+export default createClass({
   getInitialState: function () {
     return {
       trending: [
       ],
       all: [],
-      showModal: false
+      showModal: false,
+      suggested: '',
+      suggestions: []
     };
   },
   componentDidMount: function () {
@@ -33,11 +43,10 @@ export default React.createClass({
       });
     });
   },
-  onChange: function (input, resolve) {
-    var arr = this.state.all.filter(function (word) {
-      return word.toLowerCase().startsWith(input.toLowerCase());
+  onChange: function (event, { newValue }) {
+    this.setState({
+      suggested: newValue
     });
-    resolve(arr);
   },
   onSubmit: function (input) {
     var params = this.props.id;
@@ -55,9 +64,30 @@ export default React.createClass({
       showModal: false
     });
   },
+  onSuggestionsClearRequested: function() {
+    this.setState({
+      suggestions: []
+    });
+  },
+  onSuggestionsFetchRequested: function({ value }) {
+    const { all } = this.state;
+
+    this.setState({
+      suggestions: all.filter(x => x.toLowerCase().startsWith(value.toLowerCase())).slice(0, 10)
+    })
+  },
   render: function () {
     var list = this.props.id.split(',');
     var component = this;
+
+    const { suggested, suggestions } = this.state;
+
+    const suggestionProps = {
+      placeholder: 'missingmaps',
+      value: suggested,
+      onChange: this.onChange
+    }
+
     return (
       <div>
         <Header />
@@ -86,12 +116,20 @@ export default React.createClass({
               'display': (this.state.showModal ? '' : 'none')
             }}>
                 <div className="Input-hashtag">
-                  <Searchbar onChange={this.onChange} onSubmit={this.onSubmit} value="submit"/>
+                  <Autosuggest
+                    getSuggestionValue={getSuggestionValue}
+                    onSuggestionsFetchRequested={this.onSuggestionsFetchRequested}
+                    onSuggestionsClearRequested={this.onSuggestionsClearRequested}
+                    renderSuggestion={renderSuggestion}
+                    suggestions={suggestions}
+                    inputProps={suggestionProps}
+                  />
+                  <input className="icon search-bar-submit" type="submit" onSubmit={this.onSubmit} onClick={() => this.onSubmit(suggested)} />
                 </div>
                 <div className="dropdown-details">
                   <h5 className="header-style__plain">Popular Options</h5>
                   <ul>
-                    <li className = "dropdown-option">
+                    <li className="dropdown-option">
                       { this.state.default }
                     </li>
                   </ul>
@@ -99,12 +137,12 @@ export default React.createClass({
                     {
                       this.state.trending.map(function (hashtag) {
                         return <li className="dropdown-option" key={hashtag}>
-                        <a href="#" onClick={
+                        <button className="btn-link" onClick={
                           (e) => {
                             e.preventDefault();
                             component.onSubmit(hashtag);
                           }
-                        }>{hashtag}</a></li>;
+                        }>{hashtag}</button></li>;
                       })
                     }
                   </ul>

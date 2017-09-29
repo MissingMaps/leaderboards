@@ -1,8 +1,9 @@
-import React from 'react';
-import L from 'leaflet';
-import tfc from 'turf-featurecollection';
-import turfextent from 'turf-extent';
+import bbox from "@turf/bbox";
+import { featureCollection } from '@turf/helpers';
+import createClass from 'create-react-class';
 import R from 'ramda';
+import L from 'leaflet';
+import React from 'react';
 
 var styles = {
   'redteam': {
@@ -24,10 +25,10 @@ var styles = {
 
 function combineFC (elements) {
   var allFeatures = R.flatten(R.map(R.prop('features'), elements));
-  return tfc(allFeatures);
+  return featureCollection(allFeatures);
 }
 
-export default React.createClass({
+export default createClass({
   getInitialState: function () {
     return {
       map: {},
@@ -57,7 +58,7 @@ export default React.createClass({
     this.setState({
       layers: layers
     });
-    var extent = turfextent(combineFC(R.flatten(R.values(features))));
+    var extent = bbox(combineFC(R.flatten(R.values(features))));
     extent = [[extent[1], extent[0]], [extent[3], extent[2]]];
     return extent;
   },
@@ -75,7 +76,10 @@ export default React.createClass({
         this.props.hasOwnProperty('features') &&
           Object.keys(this.props.features).length) {
       var extent = this.addToMap(this.props);
-      this.map.fitBounds(extent);
+
+      if (extent[0][0] !== Infinity) {
+        this.map.fitBounds(extent);
+      }
     }
     this.setState({
       map: this.map
@@ -89,7 +93,9 @@ export default React.createClass({
     layers.forEach((layerKey) => {
       this.state.map.removeLayer(this.state.layers[layerKey]);
     });
-    this.state.layers = {};
+    this.setState({
+      layers: {}
+    });
     var props = nextProps;
 
     if (props &&
@@ -97,17 +103,17 @@ export default React.createClass({
           Object.keys(props.features).length) {
       var extent = this.addToMap(props);
 
-      if (numLayersHasChanged) {
+      if (numLayersHasChanged && extent[0][0] !== Infinity) {
         this.map.fitBounds(extent);
       }
     }
   },
   render: function () {
     return (
-      <div id = "MapContainer">
-        <div className = "MapContent">
+      <div id="MapContainer">
+        <div className="MapContent">
           <div id="map"></div>
-          <div className = "Map-Subtext">
+          <div className="Map-Subtext">
             Map updates every 30 seconds to show the last 100 changesets made for hashtags being compared.
           </div>
         </div>

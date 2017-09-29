@@ -156,7 +156,7 @@ header{
 
 .dropdown-content {
     transition: opacity 0.3s;
-    opacity: 0; 
+    opacity: 0;
     height: 0;
     overflow: hidden;
     position: absolute;
@@ -223,7 +223,7 @@ header{
 
 .resp-dropdown-content{
     transition: opacity 0.1s;
-    opacity: 0; 
+    opacity: 0;
     height: 0;
     overflow: hidden;
     position: absolute;
@@ -369,7 +369,7 @@ a:hover{
 }
 
 /*----------------------------------------------*/
-/*Interactive Buttons*/ 
+/*Interactive Buttons*/
 /*----------------------------------------------*/
 .button{
   background-color: $ButtonColor;
@@ -393,7 +393,7 @@ a:hover{
   a{
     color: white;
     &:hover{
-      color: white;   
+      color: white;
     }
     &:visited{
       color: white;
@@ -445,7 +445,7 @@ a:hover{
   a{
     color: $mmTeal;
     &:hover{
-      color: white;   
+      color: white;
     }
     &:visited{
       color: $mmTeal;
@@ -469,7 +469,7 @@ a:hover{
   a{
     color: darken($mmGreen, 10);
     &:hover{
-      color: white;   
+      color: white;
     }
     &:visited{
       color: darken($mmGreen, 10);
@@ -477,8 +477,14 @@ a:hover{
   }
 }
 
+.btn-link {
+  background-color: transparent;
+  border-color: transparent;
+  color: darken($mmGreen, 10);
+}
+
 /*----------------------------------------------*/
-/*Inputs*/ 
+/*Inputs*/
 /*----------------------------------------------*/
 
 input[type="text"]{
@@ -597,6 +603,7 @@ input[type='text']:before{
     }
   }
   input{
+    box-sizing: border-box;
     @media screen and (max-width: 500px) {
       width: 140px;
     }
@@ -696,7 +703,7 @@ input[type='text']:before{
 
 
 /*----------------------------------------------*/
-/*Tables*/ 
+/*Tables*/
 /*----------------------------------------------*/
 
 table, th, td {
@@ -709,7 +716,7 @@ th, td {
 }
 
 tr{
-    border-bottom: 1px solid $border-grey;  
+    border-bottom: 1px solid $border-grey;
 }
 
 tr:first-child{
@@ -731,15 +738,15 @@ table{
 }
 
 :-moz-placeholder { /* Firefox 18- */
-   color: lighten($darkgrey, 8);  
+   color: lighten($darkgrey, 8);
 }
 
 ::-moz-placeholder {  /* Firefox 19+ */
-   color: lighten($darkgrey, 8);  
+   color: lighten($darkgrey, 8);
 }
 
-:-ms-input-placeholder {  
-   color: lighten($darkgrey, 8);  
+:-ms-input-placeholder {
+   color: lighten($darkgrey, 8);
 }
 
 .fixedDataTableLayout_main{
@@ -757,7 +764,7 @@ table{
 }
 
 /*----------------------------------------------*/
-/*Special Text, for data, etc.*/ 
+/*Special Text, for data, etc.*/
 /*----------------------------------------------*/
 .descriptor{
   font-size: 0.8em;
@@ -807,7 +814,7 @@ table{
 }
 
 /*----------------------------------------------*/
-/*Badge Styling.*/ 
+/*Badge Styling.*/
 /*----------------------------------------------*/
 .badge-text{
   line-height: 20px;
@@ -832,7 +839,7 @@ table{
 }
 
 .badgeicon {
-  position: relative; 
+  position: relative;
   float: left;
   pointer-events: none;
 }
@@ -851,7 +858,7 @@ table{
 }
 
 /*----------------------------------------------*/
-/*Leaderboard*/ 
+/*Leaderboard*/
 /*----------------------------------------------*/
 .hashtag-title{
   font-family: 'Open Sans';
@@ -934,7 +941,7 @@ table{
 }
 
 /*----------------------------------------------*/
-/*Container Styles*/ 
+/*Container Styles*/
 /*----------------------------------------------*/
 .sub-container{
   max-width: 460px;
@@ -978,7 +985,7 @@ table{
 .competitor-cards {
   clear: both;
 
-  .card { 
+  .card {
     width: 26%;
     float: left;
     margin-right: 35px;
@@ -1002,7 +1009,7 @@ table{
     padding: 15px 10px 0px;
     border-top: 1px solid $lightgrey;
     margin: 0px 5px;
-      .card-num { 
+      .card-num {
         font-weight: 700;
       }
     }
@@ -1011,17 +1018,17 @@ table{
     }
   }
 
-  .competitor1 { 
+  .competitor1 {
     .card-num {
       color: $LB2;
     }
   }
-  .competitor2 { 
+  .competitor2 {
     .card-num {
       color: $LB1;
     }
   }
-  .competitor3 { 
+  .competitor3 {
     .card-num {
       color: $LB3;
     }
@@ -1033,7 +1040,7 @@ table{
     }
   }
 
-  .feature-num { 
+  .feature-num {
     text-align: center;
     font-size: 2.5em;
     display: block;
@@ -1052,7 +1059,7 @@ table{
   }
 }
 
-.more-options-container { 
+.more-options-container {
   float: right;
   width: 26px;
   @media screen and (max-width: 368px) {
@@ -1068,7 +1075,7 @@ table{
   border-radius: 3px;
   z-index: 5;
 
-  &:before { 
+  &:before {
     bottom: 100%;
     left: 90%;
     border: solid transparent;
@@ -1077,7 +1084,7 @@ table{
     width: 0;
     position: absolute;
     pointer-events: none;
-    border-color: rgba(194, 225, 245, 0); 
+    border-color: rgba(194, 225, 245, 0);
     border-bottom-color: #c6c7c7;
     border-width: 10px;
     margin-left: -60px;
@@ -1193,7 +1200,7 @@ table{
     background-image: url("../graphics/more-options.svg");
     background-repeat: no-repeat;
     background-size: 25px 25px;
-    background-position: right; 
+    background-position: right;
     display: block;
 }
 
@@ -1232,15 +1239,15 @@ table{
   margin-bottom: 10px;
 }
 
-.section-feature { 
+.section-feature {
   background-color: lighten($darkestgrey, 5);
   padding: 45px 0 20px;
 }
 
-.section-secondary { 
+.section-secondary {
   background-color: darken($darkestgrey, 10);
   padding-bottom: 35px;
-  .section-headline { 
+  .section-headline {
     color: #fff;
   }
 }
@@ -1272,7 +1279,7 @@ table{
     border-bottom: 3px solid $mmGreen;
 }
 
-.link-actionlink { 
+.link-actionlink {
   margin-top: 10px;
   display: block;
 
@@ -1283,13 +1290,13 @@ table{
 
 .Table-Container {
   margin-top: 50px;
-  a { 
+  a {
     color: $border-grey;
   }
 }
 
 /*----------------------------------------------*/
-/*Events Styles*/ 
+/*Events Styles*/
 /*----------------------------------------------*/
 
 .events-container{
@@ -1405,7 +1412,7 @@ $distfromtop: 50px;
 
 
 /*----------------------------------------------*/
-/* Leaderboard Navigation Bar */ 
+/* Leaderboard Navigation Bar */
 /*----------------------------------------------*/
 /*.Leaderboard-Navbar-Container{
   width: 100%;
@@ -1457,6 +1464,7 @@ $distfromtop: 50px;
     outline: none;
   }
 
+  .react-autosuggest__input,
   .search-bar-input {
     width: 250px;
   }
@@ -1478,8 +1486,8 @@ $distfromtop: 50px;
   }
 }
 
-.search-bar-submit, .search-bar-side { 
-  &:hover { 
+.search-bar-submit, .search-bar-side {
+  &:hover {
     background-color: darken($mmTeal, 5);
   }
   &:visited{
@@ -1487,7 +1495,8 @@ $distfromtop: 50px;
   }
 }
 
-.search-bar-suggestions { 
+.react-autosuggest__suggestions-list,
+.search-bar-suggestions {
   margin-top: 5px;
   position: absolute;
   background-color: lighten($lightgrey, 10);
@@ -1500,10 +1509,15 @@ $distfromtop: 50px;
     border-bottom: 1px solid $lightgrey;
     padding: 10px;
     display: block;
+    overflow-x: hidden;
 
     &:hover {
       background-color: lighten($lightgrey, 12);
     }
+  }
+
+  .react-autosuggest__suggestion--highlighted {
+    background-color: lighten($lightgrey, 12);
   }
 }
 
@@ -1555,7 +1569,7 @@ $distfromtop: 50px;
 }
 
 /*----------------------------------------------*/
-/* Leaderboard Left Panel */ 
+/* Leaderboard Left Panel */
 /*----------------------------------------------*/
 .Leaderboard-Stats-Container{
   width: 25.5%;
@@ -1603,14 +1617,14 @@ $distfromtop: 50px;
 }
 
 /*----------------------------------------------*/
-/* Toggle Switch */ 
+/* Toggle Switch */
 /*----------------------------------------------*/
 
 .onoffswitch, .onoffswitch2, .onoffswitch3{
-  position: relative; 
+  position: relative;
   width: 40px;
-  -webkit-user-select:none; 
-  -moz-user-select:none; 
+  -webkit-user-select:none;
+  -moz-user-select:none;
   -ms-user-select: none;
   display: inline-block;
   margin-left: 6px;
@@ -1620,26 +1634,26 @@ $distfromtop: 50px;
   display: none;
 }
 .onoffswitch-label {
-  display: block; 
-  overflow: hidden; 
+  display: block;
+  overflow: hidden;
   cursor: pointer;
-  border: 2px solid #CCC; 
+  border: 2px solid #CCC;
   border-radius: 5px;
 }
 .onoffswitch-inner {
-  display: block; 
-  width: 200%; 
+  display: block;
+  width: 200%;
   margin-left: -100%;
   transition: margin 0.3s ease-in 0s;
 }
 .onoffswitch-inner:before, .onoffswitch-inner:after {
-  display: block; 
+  display: block;
   float: left;
-  width: 50%; 
-  height: 20px; 
-  padding: 0; 
+  width: 50%;
+  height: 20px;
+  padding: 0;
   line-height: 20px;
-  font-size: 10px; 
+  font-size: 10px;
   box-sizing: border-box;
 }
 .onoffswitch-inner:before {
@@ -1654,18 +1668,18 @@ $distfromtop: 50px;
   text-align: right;
 }
 .onoffswitch-switch {
-  display: block; 
-  width: 14px; 
+  display: block;
+  width: 14px;
   margin: 4px;
   background: $osmgreen;
-  position: absolute; 
-  top: 0; 
+  position: absolute;
+  top: 0;
   bottom: 0;
   right: 16px;
   border: 1px solid #444;
   box-shadow: 0px 0px 1px #000;
   border-radius: 5px;
-  transition: all 0.1s ease-in 0s; 
+  transition: all 0.1s ease-in 0s;
 }
 .hashtag2{
   background: $mmblue;
@@ -1677,13 +1691,13 @@ $distfromtop: 50px;
   margin-left: 0;
 }
 .onoffswitch-checkbox:checked + .onoffswitch-label .onoffswitch-switch {
-  right: 0px; 
-  background-color: #999; 
+  right: 0px;
+  background-color: #999;
 }
 
 
 /*----------------------------------------------*/
-/* Leaderboard Right Panels */ 
+/* Leaderboard Right Panels */
 /*----------------------------------------------*/
 
 .Leaderboard-Container{
@@ -1740,7 +1754,7 @@ $distfromtop: 50px;
     color: lighten($mmTeal, 10);
     transition: color 0.2s;
     &:hover{
-      color: lighten($mmGreen, 10);    
+      color: lighten($mmGreen, 10);
     }
     &:visited{
     }
@@ -1752,7 +1766,7 @@ $distfromtop: 50px;
     color: lighten(#bdcc32, 10);
     transition: color 0.2s;
     &:hover{
-      color: darken(#bdcc32, 10);    
+      color: darken(#bdcc32, 10);
     }
     &:visited{
     }
@@ -1764,7 +1778,7 @@ $distfromtop: 50px;
     color: lighten(#15b7b7, 10);
     transition: color 0.2s;
     &:hover{
-      color: darken(#15b7b7, 10);    
+      color: darken(#15b7b7, 10);
     }
     &:visited{
     }
@@ -1776,7 +1790,7 @@ $distfromtop: 50px;
     color: lighten(#f37346, 10);
     transition: color 0.2s;
     &:hover{
-      color: darken(#f37346, 10);    
+      color: darken(#f37346, 10);
     }
     &:visited{
     }

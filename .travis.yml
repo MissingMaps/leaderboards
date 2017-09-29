@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-  - "6"
+  - "8"
 
 env:
   global:
@@ -12,11 +12,8 @@ cache:
   directories:
     - node_modules
 
-before_install:
-- chmod +x ./.build_scripts/deploy.sh
-
 script:
-- npm run build-prod
+- npm run build
 
 after_success:
 - ./.build_scripts/deploy.sh
