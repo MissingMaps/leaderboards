@@ -1,36 +1,58 @@
-import createClass from 'create-react-class';
-import R from 'ramda';
-import React from 'react';
-import {Router, Route, Switch} from 'react-router';
+import createClass from "create-react-class";
+import R from "ramda";
+import React from "react";
+import { Router, Route, Switch } from "react-router";
 
-import HashtagNav from '../containers/HashtagNav.js';
-import HashtagStats from '../components/HashtagStats.js';
-import Leaderboard from '../components/Leaderboard.js';
-import LeaderboardMap from '../components/Leaderboard-map.js';
+import HashtagNav from "../containers/HashtagNav";
+import HashtagStats from "../components/HashtagStats";
+import Leaderboard from "../components/Leaderboard";
+import LeaderboardMap from "../components/Leaderboard-map";
 
 import "../assets/styles/table.css";
 import "../assets/styles/table-osm.css";
 import "../assets/styles/main.css";
 
+const STATS_API_URL =
+  process.env.REACT_APP_STATS_API_URL || "https://osmstats.redcross.org";
+
+const get = async uri => {
+  const rsp = await fetch(uri);
+
+  if (rsp.status !== 200) {
+    throw new Error(rsp.json());
+  }
+
+  return rsp.json();
+};
+
+const getFeatures = async hashtag =>
+  get(`${STATS_API_URL}/hashtags/${hashtag}/map`);
+
+const getSummary = async hashtag =>
+  get(`${STATS_API_URL}/group-summaries/${hashtag}`);
+
+const getUsers = async hashtag =>
+  get(`${STATS_API_URL}/hashtags/${hashtag}/users`);
+
 export default createClass({
-  getInitialState: function () {
+  getInitialState: function() {
     return {
       colors: {},
       hashtags: {},
       intervals: {},
-      lastRefresh: ''
+      lastRefresh: ""
     };
   },
-  initializeIntervals: function (props) {
+  initializeIntervals: function(props) {
     const { match: { params: { id } } } = this.props;
 
-    var hashtags = R.split(',', id);
-    var colorClasses = ['redteam', 'blueteam', 'greenteam'];
+    var hashtags = R.split(",", id);
+    var colorClasses = ["redteam", "blueteam", "greenteam"];
 
     var intervals = {};
     var colors = {};
     var component = this;
-    hashtags.forEach(function (hashtag, index) {
+    hashtags.forEach(function(hashtag, index) {
       intervals[hashtag] = setInterval(() => {
         component.fetchData(hashtag);
       }, 30000);
@@ -43,42 +65,50 @@ export default createClass({
       colors: colors
     });
   },
-  fetchData: function (hashtag) {
-    var component = this;
-    return fetch('https://osmstats.redcross.org/hashtags/' +
-                 hashtag + '/users')
-    .then(function (res) {
-      return res.json();
-    })
-    .then(function (hashtagResult) {
-      return fetch('https://osmstats.redcross.org/hashtags/' +
-                   hashtag + '/map')
-      .then(function (res) {
-        return res.json();
-      })
-      .then(function (mapResult) {
-        if (mapResult.error == null) {
-          const { hashtags } = component.state;
+  fetchData: async function(hashtag) {
+    try {
+      const [users, features, summaries] = await Promise.all([
+        getUsers(hashtag),
+        getFeatures(hashtag),
+        getSummary(hashtag)
+      ]);
 
-          hashtags[hashtag] = {
-            users: hashtagResult,
-            features: mapResult
-          };
+      const summary = summaries[hashtag];
 
-          component.setState({
-            hashtags
-          });
+      this.setState({
+        hashtags: {
+          ...this.state.hashtags,
+          [hashtag]: {
+            summary: {
+              ...summary,
+              edits:
+                summary.building_count_add +
+                summary.building_count_mod +
+                summary.road_count_add +
+                summary.road_count_mod +
+                summary.waterway_count_add +
+                summary.poi_count_add,
+              buildings:
+                summary.building_count_add + summary.building_count_mod,
+              road_km: summary.road_km_add + summary.road_km_mod,
+              last_updated: summary.last_updated
+            },
+            users,
+            features
+          }
         }
       });
-    });
+    } catch (err) {
+      console.warn("Failed while fetching data:", err);
+    }
   },
-  componentDidMount: function () {
+  componentDidMount: function() {
     this.initializeIntervals(this.props);
   },
-  componentWillReceiveProps: function (nextProps) {
+  componentWillReceiveProps: function(nextProps) {
     const { match: { params: { id } } } = nextProps;
 
-    var newHashtags = R.split(',', id);
+    var newHashtags = R.split(",", id);
     var currentHashtags = Object.keys(this.state.hashtags);
     if (newHashtags.length < currentHashtags.length) {
       this.handleHashtagDelete(R.difference(currentHashtags, newHashtags));
@@ -96,9 +126,9 @@ export default createClass({
       }
     }
   },
-  handleHashtagDelete: function (hashtags) {
+  handleHashtagDelete: function(hashtags) {
     var component = this;
-    hashtags.forEach(function (hashtag) {
+    hashtags.forEach(function(hashtag) {
       var state = component.state;
       delete state.hashtags[hashtag];
       delete state.colors[hashtag];
@@ -106,10 +136,10 @@ export default createClass({
       component.setState(state);
     });
   },
-  handleHashtagAdd: function (hashtags) {
+  handleHashtagAdd: function(hashtags) {
     var component = this;
-    var colorClasses = ['redteam', 'blueteam', 'greenteam'];
-    hashtags.forEach(function (hashtag) {
+    var colorClasses = ["redteam", "blueteam", "greenteam"];
+    hashtags.forEach(function(hashtag) {
       var intervals = component.state.intervals;
       var colors = component.state.colors;
       var interval = setInterval(() => {
@@ -126,12 +156,15 @@ export default createClass({
       });
     });
   },
-  render: function () {
-    var users = {}; var features = {};
+  render: function() {
+    var users = {};
+    var features = {};
+    var summaries = {};
     var hashtags = this.state.hashtags;
-    Object.keys(hashtags).forEach((hashtag) => {
+    Object.keys(hashtags).forEach(hashtag => {
       users[hashtag] = hashtags[hashtag].users;
       features[hashtag] = hashtags[hashtag].features;
+      summaries[hashtag] = hashtags[hashtag].summary;
     });
 
     const { history, match: { params: { id } } } = this.props;
@@ -139,7 +172,7 @@ export default createClass({
     return (
       <div>
         <div>
-          <div id = "Page-Container">
+          <div id="Page-Container">
             <HashtagNav
               id={id}
               history={this.props.history}
@@ -152,12 +185,32 @@ export default createClass({
               id={id}
               history={this.props.history}
               location={this.props.location}
+              summaries={summaries}
             />
 
             <Router history={history}>
               <Switch>
-                <Route path="/:id/map" render={props => <LeaderboardMap colors={this.state.colors} rows={users} features={features} {...props} />} />
-                <Route render={props => <Leaderboard colors={this.state.colors} rows={users} features={features} {...props} />} />
+                <Route
+                  path="/:id/map"
+                  render={props => (
+                    <LeaderboardMap
+                      colors={this.state.colors}
+                      rows={users}
+                      features={features}
+                      {...props}
+                    />
+                  )}
+                />
+                <Route
+                  render={props => (
+                    <Leaderboard
+                      colors={this.state.colors}
+                      rows={users}
+                      features={features}
+                      {...props}
+                    />
+                  )}
+                />
               </Switch>
             </Router>
           </div>
