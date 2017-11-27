@@ -13,7 +13,8 @@ import "../assets/styles/table-osm.css";
 import "../assets/styles/main.css";
 
 const STATS_API_URL =
-  process.env.REACT_APP_STATS_API_URL || "https://osmstats.redcross.org";
+  process.env.REACT_APP_STATS_API_URL ||
+  "https://osm-stats-api.azurewebsites.net";
 
 const get = async uri => {
   const rsp = await fetch(uri);
