@@ -2,15 +2,28 @@
 
 # Missing Maps Leaderboards
 
-This repo contains the *Leaderboard Page* component of the missingmaps website that are not part of the Jekyll build and can be tested independently. 
+This repo contains the **Leaderboard Page** component of the [Missing
+Maps](http://missingmaps.org) web site that is not part of the main Jekyll build
+and can be tested / developed independently.
 
 ## Developing
-```
+
+```bash
 npm install
 npm start
 ```
 
 ## Building
-```
+
+```bash
 npm run build
+```
+
+## Publishing
+
+This is automatically done by Travis CI for
+[missingmaps.org/leaderboards](http://missingmaps.org/leaderboards).
+
+```bash
+npm run build && npm run deploy
 ```
