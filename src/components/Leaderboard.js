@@ -315,6 +315,16 @@ export default createClass({
       });
     }
   },
+  shouldComponentUpdate: function(nextProps, nextState) {
+    const { hashtags } = nextProps;
+    const { colSortDirs, size } = nextState;
+
+    return (
+      !isEqual(this.props.hashtags, hashtags) ||
+      !isEqual(this.state.colSortDirs, colSortDirs) ||
+      !isEqual(this.state.size, size)
+    );
+  },
   dataDidUpdate: function(size) {
     this.setState({
       size
