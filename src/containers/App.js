@@ -29,11 +29,8 @@ const get = async uri => {
 const getFeatures = async hashtag =>
   get(`${STATS_API_URL}/hashtags/${hashtag}/map`);
 
-const getSummary = async hashtag =>
-  get(`${STATS_API_URL}/group-summaries/${hashtag}`);
-
-const getUsers = async hashtag =>
-  get(`${STATS_API_URL}/hashtags/${hashtag}/users`);
+const getSummaries = async hashtags =>
+  get(`${STATS_API_URL}/group-summaries/${hashtags.join(",")}`);
 
 export default createClass({
   getInitialState: function() {
@@ -68,10 +65,10 @@ export default createClass({
   },
   fetchData: async function(hashtag) {
     try {
-      const [users, features, summaries] = await Promise.all([
-        getUsers(hashtag),
+      const [features, summaries] = await Promise.all([
         getFeatures(hashtag),
-        getSummary(hashtag)
+        // TODO fetch summaries for all hashtags in one request
+        getSummaries([hashtag])
       ]);
 
       const summary = summaries[hashtag];
@@ -94,10 +91,10 @@ export default createClass({
               road_km: summary.road_km_add + summary.road_km_mod,
               last_updated: summary.last_updated
             },
-            users,
             features
           }
-        }
+        },
+        lastRefresh: new Date()
       });
     } catch (err) {
       console.warn("Failed while fetching data:", err);
@@ -158,34 +155,29 @@ export default createClass({
     });
   },
   render: function() {
-    var users = {};
-    var features = {};
-    var summaries = {};
-    var hashtags = this.state.hashtags;
+    const features = {};
+    const summaries = {};
+
+    const { colors, hashtags, lastRefresh } = this.state;
+
     Object.keys(hashtags).forEach(hashtag => {
-      users[hashtag] = hashtags[hashtag].users;
       features[hashtag] = hashtags[hashtag].features;
       summaries[hashtag] = hashtags[hashtag].summary;
     });
 
-    const { history, match: { params: { id } } } = this.props;
+    const { history, location, match: { params: { id } } } = this.props;
 
     return (
       <div>
         <div>
           <div id="Page-Container">
-            <HashtagNav
-              id={id}
-              history={this.props.history}
-              location={this.props.location}
-            />
+            <HashtagNav id={id} history={history} location={location} />
             <HashtagStats
-              colors={this.state.colors}
-              rows={users}
-              refresh={this.state.lastRefresh}
+              colors={colors}
+              lastRefresh={lastRefresh}
               id={id}
-              history={this.props.history}
-              location={this.props.location}
+              history={history}
+              location={location}
               summaries={summaries}
             />
 
@@ -195,8 +187,7 @@ export default createClass({
                   path="/:id/map"
                   render={props => (
                     <LeaderboardMap
-                      colors={this.state.colors}
-                      rows={users}
+                      colors={colors}
                       features={features}
                       {...props}
                     />
@@ -205,9 +196,8 @@ export default createClass({
                 <Route
                   render={props => (
                     <Leaderboard
-                      colors={this.state.colors}
-                      rows={users}
-                      features={features}
+                      colors={colors}
+                      hashtags={Object.keys(colors)}
                       {...props}
                     />
                   )}
