@@ -264,7 +264,7 @@ const LinkCell = props => {
   const username = row.name;
   const usernameShift = username.replace(/\s+/g, "-").toLowerCase();
 
-  const userlink = "http://missingmaps.org/users/#/" + usernameShift;
+  const userlink = "https://www.missingmaps.org/users/#/" + usernameShift;
   const userClass = colors[row.hashtag] + "-name statsCell table-username";
 
   let display = row[field];
