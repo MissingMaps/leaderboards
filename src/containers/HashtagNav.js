@@ -6,6 +6,10 @@ import Autosuggest from "react-autosuggest";
 
 import Header from "../components/Header.js";
 
+const STATS_API_URL =
+  process.env.REACT_APP_STATS_API_URL ||
+  "https://osm-stats-production-api.azurewebsites.net";
+
 const getSuggestionValue = suggestion => suggestion;
 
 const renderSuggestion = (suggestion, { query, isHighlighted }) => (
@@ -27,7 +31,7 @@ export default createClass({
   },
   componentDidMount: function() {
     var component = this;
-    fetch("https://osm-stats-api.azurewebsites.net/hashtags")
+    fetch(`${STATS_API_URL}/hashtags`)
       .then(function(res) {
         return res.json();
       })
