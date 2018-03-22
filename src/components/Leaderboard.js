@@ -444,7 +444,7 @@ export default createClass({
                       onSortChange={this._onSortChange}
                       sortDir={colSortDirs.buildings}
                     >
-                      BUILDINGS
+                      BUILDING EDITS
                     </SortHeaderCell>
                   }
                   cell={
