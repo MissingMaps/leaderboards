@@ -14,22 +14,18 @@ export default createClass({
       url: ""
     };
   },
-  createTotals: function(props) {
-    const { colors, rows, summaries } = props;
-
-    const hashtags = Object.keys(rows)
-      .map(hashtag => {
-        return [
-          hashtag,
-          {
-            color: colors[hashtag],
-            roads: summaries[hashtag].road_km,
-            buildings: summaries[hashtag].buildings,
-            edits: summaries[hashtag].edits,
-            last_update: summaries[hashtag].last_updated
-          }
-        ];
-      })
+  createTotals: function(colors, summaries) {
+    const hashtags = Object.keys(summaries)
+      .map(hashtag => [
+        hashtag,
+        {
+          color: colors[hashtag],
+          roads: summaries[hashtag].road_km,
+          buildings: summaries[hashtag].buildings,
+          edits: summaries[hashtag].edits,
+          last_update: summaries[hashtag].last_updated
+        }
+      ])
       .reduce((obj, v) => {
         obj[v[0]] = v[1];
 
@@ -38,31 +34,28 @@ export default createClass({
 
     this.setState({
       hashtags,
-      url: Object.keys(rows).join(",")
+      url: Object.keys(summaries).join(",")
     });
   },
   componentDidMount: function() {
-    var props = this.props;
-    if (
-      props &&
-      props.hasOwnProperty("colors") &&
-      props.hasOwnProperty("rows") &&
-      Object.keys(props.rows).length > 0
-    ) {
-      this.createTotals(props);
-    }
-    if (props && props.hasOwnProperty("lastRefresh")) {
+    const { colors, lastRefresh, summaries } = this.props;
+
+    this.createTotals(colors, summaries);
+
+    if (lastRefresh != null) {
       this.setState({
-        lastRefresh: props.lastRefresh
+        lastRefresh
       });
     }
   },
   componentWillReceiveProps: function(props) {
-    if (props && props.hasOwnProperty("colors") && props.hasOwnProperty("rows"))
-      this.createTotals(props);
-    if (props && props.hasOwnProperty("lastRefresh")) {
+    const { colors, lastRefresh, summaries } = props;
+
+    this.createTotals(colors, summaries);
+
+    if (lastRefresh != null) {
       this.setState({
-        lastRefresh: props.lastRefresh
+        lastRefresh
       });
     }
   },
