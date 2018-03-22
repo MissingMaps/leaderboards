@@ -240,7 +240,7 @@ function StatsCell(props) {
     display =
       display.toLocaleString(undefined, { maximumFractionDigits: 1 }) + " km";
   } else {
-    display = (display || "").toLocaleString();
+    display = display.toLocaleString();
   }
 
   className += " " + colors[row.hashtag];
