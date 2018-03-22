@@ -79,13 +79,6 @@ export default createClass({
           [hashtag]: {
             summary: {
               ...summary,
-              edits:
-                summary.building_count_add +
-                summary.building_count_mod +
-                summary.road_count_add +
-                summary.road_count_mod +
-                summary.waterway_count_add +
-                summary.poi_count_add,
               buildings:
                 summary.building_count_add + summary.building_count_mod,
               road_km: summary.road_km_add + summary.road_km_mod,
