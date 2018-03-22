@@ -110,7 +110,10 @@ class PagedData {
   }
 
   isDataPending() {
-    return Object.keys(this.pages).some(k => this.pages[k] === Infinity);
+    return (
+      this.filter === "" &&
+      Object.keys(this.pages).some(k => this.pages[k] === Infinity)
+    );
   }
 
   async getHashtagUsers(hashtag) {
