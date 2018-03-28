@@ -1,14 +1,16 @@
 import React from "react";
 
-import missingMapsLogo from "../assets/graphics/MissingMapsLogo-White.svg";
-
 export default function() {
   return (
     <header>
       <div className="navbar-background">
         <div className="nav-icon">
           <a href="http://missingmaps.org/">
-            <img src={missingMapsLogo} width="94px" alt="Missing Maps logo " />
+            <img
+              src="http://www.missingmaps.org/assets/graphics/meta/MM-White.svg"
+              width="94px"
+              alt="Missing Maps logo "
+            />
           </a>
         </div>
         <div class="nav-list">
