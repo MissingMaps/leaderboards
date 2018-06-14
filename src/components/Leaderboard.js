@@ -333,7 +333,7 @@ export default createClass({
   _onFilterChange: function(e) {
     const { data } = this.state;
 
-    data.applyFilter(e.target.value.toLowerCase());
+    data.applyFilter(e.target.value);
   },
   _onSortChange: async function(columnKey, sortDir) {
     this.setState({
