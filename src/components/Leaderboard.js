@@ -14,7 +14,7 @@ const SortTypes = {
 
 const STATS_API_URL =
   process.env.REACT_APP_STATS_API_URL ||
-  "https://osm-stats-prod-api.azurewebsites.net";
+  "https://osm-stats-production-api.azurewebsites.net";
 
 const get = async uri => {
   const rsp = await fetch(uri);
