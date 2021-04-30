@@ -1,18 +1,16 @@
 language: node_js
-node_js:
-  - "8"
-
 env:
-  global:
-  - GH_REF=github.com/MissingMaps/leaderboards
-  - DEPLOY_BRANCH=master
-
+  matrix:
+    secure: iiEYsFypzr2OQfpLGrYTdRRam9S6iodjU6pELeJaagZE8xlWxWf3Bhy05UcR9OoF2I7jrK7t9cFFKRp/HPHTtWlvhaJDyHL5DQ0fW6NStVEFPhLerI0fHWzIwhZVtPFqXBDpOkONqlb0eYT5YzLp1L6Fdn6Fu7otcd4k+w/hw22+NjeQp0IYGbuP8PA3iiy5lkPD6e/+ECB3gG/+vRQ0ivHrRIl0TB5ihQ0V6T9ID2glyCVDXoLQC2STocv7PoD1wRWRk0Xo1v8PNGjg6DXD6jZyt1ncFKanYztsAjkwRRmLa92PjDxKvr+qCHmTRRRX12GRyss/N3JWctn1+OJKVyt9Q7ihd6ZLfpxF7TzzjFSPXtmmWPPwxur+MXxrucg2+tX8cZVMJQP2Z1gD4bwEw8Q0sXcnw6Mv3k8Mamu8ZbLgN2A5Z7C0TKQFO42enc2JdGiqUni54+zNSD29LQx0XJaM6o+2DT3Mup+I9srbvuyr6YouJeoXIwdZuj8rL22Bb5OdUi1e/KbXK5pko9JCK4bflISLVk6gqKl9AcnAqo3fGbfMHfkVIUTiJKz3hB1FOjuf+TgkAY7tfcrujE+R6eROJdxIojncRJBdomCYbtB89wTUv/y+cxSflrTw48hnpx4BO7ccyx+GQcgUUKH8hA+uiFQTscN8KY+u2To/rwA=
 cache:
   directories:
-    - node_modules
-
+  - node_modules
 script:
 - npm run build
-
-after_success:
-- ./.build_scripts/deploy.sh
+deploy:
+  provider: pages
+  github-token: "$GH_TOKEN"
+  on:
+    branch: master
+  local_dir: build
+  edge: true
