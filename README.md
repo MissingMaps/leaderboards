@@ -27,3 +27,7 @@ This is automatically done by Travis CI for
 ```bash
 npm run build && npm run deploy
 ```
+
+## Deployment
+
+For the Travis-CI connection, a GitHub personal access token with 'public_repo - Access public repositories' permissions created and added via `travis encrypt GH_TOKEN=my_github_token --add env.matrix` as described in the [Travis-CI docs](https://docs.travis-ci.com/user/environment-variables#Encrypting-environment-variables).
