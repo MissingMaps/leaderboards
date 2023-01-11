@@ -7,7 +7,7 @@ export default function() {
         <div className="nav-icon">
           <a href="http://missingmaps.org/">
             <img
-              src="http://www.missingmaps.org/assets/graphics/meta/MM-White.svg"
+              src="https://www.missingmaps.org/assets/graphics/meta/MM_white_typography.svg"
               width="94px"
               alt="Missing Maps logo "
             />
