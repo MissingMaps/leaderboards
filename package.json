@@ -37,14 +37,14 @@
   },
   "devDependencies": {
     "babel-preset-env": "^1.6.0",
-    "eslint": "^3.19.0",
+    "eslint": "^9.39.1",
     "eslint-plugin-react-app": "^1.0.2",
-    "git-exec-and-restage": "^1.0.1",
+    "git-exec-and-restage": "^1.1.1",
     "husky": "^0.14.3",
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.2",
-    "react-scripts": "^1.0.14"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "@turf/bbox": "^4.7.3",
@@ -58,7 +58,7 @@
     "history": "^4.7.2",
     "isomorphic-fetch": "^2.2.0",
     "leaflet": "^1.2.0",
-    "lint-staged": "^4.2.3",
+    "lint-staged": "^16.2.6",
     "lodash": "^4.0.1",
     "moment": "^2.11.2",
     "ramda": "^0.24.1",
