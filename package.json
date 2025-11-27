@@ -44,7 +44,7 @@
     "node-sass-chokidar": "0.0.3",
     "npm-run-all": "^4.1.1",
     "prettier": "^1.7.2",
-    "react-scripts": "^1.0.14"
+    "react-scripts": "^5.0.1"
   },
   "dependencies": {
     "@turf/bbox": "^4.7.3",
